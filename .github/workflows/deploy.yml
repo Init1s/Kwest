@@ -1,0 +1,52 @@
+name: Deploy to GitHub Pages
+
+on:
+  push:
+    branches: [main]
+  workflow_dispatch:
+
+permissions:
+  contents: read
+  pages: write
+  id-token: write
+
+concurrency:
+  group: pages
+  cancel-in-progress: false
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 20
+          cache: npm
+          cache-dependency-path: kwest-barber/package-lock.json
+
+      - name: Install dependencies
+        working-directory: kwest-barber
+        run: npm ci
+
+      - name: Build
+        working-directory: kwest-barber
+        run: npm run build
+        env:
+          NEXT_PUBLIC_SQUIRE_BOOKING_URL: https://squire.com/kwestthebarber
+          NEXT_PUBLIC_SITE_URL: https://kwestthebarber.com
+
+      - uses: actions/upload-pages-artifact@v3
+        with:
+          path: kwest-barber/out
+
+  deploy:
+    needs: build
+    runs-on: ubuntu-latest
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    steps:
+      - id: deployment
+        uses: actions/deploy-pages@v4

@@ -1,0 +1,16 @@
+{
+  "mcpServers": {
+    "playwright": {
+      "command": "npx",
+      "args": ["@playwright/mcp@latest"]
+    },
+    "devtools": {
+      "command": "npx",
+      "args": ["@modelcontextprotocol/server-puppeteer"]
+    },
+    "lighthouse": {
+      "command": "node",
+      "args": ["scripts/mcp-lighthouse-server.js"]
+    }
+  }
+}
