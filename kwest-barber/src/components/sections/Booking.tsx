@@ -1,4 +1,5 @@
 import { Reveal, RevealGroup, RevealItem } from "@/components/ui/Reveal";
+import { MagneticButton } from "@/components/ui/MagneticButton";
 
 export function Booking() {
   return (
@@ -21,14 +22,16 @@ export function Booking() {
             planning ahead is the move.
           </p>
 
-          <a
-            href={process.env.NEXT_PUBLIC_SQUIRE_BOOKING_URL}
-            target="_blank"
-            rel="noopener noreferrer"
-            className="mt-10 inline-block bg-gold font-display text-base font-bold uppercase tracking-widest text-ink px-12 py-5 transition-all hover:bg-gold-light"
-          >
-            Book on Squire
-          </a>
+          <MagneticButton className="mt-10 inline-block">
+            <a
+              href={process.env.NEXT_PUBLIC_SQUIRE_BOOKING_URL}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="inline-block bg-gold font-display text-base font-bold uppercase tracking-widest text-ink px-12 py-5 transition-all hover:bg-gold-light"
+            >
+              Book on Squire
+            </a>
+          </MagneticButton>
         </Reveal>
 
         {/* Info strip */}

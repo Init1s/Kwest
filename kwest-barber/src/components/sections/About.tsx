@@ -1,4 +1,5 @@
 import { Reveal } from "@/components/ui/Reveal";
+import { ClipReveal } from "@/components/ui/ClipReveal";
 
 export function About() {
   return (
@@ -22,34 +23,42 @@ export function About() {
         {/* Content grid */}
         <div className="grid gap-12 lg:grid-cols-5 lg:gap-16">
           {/* Image */}
-          <Reveal direction="left" delay={0.1} className="relative lg:col-span-2">
-            <div
-              className="aspect-[3/4] bg-steel"
-              style={{
-                clipPath: "polygon(0 0, 100% 0, 100% 94%, 0 100%)",
-              }}
-            >
-              {/* TODO: Replace with <Image> using Kwest's actual photo. File: /public/images/kwest-portrait.jpg */}
-            </div>
+          <div className="relative lg:col-span-2">
+            <ClipReveal type="diagonal" delay={0.1}>
+              <div
+                className="aspect-[3/4] bg-steel"
+                style={{
+                  clipPath: "polygon(0 0, 100% 0, 100% 94%, 0 100%)",
+                }}
+              >
+                {/* TODO: Replace with <Image> using Kwest's actual photo. File: /public/images/kwest-portrait.jpg */}
+              </div>
+            </ClipReveal>
 
             {/* Floating badge */}
-            <div className="absolute -bottom-4 right-6 flex items-center gap-3 border border-gold/20 bg-ink px-5 py-3 animate-glow-pulse">
-              <span className="font-display text-3xl font-extrabold text-gold">
-                10
-              </span>
-              <div className="flex flex-col">
-                <span className="font-mono text-[8px] uppercase tracking-ultra text-smoke">
-                  Years
+            <Reveal delay={0.4} className="absolute -bottom-4 right-6">
+              <div className="flex items-center gap-3 border border-gold/20 bg-ink px-5 py-3 animate-glow-pulse">
+                <span className="font-display text-3xl font-extrabold text-gold">
+                  10
                 </span>
-                <span className="font-display text-xs font-bold uppercase text-bone">
-                  Sharp
-                </span>
+                <div className="flex flex-col">
+                  <span className="font-mono text-[8px] uppercase tracking-ultra text-smoke">
+                    Years
+                  </span>
+                  <span className="font-display text-xs font-bold uppercase text-bone">
+                    Sharp
+                  </span>
+                </div>
               </div>
-            </div>
-          </Reveal>
+            </Reveal>
+          </div>
 
           {/* Text */}
-          <Reveal direction="right" delay={0.15} className="flex flex-col justify-center lg:col-span-3">
+          <Reveal
+            direction="right"
+            delay={0.15}
+            className="flex flex-col justify-center lg:col-span-3"
+          >
             <div className="flex flex-col gap-5 font-body text-sm leading-relaxed text-ash">
               <p>
                 Started cutting in a one-chair spot in Boca Raton with nothing

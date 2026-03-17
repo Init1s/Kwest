@@ -1,6 +1,7 @@
 "use client";
 
 import { useEffect, useState } from "react";
+import { MagneticButton } from "@/components/ui/MagneticButton";
 
 const navLinks = [
   { label: "Services", href: "#services" },
@@ -50,14 +51,16 @@ export function Navbar() {
               {link.label}
             </a>
           ))}
-          <a
-            href={process.env.NEXT_PUBLIC_SQUIRE_BOOKING_URL}
-            target="_blank"
-            rel="noopener noreferrer"
-            className="bg-gold font-display text-xs font-bold uppercase tracking-widest text-ink px-5 py-2.5 transition-all hover:bg-gold-light"
-          >
-            Book Now
-          </a>
+          <MagneticButton>
+            <a
+              href={process.env.NEXT_PUBLIC_SQUIRE_BOOKING_URL}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="inline-block bg-gold font-display text-xs font-bold uppercase tracking-widest text-ink px-5 py-2.5 transition-all hover:bg-gold-light"
+            >
+              Book Now
+            </a>
+          </MagneticButton>
         </div>
 
         {/* Mobile Hamburger */}

@@ -3,6 +3,7 @@ import { Syne, Outfit, Azeret_Mono } from "next/font/google";
 import { Navbar } from "@/components/layout/Navbar";
 import { Footer } from "@/components/layout/Footer";
 import { FloatingCTA } from "@/components/ui/FloatingCTA";
+import { Intro } from "@/components/ui/Intro";
 import "./globals.css";
 
 const syne = Syne({
@@ -47,6 +48,7 @@ export default function RootLayout({
       <body
         className={`${syne.variable} ${outfit.variable} ${azeretMono.variable} antialiased`}
       >
+        <Intro />
         <Navbar />
         <FloatingCTA />
         {children}

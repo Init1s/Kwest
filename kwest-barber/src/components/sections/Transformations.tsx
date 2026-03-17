@@ -1,0 +1,42 @@
+"use client";
+
+import { BeforeAfter } from "@/components/ui/BeforeAfter";
+import { Reveal, RevealGroup, RevealItem } from "@/components/ui/Reveal";
+
+const transformations = [
+  { id: 1, title: "The Mid Fade" },
+  { id: 2, title: "The Beard Sculpt" },
+  { id: 3, title: "The Full Service" },
+];
+
+export function Transformations() {
+  return (
+    <section className="bg-blade px-6 py-24 md:py-32">
+      <div className="mx-auto max-w-7xl">
+        <Reveal className="mb-16">
+          <span className="font-mono text-[10px] uppercase tracking-ultra text-smoke">
+            The Results
+          </span>
+          <h2 className="mt-4 font-display text-4xl font-extrabold uppercase tracking-tightest text-bone md:text-6xl">
+            TRANSFORMATIONS
+          </h2>
+          <p className="mt-4 max-w-md font-body text-sm text-ash">
+            Drag the slider to see the difference. Real transformations, every
+            time.
+          </p>
+        </Reveal>
+
+        <RevealGroup className="grid gap-8 md:grid-cols-3" stagger={0.12}>
+          {transformations.map((t) => (
+            <RevealItem key={t.id}>
+              <p className="mb-4 font-display text-lg font-bold uppercase text-bone">
+                {t.title}
+              </p>
+              <BeforeAfter />
+            </RevealItem>
+          ))}
+        </RevealGroup>
+      </div>
+    </section>
+  );
+}
