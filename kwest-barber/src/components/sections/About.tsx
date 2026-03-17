@@ -33,7 +33,7 @@ export function About() {
                 }}
               >
                 <Image
-                  src="/images/kwest-portrait.jpg"
+                  src={`${process.env.NEXT_PUBLIC_BASE_PATH || ""}/images/kwest-portrait.jpg`}
                   alt="Kwest The Barber"
                   fill
                   className="object-cover"

@@ -37,6 +37,7 @@ jobs:
           NEXT_PUBLIC_SQUIRE_BOOKING_URL: https://getsquire.com/booking/book/his-and-hers-lux-barbershop-boca-raton/barber/kwest-the-barber-1/services
           NEXT_PUBLIC_SITE_URL: https://kwestthebarber.com
           INSTAGRAM_ACCESS_TOKEN: ${{ secrets.INSTAGRAM_ACCESS_TOKEN }}
+          NEXT_PUBLIC_BASE_PATH: /Kwest
 
       - uses: actions/upload-pages-artifact@v3
         with:
