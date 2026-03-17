@@ -1,3 +1,5 @@
+import { Reveal, RevealGroup, RevealItem } from "@/components/ui/Reveal";
+
 const services = [
   {
     name: "Classic Cut",
@@ -57,7 +59,7 @@ export function Services() {
     <section id="services" className="bg-ink px-6 py-24 md:py-32">
       <div className="mx-auto max-w-7xl">
         {/* Header */}
-        <div className="mb-16">
+        <Reveal className="mb-16">
           <span className="font-mono text-[10px] uppercase tracking-ultra text-smoke">
             What We Do
           </span>
@@ -70,11 +72,14 @@ export function Services() {
               exactly how you should.
             </p>
           </div>
-        </div>
+        </Reveal>
 
         {/* Signature service callout */}
         {featured && (
-          <div className="mb-16 border border-gold/25 bg-gold/[0.04] p-8 md:p-12">
+          <Reveal
+            delay={0.1}
+            className="mb-16 border border-gold/25 bg-gold/[0.04] p-8 md:p-12"
+          >
             <div className="flex flex-col gap-6 md:flex-row md:items-start md:justify-between">
               <div>
                 <span className="font-mono text-[9px] uppercase tracking-ultra text-gold">
@@ -96,13 +101,13 @@ export function Services() {
                 </span>
               </div>
             </div>
-          </div>
+          </Reveal>
         )}
 
         {/* Service list */}
-        <div className="border-t border-chrome/60">
+        <RevealGroup className="border-t border-chrome/60">
           {regular.map((service) => (
-            <div
+            <RevealItem
               key={service.name}
               className="group flex flex-col justify-between gap-3 border-b border-chrome/60 py-7 transition-colors hover:bg-bone/[0.02] md:flex-row md:items-center"
             >
@@ -122,9 +127,9 @@ export function Services() {
                   {service.price}
                 </span>
               </div>
-            </div>
+            </RevealItem>
           ))}
-        </div>
+        </RevealGroup>
       </div>
     </section>
   );

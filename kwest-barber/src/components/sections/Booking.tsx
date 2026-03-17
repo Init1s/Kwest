@@ -1,35 +1,42 @@
+import { Reveal, RevealGroup, RevealItem } from "@/components/ui/Reveal";
+
 export function Booking() {
   return (
     <section id="booking" className="bg-ink px-6 py-24 md:py-32">
       <div className="mx-auto max-w-5xl text-center">
-        <span className="font-mono text-[10px] uppercase tracking-ultra text-smoke">
-          Ready?
-        </span>
+        <Reveal>
+          <span className="font-mono text-[10px] uppercase tracking-ultra text-smoke">
+            Ready?
+          </span>
 
-        <h2 className="mt-6 font-display text-5xl font-extrabold uppercase text-bone leading-[0.9] md:text-7xl lg:text-8xl">
-          BOOK YOUR
-          <br />
-          <span className="text-gold">CUT.</span>
-        </h2>
+          <h2 className="mt-6 font-display text-5xl font-extrabold uppercase text-bone leading-[0.9] md:text-7xl lg:text-8xl">
+            BOOK YOUR
+            <br />
+            <span className="text-gold">CUT.</span>
+          </h2>
 
-        <p className="mx-auto mt-8 max-w-md font-body text-sm leading-relaxed text-ash">
-          Appointments are handled through Squire. Pick your service, choose
-          your time, and lock in your spot. The chair stays booked, so planning
-          ahead is the move.
-        </p>
+          <p className="mx-auto mt-8 max-w-md font-body text-sm leading-relaxed text-ash">
+            Appointments are handled through Squire. Pick your service, choose
+            your time, and lock in your spot. The chair stays booked, so
+            planning ahead is the move.
+          </p>
 
-        <a
-          href={process.env.NEXT_PUBLIC_SQUIRE_BOOKING_URL}
-          target="_blank"
-          rel="noopener noreferrer"
-          className="mt-10 inline-block bg-gold font-display text-base font-bold uppercase tracking-widest text-ink px-12 py-5 transition-all hover:bg-gold-light"
-        >
-          Book on Squire
-        </a>
+          <a
+            href={process.env.NEXT_PUBLIC_SQUIRE_BOOKING_URL}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="mt-10 inline-block bg-gold font-display text-base font-bold uppercase tracking-widest text-ink px-12 py-5 transition-all hover:bg-gold-light"
+          >
+            Book on Squire
+          </a>
+        </Reveal>
 
         {/* Info strip */}
-        <div className="mt-20 grid grid-cols-2 gap-x-8 gap-y-6 border-t border-chrome pt-10 text-left md:grid-cols-4">
-          <div>
+        <RevealGroup
+          className="mt-20 grid grid-cols-2 gap-x-8 gap-y-6 border-t border-chrome pt-10 text-left md:grid-cols-4"
+          stagger={0.1}
+        >
+          <RevealItem>
             <span className="font-mono text-[9px] uppercase tracking-ultra text-smoke">
               Hours
             </span>
@@ -39,9 +46,9 @@ export function Booking() {
               <p>Sunday: 11am - 4pm</p>
               <p className="text-razor">Monday: Closed</p>
             </div>
-          </div>
+          </RevealItem>
 
-          <div>
+          <RevealItem>
             <span className="font-mono text-[9px] uppercase tracking-ultra text-smoke">
               Location
             </span>
@@ -51,9 +58,9 @@ export function Booking() {
             <p className="mt-1 font-body text-xs text-ash">
               Address upon booking
             </p>
-          </div>
+          </RevealItem>
 
-          <div>
+          <RevealItem>
             <span className="font-mono text-[9px] uppercase tracking-ultra text-smoke">
               Walk-Ins
             </span>
@@ -61,9 +68,9 @@ export function Booking() {
               Available when the chair is open. Book ahead to guarantee your
               spot.
             </p>
-          </div>
+          </RevealItem>
 
-          <div>
+          <RevealItem>
             <span className="font-mono text-[9px] uppercase tracking-ultra text-smoke">
               Contact
             </span>
@@ -81,8 +88,8 @@ export function Booking() {
             <p className="mt-1 font-body text-xs text-ash">
               or book directly through Squire
             </p>
-          </div>
-        </div>
+          </RevealItem>
+        </RevealGroup>
       </div>
     </section>
   );

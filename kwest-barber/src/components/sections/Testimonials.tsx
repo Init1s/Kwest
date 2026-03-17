@@ -1,3 +1,5 @@
+import { Reveal, RevealGroup, RevealItem } from "@/components/ui/Reveal";
+
 const testimonials = [
   {
     quote:
@@ -31,16 +33,18 @@ export function Testimonials() {
   return (
     <section className="bg-ink px-6 py-24 md:py-32">
       <div className="mx-auto max-w-7xl">
-        <span className="font-mono text-[10px] uppercase tracking-ultra text-smoke">
-          What They Say
-        </span>
-        <h2 className="mt-4 mb-16 font-display text-4xl font-extrabold uppercase tracking-tightest text-bone md:text-6xl">
-          CLIENTS{" "}
-          <span className="text-gold">DON&apos;T LIE.</span>
-        </h2>
+        <Reveal>
+          <span className="font-mono text-[10px] uppercase tracking-ultra text-smoke">
+            What They Say
+          </span>
+          <h2 className="mt-4 mb-16 font-display text-4xl font-extrabold uppercase tracking-tightest text-bone md:text-6xl">
+            CLIENTS{" "}
+            <span className="text-gold">DON&apos;T LIE.</span>
+          </h2>
+        </Reveal>
 
-        {/* Featured testimonial — large display treatment */}
-        <div className="mb-16">
+        {/* Featured testimonial */}
+        <Reveal delay={0.1} className="mb-16">
           <blockquote className="max-w-4xl font-display text-2xl font-semibold text-bone leading-snug md:text-3xl lg:text-4xl">
             &ldquo;{featured.quote}&rdquo;
           </blockquote>
@@ -50,21 +54,24 @@ export function Testimonials() {
               {featured.name} &mdash; Client since {featured.since}
             </p>
           </div>
-        </div>
+        </Reveal>
 
         {/* Supporting testimonials */}
-        <div className="grid gap-8 border-t border-chrome pt-12 md:grid-cols-3">
+        <RevealGroup
+          className="grid gap-8 border-t border-chrome pt-12 md:grid-cols-3"
+          stagger={0.1}
+        >
           {supporting.map((t) => (
-            <div key={t.name} className="flex flex-col justify-between">
+            <RevealItem key={t.name} className="flex flex-col justify-between">
               <p className="font-body text-sm leading-relaxed text-ash">
                 &ldquo;{t.quote}&rdquo;
               </p>
               <p className="mt-6 font-mono text-[10px] uppercase tracking-widest text-smoke">
                 {t.name} &middot; Since {t.since}
               </p>
-            </div>
+            </RevealItem>
           ))}
-        </div>
+        </RevealGroup>
       </div>
     </section>
   );

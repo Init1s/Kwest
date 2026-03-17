@@ -1,9 +1,11 @@
+import { Reveal } from "@/components/ui/Reveal";
+
 export function About() {
   return (
     <section id="about" className="bg-blade py-24 md:py-32 overflow-hidden">
       <div className="mx-auto max-w-7xl px-6">
         {/* Editorial header */}
-        <div className="mb-16">
+        <Reveal className="mb-16">
           <span className="font-mono text-[10px] uppercase tracking-ultra text-smoke">
             The Barber
           </span>
@@ -15,12 +17,12 @@ export function About() {
           <p className="mt-5 font-display text-xl font-bold uppercase text-gold md:text-2xl md:ml-[15%]">
             KWEST IS THE ONE YOUR BARBER GOES TO.
           </p>
-        </div>
+        </Reveal>
 
         {/* Content grid */}
         <div className="grid gap-12 lg:grid-cols-5 lg:gap-16">
           {/* Image */}
-          <div className="relative lg:col-span-2">
+          <Reveal direction="left" delay={0.1} className="relative lg:col-span-2">
             <div
               className="aspect-[3/4] bg-steel"
               style={{
@@ -44,10 +46,10 @@ export function About() {
                 </span>
               </div>
             </div>
-          </div>
+          </Reveal>
 
           {/* Text */}
-          <div className="flex flex-col justify-center lg:col-span-3">
+          <Reveal direction="right" delay={0.15} className="flex flex-col justify-center lg:col-span-3">
             <div className="flex flex-col gap-5 font-body text-sm leading-relaxed text-ash">
               <p>
                 Started cutting in a one-chair spot in Boca Raton with nothing
@@ -81,7 +83,7 @@ export function About() {
                 </div>
               ))}
             </div>
-          </div>
+          </Reveal>
         </div>
       </div>
     </section>
