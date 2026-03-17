@@ -4,7 +4,7 @@ const items = [
   "SHARP LINEUPS",
   "BEARD SCULPTING",
   "KWEST THE BARBER",
-  "WASHINGTON DC",
+  "BOCA RATON",
   "NO COMPROMISES",
   "BOOK YOUR SPOT",
 ];

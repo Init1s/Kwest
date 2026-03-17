@@ -41,7 +41,7 @@ export function Booking() {
               Location
             </span>
             <p className="mt-3 font-display text-sm font-semibold uppercase tracking-widest text-bone">
-              Washington, DC
+              Boca Raton, FL
             </p>
             <p className="mt-1 font-body text-xs text-ash">
               Address provided upon booking

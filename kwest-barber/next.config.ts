@@ -5,8 +5,12 @@ const withBundleAnalyzer = bundleAnalyzer({
   enabled: process.env.ANALYZE === "true",
 });
 
+const isProd = process.env.NODE_ENV === "production";
+
 const nextConfig: NextConfig = {
   output: "export",
+  basePath: isProd ? "/Kwest" : "",
+  assetPrefix: isProd ? "/Kwest/" : "",
   images: {
     unoptimized: true,
     remotePatterns: [

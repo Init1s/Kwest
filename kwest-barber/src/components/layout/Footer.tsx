@@ -16,7 +16,7 @@ export function Footer() {
               </span>
             </div>
             <p className="mt-4 max-w-xs font-body text-sm text-ash">
-              Precision cuts and clean fades in Washington, DC. No shortcuts, no
+              Precision cuts and clean fades in Boca Raton, FL. No shortcuts, no
               compromises.
             </p>
           </div>

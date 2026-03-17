@@ -40,7 +40,7 @@ export function About() {
 
           <div className="mt-8 flex flex-col gap-4 font-body text-sm leading-relaxed text-ash">
             <p>
-              Kwest started cutting in a one-chair spot in Southeast DC with
+              Kwest started cutting in a one-chair spot in Boca Raton with
               nothing but a pair of Wahl Seniors and word of mouth. Over a
               decade later, the reputation speaks for itself: sharp fades, clean
               lines, and a chair that stays booked.
@@ -52,14 +52,14 @@ export function About() {
               regulars who do not go anywhere else.
             </p>
             <p>
-              DC is full of barbers. Kwest is the one your barber goes to.
+              Boca is full of barbers. Kwest is the one your barber goes to.
             </p>
           </div>
 
           {/* Info grid */}
           <div className="mt-12 grid grid-cols-2 gap-6">
             {[
-              { label: "Location", value: "Washington, DC" },
+              { label: "Location", value: "Boca Raton, FL" },
               { label: "Walk-Ins", value: "When the chair is open" },
               { label: "Instagram", value: "@kwestthebarber" },
               { label: "Booking", value: "Via Squire" },

@@ -24,13 +24,13 @@ const spaceMono = Space_Mono({
 });
 
 export const metadata: Metadata = {
-  title: "Kwest The Barber | Washington DC",
+  title: "Kwest The Barber | Boca Raton",
   description:
-    "Sharp. Clean. Precise. Premium cuts and fades in Washington, DC. Book your appointment with Kwest The Barber.",
+    "Sharp. Clean. Precise. Premium cuts and fades in Boca Raton, FL. Book your appointment with Kwest The Barber.",
   openGraph: {
-    title: "Kwest The Barber | Washington DC",
+    title: "Kwest The Barber | Boca Raton",
     description:
-      "Sharp. Clean. Precise. Premium cuts and fades in Washington, DC.",
+      "Sharp. Clean. Precise. Premium cuts and fades in Boca Raton, FL.",
     url: "https://kwestthebarber.com",
     siteName: "Kwest The Barber",
     type: "website",
