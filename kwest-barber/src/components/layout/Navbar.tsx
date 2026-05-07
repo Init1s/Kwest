@@ -1,5 +1,6 @@
 "use client";
 
+import Image from "next/image";
 import { useEffect, useState } from "react";
 import { MagneticButton } from "@/components/ui/MagneticButton";
 
@@ -30,14 +31,18 @@ export function Navbar() {
       }`}
     >
       <div className="mx-auto flex max-w-7xl items-center justify-between px-6">
-        {/* Wordmark */}
-        <a href="#" className="flex flex-col leading-none">
-          <span className="font-display text-xl font-extrabold uppercase text-bone">
-            KWEST
-          </span>
-          <span className="font-mono text-[8px] uppercase tracking-ultra text-gold">
-            The Barber
-          </span>
+        {/* Logo */}
+        <a href="#" className="flex items-center" aria-label="Kwest The Barber">
+          <Image
+            src={`${process.env.NEXT_PUBLIC_BASE_PATH || ""}/images/kwest-logo.jpeg`}
+            alt="Kwest The Barber"
+            width={56}
+            height={56}
+            priority
+            className={`transition-all duration-300 ${
+              scrolled ? "h-10 w-10" : "h-12 w-12"
+            }`}
+          />
         </a>
 
         {/* Desktop Nav */}

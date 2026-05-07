@@ -1,8 +1,8 @@
 "use client";
 
+import Image from "next/image";
 import { useState, useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
-import { TextScramble } from "./TextScramble";
 
 export const INTRO_DURATION = 1.5;
 
@@ -35,19 +35,21 @@ export function Intro() {
             style={{ originX: 0 }}
           />
 
-          <div className="flex flex-col items-center">
-            <span className="font-display text-5xl font-extrabold uppercase text-gold md:text-7xl">
-              <TextScramble text="KWEST" delay={0.15} duration={0.7} />
-            </span>
-            <motion.span
-              className="mt-2 font-mono text-[9px] uppercase tracking-ultra text-smoke"
-              initial={{ opacity: 0 }}
-              animate={{ opacity: 1 }}
-              transition={{ delay: 0.9, duration: 0.3 }}
-            >
-              The Barber
-            </motion.span>
-          </div>
+          <motion.div
+            className="flex flex-col items-center"
+            initial={{ opacity: 0, scale: 0.9 }}
+            animate={{ opacity: 1, scale: 1 }}
+            transition={{ delay: 0.15, duration: 0.7, ease: [0.22, 1, 0.36, 1] }}
+          >
+            <Image
+              src={`${process.env.NEXT_PUBLIC_BASE_PATH || ""}/images/kwest-logo.jpeg`}
+              alt="Kwest The Barber"
+              width={320}
+              height={320}
+              priority
+              className="h-48 w-48 md:h-64 md:w-64"
+            />
+          </motion.div>
         </motion.div>
       )}
     </AnimatePresence>

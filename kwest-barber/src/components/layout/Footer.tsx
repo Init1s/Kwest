@@ -1,3 +1,5 @@
+import Image from "next/image";
+
 export function Footer() {
   const year = new Date().getFullYear();
 
@@ -8,13 +10,14 @@ export function Footer() {
         <div className="flex flex-col gap-8 md:flex-row md:items-end md:justify-between">
           {/* Brand */}
           <div>
-            <span className="font-display text-3xl font-extrabold uppercase text-bone">
-              KWEST
-            </span>
-            <p className="mt-1 font-mono text-[10px] uppercase tracking-ultra text-gold">
-              The Barber
-            </p>
-            <p className="mt-3 max-w-xs font-body text-sm text-ash">
+            <Image
+              src={`${process.env.NEXT_PUBLIC_BASE_PATH || ""}/images/kwest-logo.jpeg`}
+              alt="Kwest The Barber"
+              width={120}
+              height={120}
+              className="h-24 w-24 md:h-28 md:w-28"
+            />
+            <p className="mt-4 max-w-xs font-body text-sm text-ash">
               Precision cuts and clean fades in Boca Raton, FL.
             </p>
           </div>
