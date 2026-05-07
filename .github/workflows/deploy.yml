@@ -34,7 +34,7 @@ jobs:
         working-directory: kwest-barber
         run: npm run build
         env:
-          NEXT_PUBLIC_SQUIRE_BOOKING_URL: https://getsquire.com/booking/book/his-and-hers-lux-barbershop-boca-raton/barber/kwest-the-barber-1/services
+          NEXT_PUBLIC_SQUIRE_BOOKING_URL: https://getsquire.com/booking/book/a-barbershop-called-kwest-boca-raton/barber/luc-coriolan/services
           NEXT_PUBLIC_SITE_URL: https://kwestthebarber.com
           INSTAGRAM_ACCESS_TOKEN: ${{ secrets.INSTAGRAM_ACCESS_TOKEN }}
           NEXT_PUBLIC_BASE_PATH: /Kwest

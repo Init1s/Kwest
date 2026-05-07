@@ -2,51 +2,67 @@ import { Reveal, RevealGroup, RevealItem } from "@/components/ui/Reveal";
 
 const services = [
   {
-    name: "Classic Cut",
-    price: "$35",
-    duration: "30 min",
+    name: "The LUX Special",
+    price: "$130",
+    duration: "90 min",
+    description:
+      "The complete experience. Cut, beard, hot towel, and finish — slow, precise, no shortcuts.",
+    featured: true,
+  },
+  {
+    name: "Haircut",
+    price: "$45",
+    duration: "60 min",
     description:
       "A sharp, tailored cut built around your head shape and hair texture. Consultation included.",
     featured: false,
   },
   {
-    name: "Fade",
-    price: "$40",
-    duration: "40 min",
-    description:
-      "Skin, low, mid, or high. Blended with precision and zero lines. Every time.",
-    featured: false,
-  },
-  {
-    name: "Lineup & Edge",
-    price: "$20",
-    duration: "15 min",
-    description:
-      "Crisp hairline, clean edges, and a sharp beard outline. Quick and right.",
-    featured: false,
-  },
-  {
-    name: "Beard Sculpt",
-    price: "$30",
-    duration: "25 min",
-    description:
-      "Full beard shaping with hot towel treatment, straight razor edges, and oil finish.",
-    featured: false,
-  },
-  {
-    name: "Full Service",
-    price: "$75",
+    name: "Haircut and Beard",
+    price: "$60",
     duration: "60 min",
     description:
-      "The complete experience. Cut, fade, lineup, beard sculpt, hot towel, and style. Walk out right.",
-    featured: true,
+      "Full cut paired with a clean beard sculpt and edge-up. The standard combo.",
+    featured: false,
   },
   {
-    name: "Kid's Cut",
-    price: "$25",
-    duration: "25 min",
+    name: "Hot Towel Shave & Haircut",
+    price: "$85",
+    duration: "75 min",
     description:
-      "Patient, clean cuts for the young ones. Same precision, same standards. Ages 12 and under.",
+      "Cut plus a traditional hot towel straight-razor shave. Old school, sharp finish.",
+    featured: false,
+  },
+  {
+    name: "Scissor Cut",
+    price: "$60",
+    duration: "90 min",
+    description:
+      "All-scissor work for textured cuts and longer styles. No clippers, no shortcuts.",
+    featured: false,
+  },
+  {
+    name: "After Hours Haircut",
+    price: "$100",
+    duration: "90 min",
+    description:
+      "Private appointment outside standard hours. Limited slots — book ahead.",
+    featured: false,
+  },
+  {
+    name: "House Call VIP",
+    price: "$150",
+    duration: "150 min",
+    description:
+      "On-location service. The chair comes to you, with the same standards.",
+    featured: false,
+  },
+  {
+    name: "Kids Haircut",
+    price: "$35",
+    duration: "45 min",
+    description:
+      "Patient, clean cuts for kids 14 and under. Same precision, same standards.",
     featured: false,
   },
 ];
