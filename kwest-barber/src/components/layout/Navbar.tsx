@@ -34,12 +34,12 @@ export function Navbar() {
         {/* Logo */}
         <a href="#" className="flex items-center" aria-label="Kwest The Barber">
           <Image
-            src={`${process.env.NEXT_PUBLIC_BASE_PATH || ""}/images/kwest-logo.jpeg`}
+            src={`${process.env.NEXT_PUBLIC_BASE_PATH || ""}/images/kwest-logo.png`}
             alt="Kwest The Barber"
             width={128}
             height={128}
             priority
-            className={`transition-all duration-300 [mix-blend-mode:screen] ${
+            className={`transition-all duration-300 ${
               scrolled
                 ? "h-12 w-12 md:h-20 md:w-20"
                 : "h-14 w-14 md:h-28 md:w-28"

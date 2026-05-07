@@ -42,12 +42,12 @@ export function Intro() {
             transition={{ delay: 0.15, duration: 0.7, ease: [0.22, 1, 0.36, 1] }}
           >
             <Image
-              src={`${process.env.NEXT_PUBLIC_BASE_PATH || ""}/images/kwest-logo.jpeg`}
+              src={`${process.env.NEXT_PUBLIC_BASE_PATH || ""}/images/kwest-logo.png`}
               alt="Kwest The Barber"
               width={448}
               height={448}
               priority
-              className="h-64 w-64 [mix-blend-mode:screen] md:h-96 md:w-96"
+              className="h-64 w-64 md:h-96 md:w-96"
             />
           </motion.div>
         </motion.div>

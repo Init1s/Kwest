@@ -11,11 +11,11 @@ export function Footer() {
           {/* Brand */}
           <div className="md:col-span-4">
             <Image
-              src={`${process.env.NEXT_PUBLIC_BASE_PATH || ""}/images/kwest-logo.jpeg`}
+              src={`${process.env.NEXT_PUBLIC_BASE_PATH || ""}/images/kwest-logo.png`}
               alt="Kwest The Barber"
               width={120}
               height={120}
-              className="h-24 w-24 [mix-blend-mode:screen] md:h-28 md:w-28"
+              className="h-24 w-24 md:h-28 md:w-28"
             />
             <p className="mt-4 max-w-xs font-body text-sm text-ash">
               Precision cuts and clean fades in Boca Raton, FL.
