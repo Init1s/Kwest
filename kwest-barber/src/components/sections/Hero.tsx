@@ -40,7 +40,7 @@ export function Hero() {
         className="pointer-events-none absolute inset-0"
         style={{
           background:
-            "radial-gradient(ellipse at 60% 45%, rgba(201, 168, 76, 0.06) 0%, transparent 55%)",
+            "radial-gradient(ellipse at 60% 45%, rgba(255, 77, 26, 0.07) 0%, transparent 55%)",
         }}
       />
 
@@ -61,7 +61,7 @@ export function Hero() {
           left: "58%",
           width: "1px",
           background:
-            "linear-gradient(to bottom, transparent 10%, rgba(201, 168, 76, 0.12) 35%, rgba(201, 168, 76, 0.12) 65%, transparent 90%)",
+            "linear-gradient(to bottom, transparent 10%, rgba(191, 232, 90, 0.14) 35%, rgba(255, 77, 26, 0.14) 65%, transparent 90%)",
           transform: "skewX(-3deg)",
         }}
       />
@@ -100,7 +100,7 @@ export function Hero() {
             text="CLEAN."
             delay={d + 0.55}
             duration={0.6}
-            className="block text-gold ml-[10vw]"
+            className="block text-lime ml-[10vw]"
           />
           <TextScramble
             text="PRECISE."
@@ -116,7 +116,7 @@ export function Hero() {
         className="h-px w-full origin-left animate-line-grow"
         style={{
           background:
-            "linear-gradient(90deg, #C9A84C 0%, rgba(201, 168, 76, 0.35) 50%, transparent 100%)",
+            "linear-gradient(90deg, #FF4D1A 0%, rgba(191, 232, 90, 0.5) 50%, transparent 100%)",
           animationDelay: `${d + 1.1}s`,
         }}
       />

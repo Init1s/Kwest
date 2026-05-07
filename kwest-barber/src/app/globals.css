@@ -9,9 +9,14 @@
   --color-ash: #6B6B6B;
   --color-smoke: #9A9A9A;
   --color-bone: #E8E2D9;
-  --color-gold: #C9A84C;
-  --color-gold-light: #E4C97A;
-  --color-gold-dark: #8B6914;
+  /* Brand orange (from logo) — was gold, kept variable name to preserve usages */
+  --color-gold: #FF4D1A;
+  --color-gold-light: #FF7A40;
+  --color-gold-dark: #CC3300;
+  /* Brand lime (from logo) */
+  --color-lime: #BFE85A;
+  --color-lime-light: #D4F082;
+  --color-lime-dark: #9DC840;
   --color-razor: #CC2200;
 
   --font-display: "Syne", sans-serif;
@@ -43,8 +48,8 @@
 }
 
 @keyframes glow-pulse {
-  0%, 100% { box-shadow: 0 0 24px rgba(201, 168, 76, 0.12); }
-  50% { box-shadow: 0 0 48px rgba(201, 168, 76, 0.24); }
+  0%, 100% { box-shadow: 0 0 24px rgba(255, 77, 26, 0.18); }
+  50% { box-shadow: 0 0 48px rgba(255, 77, 26, 0.32); }
 }
 
 @keyframes line-grow {
@@ -60,14 +65,17 @@
   --color-ash: #6B6B6B;
   --color-smoke: #9A9A9A;
   --color-bone: #E8E2D9;
-  --color-gold: #C9A84C;
-  --color-gold-light: #E4C97A;
-  --color-gold-dark: #8B6914;
+  --color-gold: #FF4D1A;
+  --color-gold-light: #FF7A40;
+  --color-gold-dark: #CC3300;
+  --color-lime: #BFE85A;
+  --color-lime-light: #D4F082;
+  --color-lime-dark: #9DC840;
   --color-razor: #CC2200;
 }
 
 ::selection {
-  background: #C9A84C;
+  background: #BFE85A;
   color: #0A0A0A;
 }
 
@@ -101,7 +109,7 @@ body::before {
 }
 
 ::-webkit-scrollbar-thumb {
-  background: #C9A84C;
+  background: #FF4D1A;
   border-radius: 2px;
 }
 
