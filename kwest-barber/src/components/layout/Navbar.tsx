@@ -36,11 +36,11 @@ export function Navbar() {
           <Image
             src={`${process.env.NEXT_PUBLIC_BASE_PATH || ""}/images/kwest-logo.jpeg`}
             alt="Kwest The Barber"
-            width={56}
-            height={56}
+            width={80}
+            height={80}
             priority
-            className={`transition-all duration-300 ${
-              scrolled ? "h-10 w-10" : "h-12 w-12"
+            className={`transition-all duration-300 [mix-blend-mode:screen] ${
+              scrolled ? "h-14 w-14" : "h-16 w-16"
             }`}
           />
         </a>

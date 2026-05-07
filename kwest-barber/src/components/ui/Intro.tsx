@@ -44,10 +44,10 @@ export function Intro() {
             <Image
               src={`${process.env.NEXT_PUBLIC_BASE_PATH || ""}/images/kwest-logo.jpeg`}
               alt="Kwest The Barber"
-              width={320}
-              height={320}
+              width={448}
+              height={448}
               priority
-              className="h-48 w-48 md:h-64 md:w-64"
+              className="h-64 w-64 [mix-blend-mode:screen] md:h-96 md:w-96"
             />
           </motion.div>
         </motion.div>
