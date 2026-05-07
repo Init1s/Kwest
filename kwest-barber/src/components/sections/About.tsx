@@ -17,7 +17,7 @@ export function About() {
             OF BARBERS.
           </h2>
           <p className="mt-5 font-display text-xl font-bold uppercase text-lime md:text-2xl md:ml-[15%]">
-            KWEST IS THE ONE YOUR BARBER GOES TO.
+            KWEST, YOUR BARBER&apos;S BARBER.
           </p>
         </Reveal>
 

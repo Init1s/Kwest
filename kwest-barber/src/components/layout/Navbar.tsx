@@ -40,7 +40,9 @@ export function Navbar() {
             height={128}
             priority
             className={`transition-all duration-300 [mix-blend-mode:screen] ${
-              scrolled ? "h-20 w-20" : "h-28 w-28"
+              scrolled
+                ? "h-12 w-12 md:h-20 md:w-20"
+                : "h-14 w-14 md:h-28 md:w-28"
             }`}
           />
         </a>

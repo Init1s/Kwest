@@ -34,7 +34,7 @@ export function Hero() {
   const d = INTRO_DURATION;
 
   return (
-    <section className="relative flex min-h-screen flex-col justify-between overflow-hidden bg-ink px-6 pt-28 pb-8 md:px-12 lg:px-16">
+    <section className="relative flex min-h-screen flex-col justify-between overflow-hidden bg-ink px-6 pt-32 pb-8 md:px-12 md:pt-40 lg:px-16">
       {/* Background — subtle gold glow */}
       <div
         className="pointer-events-none absolute inset-0"

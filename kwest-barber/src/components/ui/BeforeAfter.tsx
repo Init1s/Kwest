@@ -46,7 +46,9 @@ export function BeforeAfter({
   return (
     <div
       ref={containerRef}
-      className="relative aspect-[4/3] cursor-col-resize overflow-hidden select-none touch-none"
+      className={`relative ${
+        before && after ? "aspect-[3/4]" : "aspect-[4/3]"
+      } cursor-col-resize overflow-hidden select-none touch-none bg-blade`}
       onPointerDown={handlePointerDown}
       onPointerMove={handlePointerMove}
       onPointerUp={handlePointerUp}
@@ -58,7 +60,7 @@ export function BeforeAfter({
             src={`${basePath}${after}`}
             alt={afterAlt}
             fill
-            className="object-cover pointer-events-none"
+            className="object-contain pointer-events-none"
             sizes="(max-width: 768px) 100vw, 33vw"
           />
         ) : (
@@ -83,7 +85,7 @@ export function BeforeAfter({
             src={`${basePath}${before}`}
             alt={beforeAlt}
             fill
-            className="object-cover pointer-events-none"
+            className="object-contain pointer-events-none bg-blade"
             sizes="(max-width: 768px) 100vw, 33vw"
           />
         ) : (
