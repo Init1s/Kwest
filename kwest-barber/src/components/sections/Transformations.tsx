@@ -3,8 +3,20 @@
 import { BeforeAfter } from "@/components/ui/BeforeAfter";
 import { Reveal, RevealGroup, RevealItem } from "@/components/ui/Reveal";
 
-const transformations = [
-  { id: 1, title: "The Mid Fade" },
+type Transformation = {
+  id: number;
+  title: string;
+  before?: string;
+  after?: string;
+};
+
+const transformations: Transformation[] = [
+  {
+    id: 1,
+    title: "The Mid Fade",
+    before: "/images/mid-fade-before.jpeg",
+    after: "/images/mid-fade-after.jpeg",
+  },
   { id: 2, title: "The Beard Sculpt" },
   { id: 3, title: "The Full Service" },
 ];
@@ -32,7 +44,12 @@ export function Transformations() {
               <p className="mb-4 font-display text-lg font-bold uppercase text-bone">
                 {t.title}
               </p>
-              <BeforeAfter />
+              <BeforeAfter
+                before={t.before}
+                after={t.after}
+                beforeAlt={`${t.title} — before`}
+                afterAlt={`${t.title} — after`}
+              />
             </RevealItem>
           ))}
         </RevealGroup>

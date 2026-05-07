@@ -1,8 +1,21 @@
 "use client";
 
+import Image from "next/image";
 import { useState, useRef, useCallback } from "react";
 
-export function BeforeAfter() {
+type BeforeAfterProps = {
+  before?: string;
+  after?: string;
+  beforeAlt?: string;
+  afterAlt?: string;
+};
+
+export function BeforeAfter({
+  before,
+  after,
+  beforeAlt = "Before",
+  afterAlt = "After",
+}: BeforeAfterProps) {
   const [position, setPosition] = useState(50);
   const containerRef = useRef<HTMLDivElement>(null);
   const isDragging = useRef(false);
@@ -28,6 +41,8 @@ export function BeforeAfter() {
     isDragging.current = false;
   };
 
+  const basePath = process.env.NEXT_PUBLIC_BASE_PATH || "";
+
   return (
     <div
       ref={containerRef}
@@ -38,12 +53,24 @@ export function BeforeAfter() {
     >
       {/* After (background) */}
       <div className="absolute inset-0">
-        <div className="absolute inset-0 bg-gradient-to-br from-chrome via-steel to-chrome" />
-        <div className="absolute inset-0 flex items-center justify-center">
-          <span className="font-display text-3xl font-extrabold uppercase text-bone/[0.08] md:text-4xl">
-            AFTER
-          </span>
-        </div>
+        {after ? (
+          <Image
+            src={`${basePath}${after}`}
+            alt={afterAlt}
+            fill
+            className="object-cover pointer-events-none"
+            sizes="(max-width: 768px) 100vw, 33vw"
+          />
+        ) : (
+          <>
+            <div className="absolute inset-0 bg-gradient-to-br from-chrome via-steel to-chrome" />
+            <div className="absolute inset-0 flex items-center justify-center">
+              <span className="font-display text-3xl font-extrabold uppercase text-bone/[0.08] md:text-4xl">
+                AFTER
+              </span>
+            </div>
+          </>
+        )}
       </div>
 
       {/* Before (clipped) */}
@@ -51,13 +78,37 @@ export function BeforeAfter() {
         className="absolute inset-0"
         style={{ clipPath: `inset(0 ${100 - position}% 0 0)` }}
       >
-        <div className="absolute inset-0 bg-gradient-to-br from-ink via-blade to-ink" />
-        <div className="absolute inset-0 flex items-center justify-center">
-          <span className="font-display text-3xl font-extrabold uppercase text-bone/[0.08] md:text-4xl">
-            BEFORE
-          </span>
-        </div>
+        {before ? (
+          <Image
+            src={`${basePath}${before}`}
+            alt={beforeAlt}
+            fill
+            className="object-cover pointer-events-none"
+            sizes="(max-width: 768px) 100vw, 33vw"
+          />
+        ) : (
+          <>
+            <div className="absolute inset-0 bg-gradient-to-br from-ink via-blade to-ink" />
+            <div className="absolute inset-0 flex items-center justify-center">
+              <span className="font-display text-3xl font-extrabold uppercase text-bone/[0.08] md:text-4xl">
+                BEFORE
+              </span>
+            </div>
+          </>
+        )}
       </div>
+
+      {/* Corner labels (only when images present) */}
+      {before && after && (
+        <>
+          <span className="pointer-events-none absolute top-3 left-3 z-10 bg-ink/70 px-2 py-1 font-mono text-[9px] uppercase tracking-ultra text-bone backdrop-blur-sm">
+            Before
+          </span>
+          <span className="pointer-events-none absolute top-3 right-3 z-10 bg-ink/70 px-2 py-1 font-mono text-[9px] uppercase tracking-ultra text-bone backdrop-blur-sm">
+            After
+          </span>
+        </>
+      )}
 
       {/* Slider handle */}
       <div
