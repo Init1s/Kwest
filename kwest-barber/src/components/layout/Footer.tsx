@@ -13,9 +13,9 @@ export function Footer() {
             <Image
               src={`${process.env.NEXT_PUBLIC_BASE_PATH || ""}/images/kwest-logo.png`}
               alt="Kwest The Barber"
-              width={96}
-              height={96}
-              className="h-20 w-20"
+              width={128}
+              height={128}
+              className="h-14 w-14 md:h-28 md:w-28"
             />
             <p className="mt-3 max-w-xs font-body text-sm text-ash">
               Precision cuts and clean fades in Boca Raton, FL.
