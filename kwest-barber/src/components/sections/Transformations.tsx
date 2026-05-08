@@ -49,6 +49,7 @@ export function Transformations() {
                 after={t.after}
                 beforeAlt={`${t.title} — before`}
                 afterAlt={`${t.title} — after`}
+                ariaLabel={`${t.title} — before and after comparison slider`}
               />
             </RevealItem>
           ))}

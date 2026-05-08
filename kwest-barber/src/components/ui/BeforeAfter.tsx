@@ -3,11 +3,20 @@
 import Image from "next/image";
 import { useState, useRef, useCallback } from "react";
 
+const MIN_POSITION = 2;
+const MAX_POSITION = 98;
+const ARROW_STEP = 2;
+const PAGE_STEP = 10;
+
+const clamp = (n: number) =>
+  Math.max(MIN_POSITION, Math.min(MAX_POSITION, n));
+
 type BeforeAfterProps = {
   before?: string;
   after?: string;
   beforeAlt?: string;
   afterAlt?: string;
+  ariaLabel?: string;
 };
 
 export function BeforeAfter({
@@ -15,6 +24,7 @@ export function BeforeAfter({
   after,
   beforeAlt = "Before",
   afterAlt = "After",
+  ariaLabel = "Before and after comparison slider",
 }: BeforeAfterProps) {
   const [position, setPosition] = useState(50);
   const containerRef = useRef<HTMLDivElement>(null);
@@ -24,7 +34,7 @@ export function BeforeAfter({
     if (!containerRef.current) return;
     const rect = containerRef.current.getBoundingClientRect();
     const x = clientX - rect.left;
-    setPosition(Math.max(2, Math.min(98, (x / rect.width) * 100)));
+    setPosition(clamp((x / rect.width) * 100));
   }, []);
 
   const handlePointerDown = (e: React.PointerEvent) => {
@@ -41,17 +51,58 @@ export function BeforeAfter({
     isDragging.current = false;
   };
 
+  const handleKeyDown = (e: React.KeyboardEvent) => {
+    let next: number | null = null;
+    switch (e.key) {
+      case "ArrowLeft":
+      case "ArrowDown":
+        next = position - ARROW_STEP;
+        break;
+      case "ArrowRight":
+      case "ArrowUp":
+        next = position + ARROW_STEP;
+        break;
+      case "PageDown":
+        next = position - PAGE_STEP;
+        break;
+      case "PageUp":
+        next = position + PAGE_STEP;
+        break;
+      case "Home":
+        next = MIN_POSITION;
+        break;
+      case "End":
+        next = MAX_POSITION;
+        break;
+      default:
+        return;
+    }
+    e.preventDefault();
+    setPosition(clamp(next));
+  };
+
   const basePath = process.env.NEXT_PUBLIC_BASE_PATH || "";
 
   return (
     <div
       ref={containerRef}
+      role="slider"
+      tabIndex={0}
+      aria-label={ariaLabel}
+      aria-valuemin={MIN_POSITION}
+      aria-valuemax={MAX_POSITION}
+      aria-valuenow={Math.round(position)}
+      aria-valuetext={`${Math.round(position)}% before, ${Math.round(
+        100 - position,
+      )}% after`}
+      aria-orientation="horizontal"
       className={`relative ${
         before && after ? "aspect-[3/5]" : "aspect-[4/3]"
-      } cursor-col-resize overflow-hidden select-none touch-none bg-blade`}
+      } cursor-col-resize overflow-hidden select-none touch-none bg-blade outline-none focus-visible:ring-2 focus-visible:ring-gold focus-visible:ring-offset-2 focus-visible:ring-offset-ink`}
       onPointerDown={handlePointerDown}
       onPointerMove={handlePointerMove}
       onPointerUp={handlePointerUp}
+      onKeyDown={handleKeyDown}
     >
       {/* After (background) */}
       <div className="absolute inset-0">
@@ -112,9 +163,9 @@ export function BeforeAfter({
         </>
       )}
 
-      {/* Slider handle */}
+      {/* Slider handle (visual only — keyboard control lives on the container) */}
       <div
-        className="absolute top-0 bottom-0 z-10"
+        className="pointer-events-none absolute top-0 bottom-0 z-10"
         style={{ left: `${position}%`, transform: "translateX(-50%)" }}
       >
         <div className="h-full w-px bg-gold" />
@@ -125,6 +176,7 @@ export function BeforeAfter({
             viewBox="0 0 16 16"
             fill="none"
             className="text-gold"
+            aria-hidden="true"
           >
             <path
               d="M5 3L2 8L5 13"

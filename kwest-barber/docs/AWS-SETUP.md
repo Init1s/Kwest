@@ -17,8 +17,9 @@ In the Amplify Console, go to **App settings > Environment variables** and add:
 | Variable | Value |
 |---|---|
 | `INSTAGRAM_ACCESS_TOKEN` | Your Instagram Basic Display API long-lived token |
-| `NEXT_PUBLIC_SQUIRE_BOOKING_URL` | `https://squire.com/kwestthebarber` (or actual URL) |
+| `NEXT_PUBLIC_SQUIRE_BOOKING_URL` | `https://getsquire.com/booking/book/a-barbershop-called-kwest-boca-raton/barber/luc-coriolan/services` |
 | `NEXT_PUBLIC_SITE_URL` | `https://kwestthebarber.com` |
+| `NEXT_PUBLIC_BASE_PATH` | (leave empty — only `/Kwest` is needed for the GH Pages mirror) |
 
 ## 3. Custom Domain
 

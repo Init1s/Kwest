@@ -84,6 +84,12 @@ export function Footer() {
                 Gallery
               </a>
               <a
+                href="#contact"
+                className="text-ash transition-colors hover:text-bone"
+              >
+                Contact
+              </a>
+              <a
                 href="https://www.instagram.com/kwest_the_barber/"
                 target="_blank"
                 rel="noopener noreferrer"
