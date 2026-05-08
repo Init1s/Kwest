@@ -60,7 +60,7 @@ export function BeforeAfter({
             src={`${basePath}${after}`}
             alt={afterAlt}
             fill
-            className="object-contain pointer-events-none"
+            className="object-contain object-bottom pointer-events-none"
             sizes="(max-width: 768px) 100vw, 33vw"
           />
         ) : (
@@ -85,7 +85,7 @@ export function BeforeAfter({
             src={`${basePath}${before}`}
             alt={beforeAlt}
             fill
-            className="object-contain pointer-events-none bg-blade"
+            className="object-contain object-bottom pointer-events-none bg-blade"
             sizes="(max-width: 768px) 100vw, 33vw"
           />
         ) : (
