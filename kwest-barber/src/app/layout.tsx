@@ -2,7 +2,6 @@ import type { Metadata } from "next";
 import { Syne, Outfit, Azeret_Mono } from "next/font/google";
 import { Navbar } from "@/components/layout/Navbar";
 import { Footer } from "@/components/layout/Footer";
-import { FloatingCTA } from "@/components/ui/FloatingCTA";
 import { Intro } from "@/components/ui/Intro";
 import "./globals.css";
 
@@ -50,7 +49,6 @@ export default function RootLayout({
       >
         <Intro />
         <Navbar />
-        <FloatingCTA />
         {children}
         <Footer />
       </body>
