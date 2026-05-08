@@ -47,7 +47,7 @@ export function BeforeAfter({
     <div
       ref={containerRef}
       className={`relative ${
-        before && after ? "aspect-[2/3]" : "aspect-[4/3]"
+        before && after ? "aspect-[3/5]" : "aspect-[4/3]"
       } cursor-col-resize overflow-hidden select-none touch-none bg-blade`}
       onPointerDown={handlePointerDown}
       onPointerMove={handlePointerMove}
