@@ -2,6 +2,14 @@ import { Reveal, RevealGroup, RevealItem } from "@/components/ui/Reveal";
 
 const services = [
   {
+    name: "House Call VIP",
+    price: "$150",
+    duration: "150 min",
+    description:
+      "On-location service. The chair comes to you, with the same standards.",
+    featured: false,
+  },
+  {
     name: "The LUX Special",
     price: "$130",
     duration: "90 min",
@@ -10,19 +18,11 @@ const services = [
     featured: true,
   },
   {
-    name: "Haircut",
-    price: "$45",
-    duration: "60 min",
+    name: "After Hours Haircut",
+    price: "$100",
+    duration: "90 min",
     description:
-      "A sharp, tailored cut built around your head shape and hair texture. Consultation included.",
-    featured: false,
-  },
-  {
-    name: "Haircut and Beard",
-    price: "$60",
-    duration: "60 min",
-    description:
-      "Full cut paired with a clean beard sculpt and edge-up. The standard combo.",
+      "Private appointment outside standard hours. Limited slots — book ahead.",
     featured: false,
   },
   {
@@ -42,19 +42,19 @@ const services = [
     featured: false,
   },
   {
-    name: "After Hours Haircut",
-    price: "$100",
-    duration: "90 min",
+    name: "Haircut and Beard",
+    price: "$60",
+    duration: "60 min",
     description:
-      "Private appointment outside standard hours. Limited slots — book ahead.",
+      "Full cut paired with a clean beard sculpt and edge-up. The standard combo.",
     featured: false,
   },
   {
-    name: "House Call VIP",
-    price: "$150",
-    duration: "150 min",
+    name: "Haircut",
+    price: "$45",
+    duration: "60 min",
     description:
-      "On-location service. The chair comes to you, with the same standards.",
+      "A sharp, tailored cut built around your head shape and hair texture. Consultation included.",
     featured: false,
   },
   {

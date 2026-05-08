@@ -20,6 +20,14 @@ export function Footer() {
             <p className="mt-4 max-w-xs font-body text-sm text-ash">
               Precision cuts and clean fades in Boca Raton, FL.
             </p>
+            <a
+              href={process.env.NEXT_PUBLIC_SQUIRE_BOOKING_URL}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="mt-6 inline-block bg-gold font-display text-xs font-bold uppercase tracking-widest text-ink px-5 py-2.5 transition-all hover:bg-gold-light"
+            >
+              Book Now
+            </a>
           </div>
 
           {/* Hours */}
