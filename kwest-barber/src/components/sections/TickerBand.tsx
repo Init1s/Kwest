@@ -1,12 +1,14 @@
 const items = [
   "PRECISION CUTS",
   "CLEAN FADES",
-  "SHARP LINEUPS",
+  "CHECK THE LINEUP",
   "BEARD SCULPTING",
   "KWEST THE BARBER",
-  "BOCA RATON",
-  "NO COMPROMISES",
-  "BOOK YOUR SPOT",
+  "BOCA RATON FL",
+  "EXCURSIONS IN BARBERING",
+  "AWARD TOUR",
+  "ELECTRIC RELAXATION",
+  "BOOK THE CHAIR",
 ];
 
 function TickerItem({ text }: { text: string }) {

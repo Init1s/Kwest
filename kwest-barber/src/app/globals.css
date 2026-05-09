@@ -1,4 +1,3 @@
-@import url("https://fonts.googleapis.com/css2?family=Syne:wght@400;600;700;800&family=Outfit:wght@300;400;500;600&family=Azeret+Mono:wght@400;500&display=swap");
 @import "tailwindcss";
 
 @theme inline {
@@ -19,7 +18,8 @@
   --color-lime-dark: #9DC840;
   --color-razor: #CC2200;
 
-  --font-display: "Syne", sans-serif;
+  --font-display: "Knewave", "Permanent Marker", cursive;
+  --font-script: "Permanent Marker", cursive;
   --font-body: "Outfit", sans-serif;
   --font-mono: "Azeret Mono", monospace;
 
@@ -35,6 +35,7 @@
   --animate-fade-up: fade-up 0.9s cubic-bezier(0.22, 1, 0.36, 1) both;
   --animate-glow-pulse: glow-pulse 4s ease-in-out infinite;
   --animate-line-grow: line-grow 1.4s cubic-bezier(0.22, 1, 0.36, 1) both;
+  --animate-paint-drip: paint-drip 6s ease-in-out infinite;
 }
 
 @keyframes ticker {
@@ -55,6 +56,11 @@
 @keyframes line-grow {
   0% { transform: scaleX(0); }
   100% { transform: scaleX(1); }
+}
+
+@keyframes paint-drip {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(2px); }
 }
 
 :root {
@@ -92,17 +98,22 @@ body {
   -moz-osx-font-smoothing: grayscale;
 }
 
+/* === Album-jacket textures (#5) ============================================
+   Two stacked overlays: fine paper grain on top, broader fibrous noise
+   underneath. Combined they read like printed cardboard, not pixels. ====== */
 body::before {
   content: "";
   position: fixed;
   inset: 0;
   z-index: 9999;
   pointer-events: none;
-  opacity: 0.035;
+  opacity: 0.06;
   mix-blend-mode: overlay;
-  background: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)'/%3E%3C/svg%3E");
+  background:
+    url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='paper'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.92' numOctaves='2' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23paper)'/%3E%3C/svg%3E"),
+    url("data:image/svg+xml,%3Csvg viewBox='0 0 512 512' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='fiber'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.35' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23fiber)'/%3E%3C/svg%3E");
   background-repeat: repeat;
-  background-size: 256px 256px;
+  background-size: 256px 256px, 512px 512px;
 }
 
 ::-webkit-scrollbar {
@@ -116,6 +127,59 @@ body::before {
 ::-webkit-scrollbar-thumb {
   background: #FF4D1A;
   border-radius: 2px;
+}
+
+/* === Hand-painted CMYK-misregistration headline effect =====================
+   Apply with `class="painted-mis"` on a font-display headline. Renders the
+   text twice with a faint orange + lime offset like a misregistered print. */
+.painted-mis {
+  position: relative;
+}
+.painted-mis::before,
+.painted-mis::after {
+  content: attr(data-text);
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  mix-blend-mode: screen;
+}
+.painted-mis::before {
+  color: #FF4D1A;
+  transform: translate(2px, 1px);
+  opacity: 0.55;
+}
+.painted-mis::after {
+  color: #BFE85A;
+  transform: translate(-2px, -1px);
+  opacity: 0.4;
+}
+
+/* === Duotone photo treatment (#4) =========================================
+   `.duotone-orange` and `.duotone-lime` desaturate then tint via stacked
+   filters. Apply on the wrapper around `next/image`. Tweaks the album-art
+   feel without re-baking the source files. */
+.duotone-orange img {
+  filter: grayscale(1) contrast(1.05) brightness(0.95)
+    sepia(0.55) hue-rotate(-30deg) saturate(2.4);
+}
+.duotone-lime img {
+  filter: grayscale(1) contrast(1.05) brightness(0.95)
+    sepia(0.5) hue-rotate(40deg) saturate(2.6);
+}
+
+/* === Painted brush stripe (#2 hero) =======================================
+   A vertical orange-and-lime body-paint motif rendered as a CSS gradient
+   so it costs zero requests and scales perfectly. ========================= */
+.brush-stripes {
+  background-image:
+    repeating-linear-gradient(
+      90deg,
+      transparent 0 16px,
+      rgba(255, 77, 26, 0.92) 16px 36px,
+      transparent 36px 56px,
+      rgba(191, 232, 90, 0.85) 56px 76px
+    );
+  filter: url(#brush-roughen) contrast(1.1);
 }
 
 /* Embla carousel */

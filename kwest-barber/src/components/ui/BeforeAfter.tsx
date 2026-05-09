@@ -104,8 +104,8 @@ export function BeforeAfter({
       onPointerUp={handlePointerUp}
       onKeyDown={handleKeyDown}
     >
-      {/* After (background) */}
-      <div className="absolute inset-0">
+      {/* After (background) — orange duotone */}
+      <div className="duotone-orange absolute inset-0">
         {after ? (
           <Image
             src={`${basePath}${after}`}
@@ -126,9 +126,9 @@ export function BeforeAfter({
         )}
       </div>
 
-      {/* Before (clipped) */}
+      {/* Before (clipped) — lime duotone */}
       <div
-        className="absolute inset-0"
+        className="duotone-lime absolute inset-0"
         style={{ clipPath: `inset(0 ${100 - position}% 0 0)` }}
       >
         {before ? (

@@ -1,9 +1,11 @@
 "use client";
 
+import Image from "next/image";
 import { useEffect, useState } from "react";
-import { TextScramble } from "@/components/ui/TextScramble";
 import { MagneticButton } from "@/components/ui/MagneticButton";
 import { INTRO_DURATION } from "@/components/ui/Intro";
+
+const STRIPE_COUNT = 7;
 
 export function Hero() {
   const [count, setCount] = useState(0);
@@ -34,149 +36,213 @@ export function Hero() {
   const d = INTRO_DURATION;
 
   return (
-    <section className="relative flex min-h-screen flex-col justify-between overflow-hidden bg-ink px-6 pt-32 pb-8 md:px-12 md:pt-40 lg:px-16">
-      {/* Background — subtle gold glow */}
-      <div
-        className="pointer-events-none absolute inset-0"
-        style={{
-          background:
-            "radial-gradient(ellipse at 60% 45%, rgba(255, 77, 26, 0.07) 0%, transparent 55%)",
-        }}
-      />
-
-      {/* Background — oversized watermark */}
-      <div className="pointer-events-none absolute inset-0 flex items-center justify-center overflow-hidden select-none">
-        <span
-          className="font-display font-extrabold uppercase text-bone leading-none"
-          style={{ fontSize: "25vw", opacity: 0.015 }}
-        >
-          KWEST
-        </span>
-      </div>
-
-      {/* Diagonal accent line */}
-      <div
-        className="pointer-events-none absolute top-0 bottom-0"
-        style={{
-          left: "58%",
-          width: "1px",
-          background:
-            "linear-gradient(to bottom, transparent 10%, rgba(191, 232, 90, 0.14) 35%, rgba(255, 77, 26, 0.14) 65%, transparent 90%)",
-          transform: "skewX(-3deg)",
-        }}
-      />
-
-      {/* Top bar */}
-      <div
-        className="animate-fade-up relative flex items-start justify-between"
-        style={{ animationDelay: `${d + 0.2}s` }}
+    <section className="relative min-h-screen overflow-hidden bg-ink pt-32 pb-12 md:pt-40">
+      {/* Brush-stroke roughen filter (used by .brush-stripes utility) */}
+      <svg
+        aria-hidden="true"
+        className="absolute h-0 w-0"
+        focusable="false"
       >
-        <span className="font-mono text-[10px] uppercase tracking-ultra text-smoke">
-          Est. Boca Raton, FL
-        </span>
-        <div className="text-right">
-          <span className="font-display text-4xl font-extrabold text-bone md:text-5xl">
-            {count.toLocaleString()}+
-          </span>
-          <p className="mt-1 font-mono text-[9px] uppercase tracking-ultra text-smoke">
-            Cuts &amp; Counting
-          </p>
+        <defs>
+          <filter id="brush-roughen">
+            <feTurbulence
+              type="fractalNoise"
+              baseFrequency="0.04 0.6"
+              numOctaves="2"
+              seed="7"
+            />
+            <feDisplacementMap in="SourceGraphic" scale="14" />
+          </filter>
+        </defs>
+      </svg>
+
+      {/* Stripe field — 7 hand-roughed body-paint columns down the LEFT third */}
+      <div className="pointer-events-none absolute top-0 bottom-0 left-0 w-[42%] md:w-[34%]">
+        <div className="absolute inset-0 flex">
+          {Array.from({ length: STRIPE_COUNT }).map((_, i) => (
+            <div
+              key={i}
+              className="h-full flex-1 origin-top"
+              style={{
+                background:
+                  i % 2 === 0
+                    ? "linear-gradient(180deg, #FF4D1A 0%, #CC3300 100%)"
+                    : "linear-gradient(180deg, #BFE85A 0%, #9DC840 100%)",
+                filter: "url(#brush-roughen)",
+                animation: `paint-drip ${5 + i * 0.4}s ease-in-out ${i * 0.15}s infinite`,
+                opacity: 0.94,
+              }}
+            />
+          ))}
         </div>
+        {/* Soft fade on the inner edge so the stripes blend into the field */}
+        <div
+          className="absolute top-0 right-0 bottom-0 w-1/3"
+          style={{
+            background:
+              "linear-gradient(90deg, transparent 0%, #0A0A0A 95%)",
+          }}
+        />
       </div>
 
-      {/* Main headline — staircase with text scramble */}
-      <div className="relative mt-auto mb-10">
+      {/* Wreath badge floating top-right of the stripe field */}
+      <div
+        className="animate-fade-up absolute top-28 right-6 z-10 hidden md:block"
+        style={{ animationDelay: `${d + 0.4}s` }}
+      >
+        <Image
+          src={`${process.env.NEXT_PUBLIC_BASE_PATH || ""}/images/kwest-logo.png`}
+          alt=""
+          width={140}
+          height={140}
+          aria-hidden="true"
+          className="opacity-90"
+        />
+      </div>
+
+      {/* Headline column */}
+      <div className="relative z-10 ml-auto flex min-h-[60vh] flex-col justify-end px-6 md:max-w-[60%] md:pr-12 lg:pr-16">
+        <div
+          className="animate-fade-up mb-3 flex items-center gap-3 font-mono text-[10px] uppercase tracking-ultra text-smoke"
+          style={{ animationDelay: `${d + 0.2}s` }}
+        >
+          <span className="h-px w-6 bg-gold" />
+          A&nbsp;Barber&nbsp;Called&nbsp;Kwest
+          <span className="h-px w-6 bg-lime" />
+        </div>
+
+        {/* Hand-painted "Kwest" wordmark — the dripping album-title moment */}
         <h1
-          className="font-display font-extrabold uppercase leading-[0.9] tracking-tightest"
-          style={{ fontSize: "clamp(3rem, 11vw, 9rem)" }}
+          className="animate-fade-up font-script leading-[0.85] text-gold drop-shadow-[0_4px_0_rgba(0,0,0,0.35)]"
+          style={{
+            animationDelay: `${d + 0.35}s`,
+            fontSize: "clamp(5rem, 16vw, 14rem)",
+          }}
         >
-          <TextScramble
-            text="SHARP."
-            delay={d + 0.3}
-            duration={0.6}
-            className="block text-bone"
-          />
-          <TextScramble
-            text="CLEAN."
-            delay={d + 0.55}
-            duration={0.6}
-            className="block text-lime ml-[10vw]"
-          />
-          <TextScramble
-            text="PRECISE."
-            delay={d + 0.8}
-            duration={0.6}
-            className="block text-bone ml-[20vw]"
-          />
+          Kwest
         </h1>
-      </div>
 
-      {/* Horizontal rule */}
-      <div
-        className="h-px w-full origin-left animate-line-grow"
-        style={{
-          background:
-            "linear-gradient(90deg, #FF4D1A 0%, rgba(191, 232, 90, 0.5) 50%, transparent 100%)",
-          animationDelay: `${d + 1.1}s`,
-        }}
-      />
-
-      {/* Bottom bar — CTA + metrics */}
-      <div
-        className="animate-fade-up mt-8 flex flex-col gap-6 md:flex-row md:items-end md:justify-between"
-        style={{ animationDelay: `${d + 1.2}s` }}
-      >
-        <div className="flex items-center gap-6">
-          <MagneticButton>
-            <a
-              href={process.env.NEXT_PUBLIC_SQUIRE_BOOKING_URL}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="inline-block bg-gold font-display text-sm font-bold uppercase tracking-widest text-ink px-7 py-3.5 transition-all hover:bg-gold-light"
-            >
-              Book Your Cut
-            </a>
-          </MagneticButton>
-          <a
-            href="#services"
-            className="group inline-flex items-center gap-2 font-mono text-xs uppercase tracking-widest text-smoke transition-colors hover:text-bone"
+        {/* Brush-headline triplet, slightly painted-misregistered */}
+        <div
+          className="animate-fade-up mt-4 font-display uppercase leading-[0.92] text-bone"
+          style={{
+            animationDelay: `${d + 0.55}s`,
+            fontSize: "clamp(2rem, 6.5vw, 5rem)",
+          }}
+        >
+          <span
+            className="painted-mis block"
+            data-text="Sharp."
           >
-            Services
-            <span className="inline-block transition-transform group-hover:translate-x-1">
-              &rarr;
-            </span>
-          </a>
+            Sharp.
+          </span>
+          <span
+            className="painted-mis block text-lime ml-[6vw]"
+            data-text="Clean."
+          >
+            Clean.
+          </span>
+          <span
+            className="painted-mis block ml-[12vw]"
+            data-text="Precise."
+          >
+            Precise.
+          </span>
         </div>
 
-        <div className="flex gap-10">
-          <div>
-            <span className="font-display text-xl font-extrabold text-bone">
-              10+
-            </span>
-            <p className="font-mono text-[8px] uppercase tracking-ultra text-smoke">
-              Years
-            </p>
+        {/* Painted hairline */}
+        <div
+          className="mt-8 h-px w-full origin-left animate-line-grow"
+          style={{
+            background:
+              "linear-gradient(90deg, #FF4D1A 0%, rgba(191, 232, 90, 0.6) 50%, transparent 100%)",
+            animationDelay: `${d + 0.9}s`,
+          }}
+        />
+
+        {/* CTA + metrics row */}
+        <div
+          className="animate-fade-up mt-6 flex flex-col items-start gap-6 md:flex-row md:items-end md:justify-between md:gap-8"
+          style={{ animationDelay: `${d + 1.05}s` }}
+        >
+          <div className="flex items-center gap-5">
+            <MagneticButton>
+              <a
+                href={process.env.NEXT_PUBLIC_SQUIRE_BOOKING_URL}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="inline-block bg-gold px-7 py-3.5 font-display text-sm tracking-widest text-ink transition-all hover:bg-gold-light"
+              >
+                Book Your Cut
+              </a>
+            </MagneticButton>
+            <a
+              href="#services"
+              className="group inline-flex items-center gap-2 font-mono text-xs uppercase tracking-widest text-smoke transition-colors hover:text-bone"
+            >
+              Tracklist
+              <span className="inline-block transition-transform group-hover:translate-x-1">
+                &rarr;
+              </span>
+            </a>
           </div>
-          <div>
-            <span className="font-display text-xl font-extrabold text-bone">
-              5.0
+
+          <div className="flex flex-wrap items-end gap-x-8 gap-y-3">
+            <div>
+              <span className="font-display text-2xl text-bone md:text-3xl">
+                {count.toLocaleString()}+
+              </span>
+              <p className="font-mono text-[8px] uppercase tracking-ultra text-smoke">
+                Cuts &amp; Counting
+              </p>
+            </div>
+            <div>
+              <span className="font-display text-2xl text-bone md:text-3xl">
+                10+
+              </span>
+              <p className="font-mono text-[8px] uppercase tracking-ultra text-smoke">
+                Years On Wax
+              </p>
+            </div>
+            <div>
+              <span className="font-display text-2xl text-bone md:text-3xl">
+                5.0
+              </span>
+              <p className="font-mono text-[8px] uppercase tracking-ultra text-smoke">
+                Rating
+              </p>
+            </div>
+          </div>
+        </div>
+
+        {/* Parental-Advisory pastiche (#7) */}
+        <div
+          className="animate-fade-up mt-10 inline-flex w-fit items-center gap-3 border-2 border-bone bg-ink px-4 py-2"
+          style={{ animationDelay: `${d + 1.25}s` }}
+        >
+          <span className="font-display text-xs leading-none text-bone">
+            EXPLICIT
+          </span>
+          <div className="flex flex-col leading-tight">
+            <span className="font-mono text-[8px] uppercase tracking-ultra text-bone">
+              Sharp · Clean · Precise
             </span>
-            <p className="font-mono text-[8px] uppercase tracking-ultra text-smoke">
-              Rating
-            </p>
+            <span className="font-mono text-[7px] uppercase tracking-ultra text-smoke">
+              Strictly Hands-On Barbering
+            </span>
           </div>
         </div>
       </div>
 
-      {/* Scroll indicator */}
+      {/* Scroll indicator — desktop only */}
       <div
-        className="animate-fade-up absolute bottom-6 left-6 hidden flex-col items-center gap-2 lg:flex"
+        className="animate-fade-up absolute bottom-8 left-6 hidden flex-col items-center gap-2 lg:flex"
         style={{ animationDelay: `${d + 1.5}s` }}
       >
-        <span className="font-mono text-[8px] uppercase tracking-ultra text-smoke [writing-mode:vertical-lr]">
-          Scroll
+        <span className="font-mono text-[8px] uppercase tracking-ultra text-bone [writing-mode:vertical-lr]">
+          Drop the Needle
         </span>
-        <div className="h-10 w-px bg-gradient-to-b from-gold to-transparent" />
+        <div className="h-10 w-px bg-gradient-to-b from-bone to-transparent" />
       </div>
     </section>
   );

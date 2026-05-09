@@ -5,13 +5,21 @@ test.describe("Accessibility", () => {
     await page.goto("/");
   });
 
-  test("all images have non-empty alt attributes", async ({ page }) => {
+  test("every image has either non-empty alt or aria-hidden=true", async ({
+    page,
+  }) => {
+    // Per WCAG decorative images may carry alt="" provided they are also
+    // hidden from assistive tech via aria-hidden. Treat that as valid.
     const images = page.locator("img");
     const count = await images.count();
 
     for (let i = 0; i < count; i++) {
-      const alt = await images.nth(i).getAttribute("alt");
-      expect(alt).toBeTruthy();
+      const img = images.nth(i);
+      const alt = await img.getAttribute("alt");
+      const ariaHidden = await img.getAttribute("aria-hidden");
+      const isDecorative = ariaHidden === "true";
+      const hasMeaningfulAlt = alt !== null && alt.length > 0;
+      expect(hasMeaningfulAlt || isDecorative).toBe(true);
     }
   });
 
@@ -32,19 +40,33 @@ test.describe("Accessibility", () => {
     }
   });
 
-  test("gold on ink meets WCAG AA contrast ratio", async () => {
-    // Gold #C9A84C on Ink #0A0A0A
-    // Relative luminance: gold = 0.1588 + 0.3290 + 0.0177 = ~0.388
-    // Relative luminance: ink = 0.003 (approx)
-    // Contrast = (0.388 + 0.05) / (0.003 + 0.05) = 0.438 / 0.053 = 8.26
-    // 8.26 > 4.5 so this passes AA for normal text
-    const goldLuminance = 0.388;
+  test("brand orange on ink meets WCAG AA contrast for normal text", () => {
+    // --color-gold #FF4D1A on --color-ink #0A0A0A.
+    // Computed via WCAG relative luminance:
+    //   gold ≈ 0.272, ink ≈ 0.003
+    //   contrast = (0.272 + 0.05) / (0.003 + 0.05) ≈ 6.07
+    // 6.07 ≥ 4.5 → passes AA for normal text. (AAA threshold is 7.0.)
+    const goldLuminance = 0.272;
     const inkLuminance = 0.003;
     const contrast =
       (Math.max(goldLuminance, inkLuminance) + 0.05) /
       (Math.min(goldLuminance, inkLuminance) + 0.05);
 
     expect(contrast).toBeGreaterThanOrEqual(4.5);
+  });
+
+  test("brand lime on ink meets WCAG AAA contrast", () => {
+    // --color-lime #BFE85A on --color-ink #0A0A0A.
+    //   lime ≈ 0.698, ink ≈ 0.003
+    //   contrast = (0.698 + 0.05) / (0.003 + 0.05) ≈ 14.1
+    // Comfortably above the AAA threshold of 7.0.
+    const limeLuminance = 0.698;
+    const inkLuminance = 0.003;
+    const contrast =
+      (Math.max(limeLuminance, inkLuminance) + 0.05) /
+      (Math.min(limeLuminance, inkLuminance) + 0.05);
+
+    expect(contrast).toBeGreaterThanOrEqual(7.0);
   });
 
   test("no heading level is skipped", async ({ page }) => {

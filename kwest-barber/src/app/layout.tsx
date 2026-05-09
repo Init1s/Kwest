@@ -1,14 +1,28 @@
 import type { Metadata } from "next";
-import { Syne, Outfit, Azeret_Mono } from "next/font/google";
+import {
+  Knewave,
+  Permanent_Marker,
+  Outfit,
+  Azeret_Mono,
+} from "next/font/google";
 import { Navbar } from "@/components/layout/Navbar";
 import { Footer } from "@/components/layout/Footer";
 import { Intro } from "@/components/ui/Intro";
 import "./globals.css";
 
-const syne = Syne({
+// Brushed/painted display face — channels the hand-painted album-jacket
+// lettering of "The Low End Theory."
+const knewave = Knewave({
   variable: "--font-display",
   subsets: ["latin"],
-  weight: ["400", "600", "700", "800"],
+  weight: ["400"],
+});
+
+// Hand-script accent for the "Kwest" wordmark and brush moments.
+const permanentMarker = Permanent_Marker({
+  variable: "--font-script",
+  subsets: ["latin"],
+  weight: ["400"],
 });
 
 const outfit = Outfit({
@@ -45,7 +59,7 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body
-        className={`${syne.variable} ${outfit.variable} ${azeretMono.variable} antialiased`}
+        className={`${knewave.variable} ${permanentMarker.variable} ${outfit.variable} ${azeretMono.variable} antialiased`}
       >
         <Intro />
         <Navbar />

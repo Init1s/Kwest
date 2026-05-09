@@ -21,13 +21,15 @@ test.describe("Homepage", () => {
     expect(href).toContain("squire");
   });
 
-  test("hero renders the SHARP / CLEAN / PRECISE headline", async ({
+  test("hero renders the Sharp / Clean / Precise headline", async ({
     page,
   }) => {
+    // Source text is title-case (`Sharp.` etc.); CSS uppercase is
+    // applied for display. Match case-insensitively against the DOM text.
     const hero = page.locator("section").first();
-    await expect(hero).toContainText("SHARP");
-    await expect(hero).toContainText("CLEAN");
-    await expect(hero).toContainText("PRECISE");
+    await expect(hero).toContainText(/sharp/i);
+    await expect(hero).toContainText(/clean/i);
+    await expect(hero).toContainText(/precise/i);
   });
 
   test("services section lists every service with a price", async ({

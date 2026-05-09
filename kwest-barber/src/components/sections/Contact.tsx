@@ -6,9 +6,13 @@ export function Contact() {
       <div className="mx-auto max-w-7xl">
         <Reveal className="mb-16">
           <span className="font-mono text-[10px] uppercase tracking-ultra text-smoke">
-            Get In Touch
+            Drop the Needle
           </span>
-          <h2 className="mt-4 font-display text-4xl font-extrabold uppercase tracking-tightest text-bone md:text-6xl">
+          <h2
+            className="painted-mis mt-4 font-display uppercase leading-[0.95] text-bone"
+            data-text="CONTACT"
+            style={{ fontSize: "clamp(2.5rem, 7vw, 5.5rem)" }}
+          >
             CONTACT
           </h2>
           <p className="mt-4 max-w-md font-body text-sm text-ash">
