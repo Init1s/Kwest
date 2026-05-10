@@ -122,6 +122,20 @@ Migration checklist (do not skip):
 6. **Preview deploys**: enable in Amplify console so each PR gets a unique URL before merge.
 7. **Branch protection on `main`** in GitHub: require typecheck + lint + build + tests to pass before merge.
 
+## Rollback points
+
+Tagged commits / snapshot refs the user has explicitly asked to keep
+recoverable. Roll back with `git revert <commit>` (preserves history) or
+`git reset --hard <ref>` + force-push (destructive — only if requested).
+
+| Reference | Goes back to |
+|---|---|
+| `pre-redesign-low-end-theory` (tag) | The pre-Low End Theory look — clean modernist sans, plain hero, gridded services, no album-jacket textures. Snapshot of `6db7547`. |
+| `3a8a00f` (commit) | The Low End Theory redesign itself. `git revert 3a8a00f` undoes it cleanly while keeping later work in place. |
+
+When the user wants to "go back to the previous style" without naming
+which one, ask before reverting — there are two distinct prior states.
+
 ## Conventions
 
 - **Sections**: `<section id="..." className="bg-... px-6 py-24 md:py-32">`. The `id` is the nav anchor; padding is uniform across sections.

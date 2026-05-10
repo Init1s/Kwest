@@ -5,8 +5,6 @@ import { useEffect, useState } from "react";
 import { MagneticButton } from "@/components/ui/MagneticButton";
 import { INTRO_DURATION } from "@/components/ui/Intro";
 
-const STRIPE_COUNT = 7;
-
 export function Hero() {
   const [count, setCount] = useState(0);
 
@@ -37,71 +35,32 @@ export function Hero() {
 
   return (
     <section className="relative min-h-screen overflow-hidden bg-ink pt-32 pb-12 md:pt-40">
-      {/* Brush-stroke roughen filter (used by .brush-stripes utility) */}
-      <svg
-        aria-hidden="true"
-        className="absolute h-0 w-0"
-        focusable="false"
-      >
-        <defs>
-          <filter id="brush-roughen">
-            <feTurbulence
-              type="fractalNoise"
-              baseFrequency="0.04 0.6"
-              numOctaves="2"
-              seed="7"
-            />
-            <feDisplacementMap in="SourceGraphic" scale="14" />
-          </filter>
-        </defs>
-      </svg>
-
-      {/* Stripe field — 7 hand-roughed body-paint columns down the LEFT third */}
-      <div className="pointer-events-none absolute top-0 bottom-0 left-0 w-[42%] md:w-[34%]">
-        <div className="absolute inset-0 flex">
-          {Array.from({ length: STRIPE_COUNT }).map((_, i) => (
-            <div
-              key={i}
-              className="h-full flex-1 origin-top"
-              style={{
-                background:
-                  i % 2 === 0
-                    ? "linear-gradient(180deg, #FF4D1A 0%, #CC3300 100%)"
-                    : "linear-gradient(180deg, #BFE85A 0%, #9DC840 100%)",
-                filter: "url(#brush-roughen)",
-                animation: `paint-drip ${5 + i * 0.4}s ease-in-out ${i * 0.15}s infinite`,
-                opacity: 0.94,
-              }}
-            />
-          ))}
-        </div>
-        {/* Soft fade on the inner edge so the stripes blend into the field */}
-        <div
-          className="absolute top-0 right-0 bottom-0 w-1/3"
-          style={{
-            background:
-              "linear-gradient(90deg, transparent 0%, #0A0A0A 95%)",
-          }}
-        />
-      </div>
-
-      {/* Wreath badge floating top-right of the stripe field */}
+      {/* Soft radial glow — replaces the stripe field for depth without busy-ness */}
       <div
-        className="animate-fade-up absolute top-28 right-6 z-10 hidden md:block"
+        className="pointer-events-none absolute inset-0"
+        style={{
+          background:
+            "radial-gradient(ellipse at 65% 40%, rgba(255, 77, 26, 0.08) 0%, transparent 55%)",
+        }}
+      />
+
+      {/* Wreath badge — top-left, balances the headline column on the right */}
+      <div
+        className="animate-fade-up absolute top-28 left-6 z-10 hidden md:block lg:left-12"
         style={{ animationDelay: `${d + 0.4}s` }}
       >
         <Image
           src={`${process.env.NEXT_PUBLIC_BASE_PATH || ""}/images/kwest-logo.png`}
           alt=""
-          width={140}
-          height={140}
+          width={180}
+          height={180}
           aria-hidden="true"
           className="opacity-90"
         />
       </div>
 
       {/* Headline column */}
-      <div className="relative z-10 ml-auto flex min-h-[60vh] flex-col justify-end px-6 md:max-w-[60%] md:pr-12 lg:pr-16">
+      <div className="relative z-10 ml-auto flex min-h-[60vh] flex-col justify-end px-6 md:max-w-[68%] md:pr-12 lg:pr-16">
         <div
           className="animate-fade-up mb-3 flex items-center gap-3 font-mono text-[10px] uppercase tracking-ultra text-smoke"
           style={{ animationDelay: `${d + 0.2}s` }}

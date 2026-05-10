@@ -3,7 +3,7 @@ import { Reveal, RevealGroup, RevealItem } from "@/components/ui/Reveal";
 const testimonials = [
   {
     quote:
-      "Been going to Kwest for six years. Moved to Baltimore and I still drive down every two weeks. Nobody else touches my head.",
+      "Been going to Kwest for six years. Moved up to Orlando and I still drive down once a month. Nobody else touches my head.",
     name: "Marcus T.",
     since: "2020",
   },
