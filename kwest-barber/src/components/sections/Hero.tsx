@@ -1,6 +1,5 @@
 "use client";
 
-import Image from "next/image";
 import { useEffect, useState } from "react";
 import { MagneticButton } from "@/components/ui/MagneticButton";
 import { INTRO_DURATION } from "@/components/ui/Intro";
@@ -44,19 +43,53 @@ export function Hero() {
         }}
       />
 
-      {/* Wreath badge — top-left, balances the headline column on the right */}
+      {/* Vinyl record — fills the upper-left without duplicating the navbar
+          logo. The wreath lives on the navbar; the record is a new symbolic
+          object (catalog plate, grooves, label) that anchors the album-cover
+          read of the page. */}
       <div
-        className="animate-fade-up absolute top-28 left-6 z-10 hidden md:block lg:left-12"
+        aria-hidden="true"
+        className="animate-fade-up pointer-events-none absolute top-24 -left-12 z-0 hidden md:block lg:top-28 lg:-left-16"
         style={{ animationDelay: `${d + 0.4}s` }}
       >
-        <Image
-          src={`${process.env.NEXT_PUBLIC_BASE_PATH || ""}/images/kwest-logo.png`}
-          alt=""
-          width={180}
-          height={180}
-          aria-hidden="true"
-          className="opacity-90"
-        />
+        <div
+          className="relative h-[340px] w-[340px] rounded-full lg:h-[420px] lg:w-[420px]"
+          style={{
+            background: `
+              radial-gradient(circle at center, transparent 0 22%, rgba(255, 77, 26, 0.12) 22% 23%, transparent 23% 100%),
+              repeating-radial-gradient(circle at center,
+                #050505 0px, #050505 1px,
+                #1a1a1a 1px, #1a1a1a 2px,
+                #050505 2px, #050505 3px),
+              radial-gradient(circle at 30% 30%, rgba(255, 255, 255, 0.05), transparent 50%),
+              #000
+            `,
+            boxShadow:
+              "inset 0 0 80px rgba(0, 0, 0, 0.9), 0 30px 60px rgba(0, 0, 0, 0.6)",
+            animation: "vinyl-spin 22s linear infinite",
+          }}
+        >
+          {/* Center label */}
+          <div
+            className="absolute top-1/2 left-1/2 flex h-[44%] w-[44%] -translate-x-1/2 -translate-y-1/2 flex-col items-center justify-center rounded-full border border-gold/30 text-center"
+            style={{
+              background:
+                "radial-gradient(circle at 35% 30%, #FF7A40 0%, #FF4D1A 55%, #CC3300 100%)",
+            }}
+          >
+            <span className="font-mono text-[8px] uppercase tracking-ultra text-ink/80">
+              Cat. KWST&minus;001
+            </span>
+            <span className="font-script text-3xl leading-none text-ink lg:text-4xl">
+              Kwest
+            </span>
+            <span className="mt-1 font-mono text-[7px] uppercase tracking-ultra text-ink/80">
+              Side&nbsp;A &middot; 33&frac13;&nbsp;RPM
+            </span>
+            {/* Spindle */}
+            <span className="mt-1 block h-2 w-2 rounded-full bg-ink" />
+          </div>
+        </div>
       </div>
 
       {/* Headline column */}

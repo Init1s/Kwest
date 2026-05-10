@@ -63,6 +63,11 @@
   50% { transform: translateY(2px); }
 }
 
+@keyframes vinyl-spin {
+  from { transform: rotate(0deg); }
+  to { transform: rotate(360deg); }
+}
+
 :root {
   --color-ink: #0A0A0A;
   --color-blade: #111111;

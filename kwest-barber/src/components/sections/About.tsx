@@ -8,7 +8,7 @@ const credits = [
   { label: "Engineered on", value: "Wahl Seniors" },
   { label: "Booked through", value: "Squire" },
   { label: "Catalog", value: "KWST-001" },
-  { label: "Press", value: "@kwest_the_barber" },
+  { label: "Instagram", value: "@kwest_the_barber" },
 ];
 
 export function About() {
@@ -22,15 +22,15 @@ export function About() {
           </span>
           <h2
             className="painted-mis mt-4 font-display uppercase leading-[0.92] text-bone"
-            data-text="BOCA IS FULL OF BARBERS."
+            data-text="OTHER BARBERS GO TO KWEST."
             style={{ fontSize: "clamp(2.25rem, 6.2vw, 5.25rem)" }}
           >
-            BOCA IS FULL
+            OTHER BARBERS
             <br />
-            OF BARBERS.
+            GO TO KWEST.
           </h2>
           <p className="mt-5 font-script text-2xl text-lime md:ml-[15%] md:text-3xl">
-            Kwest, your barber&apos;s barber.
+            Your barber&apos;s barber.
           </p>
         </Reveal>
 
