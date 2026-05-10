@@ -33,7 +33,7 @@ export function Hero() {
   const d = INTRO_DURATION;
 
   return (
-    <section className="relative min-h-screen overflow-hidden bg-ink pt-32 pb-12 md:pt-40">
+    <section className="relative min-h-screen overflow-hidden bg-ink pt-28 pb-10 md:pt-36">
       {/* Soft radial glow — depth without busy-ness */}
       <div
         className="pointer-events-none absolute inset-0"
@@ -100,7 +100,7 @@ export function Hero() {
           className="animate-fade-up font-script leading-[0.85] text-gold drop-shadow-[0_4px_0_rgba(0,0,0,0.35)]"
           style={{
             animationDelay: `${d + 0.35}s`,
-            fontSize: "clamp(5rem, 16vw, 14rem)",
+            fontSize: "clamp(4rem, 11vw, 9rem)",
           }}
         >
           Kwest
@@ -108,10 +108,10 @@ export function Hero() {
 
         {/* Brush-headline triplet, slightly painted-misregistered */}
         <div
-          className="animate-fade-up mt-4 font-display uppercase leading-[0.92] text-bone"
+          className="animate-fade-up mt-3 font-display uppercase leading-[0.92] text-bone"
           style={{
             animationDelay: `${d + 0.55}s`,
-            fontSize: "clamp(2rem, 6.5vw, 5rem)",
+            fontSize: "clamp(1.75rem, 5vw, 3.75rem)",
           }}
         >
           <span className="painted-mis block" data-text="Sharp.">
@@ -130,7 +130,7 @@ export function Hero() {
 
         {/* Painted hairline */}
         <div
-          className="mt-8 h-px w-full origin-left animate-line-grow"
+          className="mt-5 h-px w-full origin-left animate-line-grow"
           style={{
             background:
               "linear-gradient(90deg, #FF4D1A 0%, rgba(191, 232, 90, 0.6) 50%, transparent 100%)",
@@ -140,7 +140,7 @@ export function Hero() {
 
         {/* CTA row (stats moved out to the left column) */}
         <div
-          className="animate-fade-up mt-6 flex flex-wrap items-center gap-5"
+          className="animate-fade-up mt-4 flex flex-wrap items-center gap-5"
           style={{ animationDelay: `${d + 1.05}s` }}
         >
           <MagneticButton>
@@ -166,7 +166,7 @@ export function Hero() {
 
         {/* Parental-Advisory pastiche */}
         <div
-          className="animate-fade-up mt-10 inline-flex w-fit items-center gap-3 border-2 border-bone bg-ink px-4 py-2"
+          className="animate-fade-up mt-6 inline-flex w-fit items-center gap-3 border-2 border-bone bg-ink px-4 py-2"
           style={{ animationDelay: `${d + 1.25}s` }}
         >
           <span className="font-display text-xs leading-none text-bone">
