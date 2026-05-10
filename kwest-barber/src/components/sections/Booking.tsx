@@ -7,7 +7,7 @@ export function Booking() {
       <div className="mx-auto max-w-5xl text-center">
         <Reveal>
           <span className="font-mono text-[10px] uppercase tracking-ultra text-smoke">
-            Closing Track
+            Ready?
           </span>
 
           <h2

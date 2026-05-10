@@ -18,7 +18,7 @@ export function About() {
         {/* Liner-notes header */}
         <Reveal className="mb-16">
           <span className="font-mono text-[10px] uppercase tracking-ultra text-smoke">
-            Liner Notes &mdash; The Barber
+            Meet Kwest
           </span>
           <h2
             className="painted-mis mt-4 font-display uppercase leading-[0.92] text-bone"

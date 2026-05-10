@@ -147,9 +147,6 @@ function SideHeader({
           {label}
         </span>
       </div>
-      <span className="font-mono text-[9px] uppercase tracking-ultra text-smoke">
-        Tracks
-      </span>
     </div>
   );
 }
@@ -164,7 +161,7 @@ export function Services() {
       <div className="relative mx-auto max-w-7xl">
         <Reveal className="mb-16">
           <span className="font-mono text-[10px] uppercase tracking-ultra text-smoke">
-            The Tracklist
+            Services
           </span>
           <h2
             className="painted-mis mt-4 font-display uppercase leading-[0.95] text-bone"
@@ -181,13 +178,13 @@ export function Services() {
         {/* Two-column album-jacket tracklist */}
         <div className="grid gap-x-12 gap-y-16 md:grid-cols-2 md:gap-x-16">
           <RevealGroup stagger={0.08}>
-            <SideHeader side="A" label="Signature & Long Plays" />
+            <SideHeader side="A" label="Signature Services" />
             {sideA.map((s, i) => (
               <Track key={s.name} service={s} index={i} />
             ))}
           </RevealGroup>
           <RevealGroup stagger={0.08}>
-            <SideHeader side="B" label="Classics & Walk-Ins" />
+            <SideHeader side="B" label="Classics & Quick Cuts" />
             {sideB.map((s, i) => (
               <Track key={s.name} service={s} index={i + sideA.length} />
             ))}
@@ -198,7 +195,7 @@ export function Services() {
         <Reveal className="mt-16 border-t border-chrome pt-6" delay={0.2}>
           <div className="flex flex-wrap items-baseline justify-between gap-3 font-mono text-[10px] uppercase tracking-ultra text-smoke">
             <span>Cat. No. KWST-001 / Boca Raton, FL</span>
-            <span>33⅓ RPM · Stereo · Booked Through Squire</span>
+            <span>Booked through Squire</span>
           </div>
         </Reveal>
       </div>

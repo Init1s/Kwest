@@ -6,7 +6,7 @@ export function Contact() {
       <div className="mx-auto max-w-7xl">
         <Reveal className="mb-16">
           <span className="font-mono text-[10px] uppercase tracking-ultra text-smoke">
-            Drop the Needle
+            Get In Touch
           </span>
           <h2
             className="painted-mis mt-4 font-display uppercase leading-[0.95] text-bone"

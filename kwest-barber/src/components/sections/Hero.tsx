@@ -172,7 +172,7 @@ export function Hero() {
               href="#services"
               className="group inline-flex items-center gap-2 font-mono text-xs uppercase tracking-widest text-smoke transition-colors hover:text-bone"
             >
-              Tracklist
+              Services
               <span className="inline-block transition-transform group-hover:translate-x-1">
                 &rarr;
               </span>
@@ -193,7 +193,7 @@ export function Hero() {
                 10+
               </span>
               <p className="font-mono text-[8px] uppercase tracking-ultra text-smoke">
-                Years On Wax
+                Years
               </p>
             </div>
             <div>
@@ -232,7 +232,7 @@ export function Hero() {
         style={{ animationDelay: `${d + 1.5}s` }}
       >
         <span className="font-mono text-[8px] uppercase tracking-ultra text-bone [writing-mode:vertical-lr]">
-          Drop the Needle
+          Scroll
         </span>
         <div className="h-10 w-px bg-gradient-to-b from-bone to-transparent" />
       </div>

@@ -27,7 +27,7 @@ export function Transformations() {
       <div className="mx-auto max-w-7xl">
         <Reveal className="mb-16">
           <span className="font-mono text-[10px] uppercase tracking-ultra text-smoke">
-            B-Sides &mdash; The Results
+            Before &amp; After
           </span>
           <h2
             className="painted-mis mt-4 font-display uppercase leading-[0.95] text-bone"
@@ -37,7 +37,7 @@ export function Transformations() {
             TRANSFORMATIONS
           </h2>
           <p className="mt-4 max-w-md font-body text-sm text-ash">
-            Drag the slider. Same head, two takes &mdash; cut by Kwest.
+            Drag the slider to see the difference. Real cuts, real clients.
           </p>
         </Reveal>
 
