@@ -63,9 +63,12 @@
   50% { transform: translateY(2px); }
 }
 
-@keyframes vinyl-spin {
-  from { transform: rotate(0deg); }
-  to { transform: rotate(360deg); }
+@keyframes barber-pole {
+  /* Stripes appear to spiral upward continuously. The pattern is offset
+     vertically each cycle by exactly one full stripe-pair height, so the
+     loop is seamless. */
+  from { background-position: 0 0; }
+  to { background-position: 0 -120px; }
 }
 
 :root {

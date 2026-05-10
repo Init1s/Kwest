@@ -43,52 +43,81 @@ export function Hero() {
         }}
       />
 
-      {/* Vinyl record — fills the upper-left without duplicating the navbar
-          logo. The wreath lives on the navbar; the record is a new symbolic
-          object (catalog plate, grooves, label) that anchors the album-cover
-          read of the page. */}
+      {/* Barber pole — the iconic shop fixture. Brand-orange / lime / black
+          stripes spiral up continuously, capped at top and bottom by chrome
+          finials. Decorative; hidden from assistive tech. */}
       <div
         aria-hidden="true"
-        className="animate-fade-up pointer-events-none absolute top-24 -left-12 z-0 hidden md:block lg:top-28 lg:-left-16"
+        className="animate-fade-up pointer-events-none absolute top-32 left-8 z-0 hidden md:block lg:left-16"
         style={{ animationDelay: `${d + 0.4}s` }}
       >
-        <div
-          className="relative h-[340px] w-[340px] rounded-full lg:h-[420px] lg:w-[420px]"
-          style={{
-            background: `
-              radial-gradient(circle at center, transparent 0 22%, rgba(255, 77, 26, 0.12) 22% 23%, transparent 23% 100%),
-              repeating-radial-gradient(circle at center,
-                #050505 0px, #050505 1px,
-                #1a1a1a 1px, #1a1a1a 2px,
-                #050505 2px, #050505 3px),
-              radial-gradient(circle at 30% 30%, rgba(255, 255, 255, 0.05), transparent 50%),
-              #000
-            `,
-            boxShadow:
-              "inset 0 0 80px rgba(0, 0, 0, 0.9), 0 30px 60px rgba(0, 0, 0, 0.6)",
-            animation: "vinyl-spin 22s linear infinite",
-          }}
-        >
-          {/* Center label */}
+        <div className="flex flex-col items-center">
+          {/* Top finial */}
           <div
-            className="absolute top-1/2 left-1/2 flex h-[44%] w-[44%] -translate-x-1/2 -translate-y-1/2 flex-col items-center justify-center rounded-full border border-gold/30 text-center"
+            className="h-6 w-[88px] rounded-t-md lg:w-[108px]"
             style={{
               background:
-                "radial-gradient(circle at 35% 30%, #FF7A40 0%, #FF4D1A 55%, #CC3300 100%)",
+                "linear-gradient(180deg, #6B6B6B 0%, #2A2A2A 60%, #1C1C1C 100%)",
+              boxShadow:
+                "inset 0 -3px 6px rgba(0,0,0,0.6), inset 0 2px 2px rgba(255,255,255,0.18)",
+            }}
+          />
+          <div
+            className="h-3 w-[96px] lg:w-[116px]"
+            style={{
+              background:
+                "linear-gradient(180deg, #9A9A9A 0%, #6B6B6B 100%)",
+              boxShadow: "inset 0 -2px 3px rgba(0,0,0,0.4)",
+            }}
+          />
+
+          {/* Glass cylinder with spiraling stripes */}
+          <div
+            className="relative h-[360px] w-[80px] lg:h-[440px] lg:w-[100px]"
+            style={{
+              backgroundImage: `repeating-linear-gradient(
+                135deg,
+                #FF4D1A 0px,
+                #FF4D1A 18px,
+                #BFE85A 18px,
+                #BFE85A 36px,
+                #0A0A0A 36px,
+                #0A0A0A 60px
+              )`,
+              backgroundSize: "100% 120px",
+              animation: "barber-pole 2.6s linear infinite",
+              boxShadow:
+                "inset 14px 0 24px rgba(0, 0, 0, 0.55), inset -14px 0 24px rgba(0, 0, 0, 0.55), inset 0 0 40px rgba(0,0,0,0.25), 0 20px 40px rgba(0, 0, 0, 0.5)",
             }}
           >
-            <span className="font-mono text-[8px] uppercase tracking-ultra text-ink/80">
-              Cat. KWST&minus;001
-            </span>
-            <span className="font-script text-3xl leading-none text-ink lg:text-4xl">
-              Kwest
-            </span>
-            <span className="mt-1 font-mono text-[7px] uppercase tracking-ultra text-ink/80">
-              Side&nbsp;A &middot; 33&frac13;&nbsp;RPM
-            </span>
-            {/* Spindle */}
-            <span className="mt-1 block h-2 w-2 rounded-full bg-ink" />
+            {/* Glass highlight */}
+            <div
+              className="pointer-events-none absolute top-0 bottom-0 left-[14%] w-[10%] rounded-full"
+              style={{
+                background:
+                  "linear-gradient(90deg, rgba(255,255,255,0.28), rgba(255,255,255,0))",
+              }}
+            />
           </div>
+
+          {/* Bottom finial */}
+          <div
+            className="h-3 w-[96px] lg:w-[116px]"
+            style={{
+              background:
+                "linear-gradient(180deg, #6B6B6B 0%, #9A9A9A 100%)",
+              boxShadow: "inset 0 2px 3px rgba(0,0,0,0.4)",
+            }}
+          />
+          <div
+            className="h-6 w-[88px] rounded-b-md lg:w-[108px]"
+            style={{
+              background:
+                "linear-gradient(180deg, #1C1C1C 0%, #2A2A2A 40%, #6B6B6B 100%)",
+              boxShadow:
+                "inset 0 3px 6px rgba(0,0,0,0.6), inset 0 -2px 2px rgba(255,255,255,0.18)",
+            }}
+          />
         </div>
       </div>
 
