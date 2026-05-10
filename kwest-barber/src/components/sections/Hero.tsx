@@ -44,9 +44,12 @@ export function Hero() {
       />
 
       {/* Stats column — pulled out of the bottom-right cluster and stacked
-          left as oversized editorial numbers. Same data, more presence. */}
+          left as oversized editorial numbers. Same data, more presence.
+          top values clear the fixed navbar (default-state height ~152px:
+          py-5 + logo h-28) with a comfortable 56px+ buffer on md and 88px+
+          on lg, so the column never crowds the brand mark. */}
       <div
-        className="animate-fade-up absolute top-36 left-6 z-10 hidden flex-col gap-7 md:flex lg:top-44 lg:left-12 lg:gap-9"
+        className="animate-fade-up absolute top-52 left-6 z-10 hidden flex-col gap-7 md:flex lg:top-60 lg:left-12 lg:gap-9"
         style={{ animationDelay: `${d + 0.4}s` }}
       >
         <div>
