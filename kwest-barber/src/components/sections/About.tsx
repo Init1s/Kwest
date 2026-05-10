@@ -22,12 +22,12 @@ export function About() {
           </span>
           <h2
             className="painted-mis mt-4 font-display uppercase leading-[0.92] text-bone"
-            data-text="TEN YEARS. ONE CHAIR."
+            data-text="TEN YEARS DEEP IN BOCA."
             style={{ fontSize: "clamp(2.25rem, 6.2vw, 5.25rem)" }}
           >
-            TEN YEARS.
+            TEN YEARS DEEP
             <br />
-            ONE CHAIR.
+            IN BOCA.
           </h2>
           <p className="mt-5 font-script text-2xl text-lime md:ml-[15%] md:text-3xl">
             Your barber&apos;s barber.
