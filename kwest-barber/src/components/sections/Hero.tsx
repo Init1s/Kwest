@@ -71,23 +71,24 @@ export function Hero() {
             }}
           />
 
-          {/* Glass cylinder with spiraling stripes */}
+          {/* Glass cylinder with spiraling stripes.
+              Math: at gradient angle 120°, vertical period = 2 × stripe
+              period. Stripe period = 60px → keyframe translates -120px,
+              which equals exactly one full pattern cycle. Two colors only,
+              no background-size tile, so the spiral is genuinely seamless. */}
           <div
             className="relative h-[360px] w-[80px] lg:h-[440px] lg:w-[100px]"
             style={{
               backgroundImage: `repeating-linear-gradient(
-                135deg,
+                120deg,
                 #FF4D1A 0px,
-                #FF4D1A 18px,
-                #BFE85A 18px,
-                #BFE85A 36px,
-                #0A0A0A 36px,
-                #0A0A0A 60px
+                #FF4D1A 24px,
+                #BFE85A 24px,
+                #BFE85A 60px
               )`,
-              backgroundSize: "100% 120px",
-              animation: "barber-pole 2.6s linear infinite",
+              animation: "barber-pole 2.4s linear infinite",
               boxShadow:
-                "inset 14px 0 24px rgba(0, 0, 0, 0.55), inset -14px 0 24px rgba(0, 0, 0, 0.55), inset 0 0 40px rgba(0,0,0,0.25), 0 20px 40px rgba(0, 0, 0, 0.5)",
+                "inset 14px 0 24px rgba(0, 0, 0, 0.55), inset -14px 0 24px rgba(0, 0, 0, 0.55), 0 20px 40px rgba(0, 0, 0, 0.5)",
             }}
           >
             {/* Glass highlight */}
