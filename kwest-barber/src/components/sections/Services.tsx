@@ -160,19 +160,12 @@ export function Services() {
       {/* Editorial header */}
       <div className="relative mx-auto max-w-7xl">
         <Reveal className="mb-16">
-          <span className="font-mono text-[10px] uppercase tracking-ultra text-smoke">
-            Services
-          </span>
           <h2
-            className="painted-mis mt-4 font-display uppercase leading-[0.95] text-bone"
-            data-text="THE SERVICES"
+            className="font-display uppercase leading-[0.95] text-bone"
             style={{ fontSize: "clamp(2.5rem, 7vw, 5.5rem)" }}
           >
-            THE SERVICES
+            Services
           </h2>
-          <p className="mt-4 max-w-md font-body text-sm text-ash">
-            Eight cuts. Two sides. Pick your track and book the chair.
-          </p>
         </Reveal>
 
         {/* Two-column album-jacket tracklist */}

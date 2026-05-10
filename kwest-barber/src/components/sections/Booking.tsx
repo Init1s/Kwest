@@ -6,18 +6,11 @@ export function Booking() {
     <section id="booking" className="bg-ink px-6 py-24 md:py-32">
       <div className="mx-auto max-w-5xl text-center">
         <Reveal>
-          <span className="font-mono text-[10px] uppercase tracking-ultra text-smoke">
-            Ready?
-          </span>
-
           <h2
-            className="painted-mis mt-6 font-display uppercase leading-[0.9] text-bone"
-            data-text="BOOK YOUR CUT."
+            className="font-display uppercase leading-[0.9] text-bone"
             style={{ fontSize: "clamp(3rem, 9vw, 8rem)" }}
           >
-            BOOK YOUR
-            <br />
-            <span className="font-script text-gold">Cut.</span>
+            Book Your Cut
           </h2>
 
           <p className="mx-auto mt-8 max-w-md font-body text-sm leading-relaxed text-ash">

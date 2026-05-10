@@ -26,18 +26,14 @@ export function Transformations() {
     <section className="bg-blade px-6 py-24 md:py-32">
       <div className="mx-auto max-w-7xl">
         <Reveal className="mb-16">
-          <span className="font-mono text-[10px] uppercase tracking-ultra text-smoke">
-            Before &amp; After
-          </span>
           <h2
-            className="painted-mis mt-4 font-display uppercase leading-[0.95] text-bone"
-            data-text="TRANSFORMATIONS"
+            className="font-display uppercase leading-[0.95] text-bone"
             style={{ fontSize: "clamp(2.5rem, 7vw, 5.5rem)" }}
           >
-            TRANSFORMATIONS
+            Before &amp; After
           </h2>
           <p className="mt-4 max-w-md font-body text-sm text-ash">
-            Drag the slider to see the difference. Real cuts, real clients.
+            Drag the slider to see the difference.
           </p>
         </Reveal>
 

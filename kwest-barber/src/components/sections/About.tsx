@@ -15,23 +15,13 @@ export function About() {
   return (
     <section id="about" className="bg-blade py-24 md:py-32 overflow-hidden">
       <div className="mx-auto max-w-7xl px-6">
-        {/* Liner-notes header */}
         <Reveal className="mb-16">
-          <span className="font-mono text-[10px] uppercase tracking-ultra text-smoke">
-            Meet Kwest
-          </span>
           <h2
-            className="painted-mis mt-4 font-display uppercase leading-[0.92] text-bone"
-            data-text="TEN YEARS DEEP IN BOCA."
+            className="font-display uppercase leading-[0.92] text-bone"
             style={{ fontSize: "clamp(2.25rem, 6.2vw, 5.25rem)" }}
           >
-            TEN YEARS DEEP
-            <br />
-            IN BOCA.
+            About Kwest
           </h2>
-          <p className="mt-5 font-script text-2xl text-lime md:ml-[15%] md:text-3xl">
-            Your barber&apos;s barber.
-          </p>
         </Reveal>
 
         {/* Content grid */}
