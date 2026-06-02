@@ -69,6 +69,64 @@ export function About() {
                 regulars who don&apos;t go anywhere else.
               </p>
             </div>
+
+            {/* Info block */}
+            <div className="mt-12 grid grid-cols-2 gap-x-8 gap-y-5 border-t border-chrome/60 pt-8 md:grid-cols-3">
+              <div>
+                <span className="font-mono text-[9px] uppercase tracking-ultra text-smoke">
+                  Barber
+                </span>
+                <p className="mt-1 font-display text-sm uppercase text-bone">
+                  Kwest
+                </p>
+              </div>
+              <div>
+                <span className="font-mono text-[9px] uppercase tracking-ultra text-smoke">
+                  Location
+                </span>
+                <p className="mt-1 font-display text-sm uppercase text-bone">
+                  Boca Raton, FL
+                </p>
+              </div>
+              <div>
+                <span className="font-mono text-[9px] uppercase tracking-ultra text-smoke">
+                  Tools
+                </span>
+                <p className="mt-1 font-display text-sm uppercase text-bone">
+                  Wahl Seniors
+                </p>
+              </div>
+              <div>
+                <span className="font-mono text-[9px] uppercase tracking-ultra text-smoke">
+                  Booking
+                </span>
+                <p className="mt-1 font-display text-sm uppercase">
+                  <a
+                    href={process.env.NEXT_PUBLIC_SQUIRE_BOOKING_URL}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="text-bone transition-colors hover:text-gold"
+                  >
+                    Squire &rarr;
+                  </a>
+                </p>
+              </div>
+              <div>
+                <span className="font-mono text-[9px] uppercase tracking-ultra text-smoke">
+                  Instagram
+                </span>
+                <p className="mt-1 font-display text-sm uppercase">
+                  <a
+                    href="https://www.instagram.com/kwest_the_barber/"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="text-bone transition-colors hover:text-gold"
+                  >
+                    @kwest_the_barber &rarr;
+                  </a>
+                </p>
+              </div>
+            </div>
           </Reveal>
         </div>
       </div>
