@@ -36,8 +36,8 @@ export function About() {
                 <Image
                   src={`${process.env.NEXT_PUBLIC_BASE_PATH || ""}/images/kwest-portrait.jpg`}
                   alt="Kwest The Barber"
-                  width={1024}
-                  height={1536}
+                  width={1127}
+                  height={1396}
                   className="block h-auto w-full"
                   sizes="(max-width: 1024px) 100vw, 40vw"
                   priority
