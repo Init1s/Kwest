@@ -29,7 +29,7 @@ export function About() {
           {/* Duotoned portrait */}
           <div className="relative lg:col-span-2">
             <ClipReveal type="diagonal" delay={0.1}>
-              <div className="duotone-orange relative aspect-[2/3] overflow-hidden rounded-2xl bg-ink ring-1 ring-chrome/40 shadow-2xl shadow-ink/60">
+              <div className="duotone-orange relative aspect-[2/3] overflow-hidden bg-ink ring-1 ring-chrome/40 shadow-2xl shadow-ink/60">
                 <Image
                   src={`${process.env.NEXT_PUBLIC_BASE_PATH || ""}/images/kwest-portrait.jpg`}
                   alt="Kwest The Barber"
