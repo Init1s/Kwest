@@ -26,15 +26,14 @@ export function About() {
 
         {/* Content grid */}
         <div className="grid gap-12 lg:grid-cols-5 lg:gap-16">
-          {/* Duotoned portrait. The source photo has the cap touching the
-              very top edge with no headroom. A bg-blade -> transparent
-              gradient over the top ~12% softens that hard edge so the cap
-              reads as fading into the section background rather than being
-              cut. Container uses the file's native ratio, so no aspect
-              forcing, no letterbox, no side bars. */}
+          {/* Duotoned portrait. The image file is untouched (1024x1536).
+              Rendered at the file's native ratio so there is no crop, no
+              letterbox, and no side bars. A bg-blade gradient overlay fades
+              the top of the image into the section background so the cap's
+              hard top boundary dissolves. */}
           <div className="relative lg:col-span-2">
             <ClipReveal type="diagonal" delay={0.1}>
-              <div className="duotone-orange relative ring-1 ring-chrome/40 shadow-2xl shadow-ink/60 w-full">
+              <div className="duotone-orange relative w-full">
                 <Image
                   src={`${process.env.NEXT_PUBLIC_BASE_PATH || ""}/images/kwest-portrait.jpg`}
                   alt="Kwest The Barber"
@@ -46,10 +45,11 @@ export function About() {
                 />
                 <div
                   aria-hidden="true"
-                  className="pointer-events-none absolute inset-x-0 top-0 h-[12%]"
+                  className="pointer-events-none absolute inset-x-0 top-0"
                   style={{
+                    height: "18%",
                     background:
-                      "linear-gradient(to bottom, #111111 0%, rgba(17, 17, 17, 0.85) 35%, rgba(17, 17, 17, 0) 100%)",
+                      "linear-gradient(to bottom, #111111 0%, #111111 30%, rgba(17, 17, 17, 0.7) 60%, rgba(17, 17, 17, 0) 100%)",
                   }}
                 />
               </div>

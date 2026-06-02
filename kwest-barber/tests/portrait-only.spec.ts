@@ -12,8 +12,15 @@ test("Kwest portrait in the About section — no crop, no letterbox, no side bar
   await page.goto("/", { waitUntil: "networkidle" });
   await page.waitForTimeout(2200); // wait for intro splash to dismiss
 
-  const portrait = page.locator("#about img").first();
-  await portrait.scrollIntoViewIfNeeded();
+  // Screenshot the masked wrapper (the parent of the img) so that any
+  // mask-image / overlay CSS is reflected, not just the raw bitmap.
+  const wrapper = page.locator("#about .duotone-orange").first();
+  await wrapper.scrollIntoViewIfNeeded();
   await page.waitForTimeout(400);
-  await portrait.screenshot({ path: join(OUT, "portrait.png") });
+  await wrapper.screenshot({ path: join(OUT, "portrait.png") });
+
+  // Also capture the surrounding column so we can see the cap against the
+  // section bg-blade — this is what the user actually sees.
+  const column = page.locator("#about > div > div > div").first();
+  await column.screenshot({ path: join(OUT, "portrait-context.png") });
 });
