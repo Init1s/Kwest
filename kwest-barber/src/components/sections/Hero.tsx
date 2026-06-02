@@ -164,24 +164,6 @@ export function Hero() {
           </a>
         </div>
 
-        {/* Parental-Advisory pastiche */}
-        <div
-          className="animate-fade-up mt-6 inline-flex w-fit items-center gap-3 border-2 border-bone bg-ink px-4 py-2"
-          style={{ animationDelay: `${d + 1.25}s` }}
-        >
-          <span className="font-display text-xs leading-none text-bone">
-            EXPLICIT
-          </span>
-          <div className="flex flex-col leading-tight">
-            <span className="font-mono text-[8px] uppercase tracking-ultra text-bone">
-              Sharp · Clean · Precise
-            </span>
-            <span className="font-mono text-[7px] uppercase tracking-ultra text-smoke">
-              Strictly Hands-On Barbering
-            </span>
-          </div>
-        </div>
-
         {/* Mobile-only stat strip — desktop reads them in the left column */}
         <div
           className="animate-fade-up mt-8 flex flex-wrap items-end gap-x-6 gap-y-3 md:hidden"

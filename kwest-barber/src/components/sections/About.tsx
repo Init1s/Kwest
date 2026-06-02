@@ -2,15 +2,6 @@ import Image from "next/image";
 import { Reveal } from "@/components/ui/Reveal";
 import { ClipReveal } from "@/components/ui/ClipReveal";
 
-const credits = [
-  { label: "Produced by", value: "Kwest" },
-  { label: "Recorded in", value: "Boca Raton, FL" },
-  { label: "Engineered on", value: "Wahl Seniors" },
-  { label: "Booked through", value: "Squire" },
-  { label: "Catalog", value: "KWST-001" },
-  { label: "Instagram", value: "@kwest_the_barber" },
-];
-
 export function About() {
   return (
     <section id="about" className="bg-blade py-24 md:py-32 overflow-hidden">
@@ -26,10 +17,7 @@ export function About() {
 
         {/* Content grid */}
         <div className="grid gap-12 lg:grid-cols-5 lg:gap-16">
-          {/* Duotoned portrait. Image file is the byte-exact original
-              (1024x1536). Rendered at its native ratio, no aspect forcing,
-              no overlay, no crop, no letterbox, no side bars — what the
-              file contains is what is shown. */}
+          {/* Duotoned portrait. Image file is the byte-exact original. */}
           <div className="relative lg:col-span-2">
             <ClipReveal type="diagonal" delay={0.1}>
               <div className="duotone-orange relative w-full">
@@ -61,7 +49,7 @@ export function About() {
             </Reveal>
           </div>
 
-          {/* Liner notes column */}
+          {/* Body copy column */}
           <Reveal
             direction="right"
             delay={0.15}
@@ -81,25 +69,6 @@ export function About() {
                 regulars who don&apos;t go anywhere else.
               </p>
             </div>
-
-            {/* Credits block — like the back of an album */}
-            <div className="mt-12 grid grid-cols-2 gap-x-8 gap-y-5 border-t border-chrome/60 pt-8 md:grid-cols-3">
-              {credits.map((c) => (
-                <div key={c.label}>
-                  <span className="font-mono text-[9px] uppercase tracking-ultra text-smoke">
-                    {c.label}
-                  </span>
-                  <p className="mt-1 font-display text-sm uppercase text-bone">
-                    {c.value}
-                  </p>
-                </div>
-              ))}
-            </div>
-
-            {/* Shout-out one-liner */}
-            <p className="mt-10 font-mono text-[10px] uppercase tracking-ultra text-smoke">
-              Big up to every head in the chair for ten years. No compromises.
-            </p>
           </Reveal>
         </div>
       </div>
