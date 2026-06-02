@@ -29,12 +29,7 @@ export function About() {
           {/* Duotoned portrait */}
           <div className="relative lg:col-span-2">
             <ClipReveal type="diagonal" delay={0.1}>
-              <div
-                className="duotone-orange relative aspect-[3/4] overflow-hidden bg-ink"
-                style={{
-                  clipPath: "polygon(0 0, 100% 0, 100% 94%, 0 100%)",
-                }}
-              >
+              <div className="duotone-orange relative aspect-[2/3] overflow-hidden rounded-2xl bg-ink ring-1 ring-chrome/40 shadow-2xl shadow-ink/60">
                 <Image
                   src={`${process.env.NEXT_PUBLIC_BASE_PATH || ""}/images/kwest-portrait.jpg`}
                   alt="Kwest The Barber"
@@ -48,7 +43,7 @@ export function About() {
 
             {/* Floating badge */}
             <Reveal delay={0.4} className="absolute -bottom-4 right-6">
-              <div className="flex items-center gap-3 border border-gold/30 bg-ink px-5 py-3 animate-glow-pulse">
+              <div className="flex items-center gap-3 rounded-lg border border-gold/30 bg-ink px-5 py-3 animate-glow-pulse">
                 <span className="font-display text-3xl text-gold">10</span>
                 <div className="flex flex-col">
                   <span className="font-mono text-[8px] uppercase tracking-ultra text-smoke">
