@@ -49,7 +49,7 @@ export function Contact() {
 
           {/* Reach Out */}
           <RevealItem className="border-t border-chrome/60 pt-6">
-            <span className="font-mono text-[9px] uppercase tracking-ultra text-smoke">
+            <span className="block font-mono text-[9px] uppercase tracking-ultra text-smoke">
               Reach Out
             </span>
             <a
