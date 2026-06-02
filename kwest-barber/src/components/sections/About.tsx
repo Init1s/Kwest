@@ -26,17 +26,31 @@ export function About() {
 
         {/* Content grid */}
         <div className="grid gap-12 lg:grid-cols-5 lg:gap-16">
-          {/* Duotoned portrait */}
+          {/* Duotoned portrait. The source photo has the cap touching the
+              very top edge with no headroom. A bg-blade -> transparent
+              gradient over the top ~12% softens that hard edge so the cap
+              reads as fading into the section background rather than being
+              cut. Container uses the file's native ratio, so no aspect
+              forcing, no letterbox, no side bars. */}
           <div className="relative lg:col-span-2">
             <ClipReveal type="diagonal" delay={0.1}>
-              <div className="duotone-orange relative aspect-[2/3] overflow-hidden bg-ink ring-1 ring-chrome/40 shadow-2xl shadow-ink/60">
+              <div className="duotone-orange relative ring-1 ring-chrome/40 shadow-2xl shadow-ink/60 w-full">
                 <Image
                   src={`${process.env.NEXT_PUBLIC_BASE_PATH || ""}/images/kwest-portrait.jpg`}
                   alt="Kwest The Barber"
-                  fill
-                  className="object-cover"
+                  width={1024}
+                  height={1536}
+                  className="block h-auto w-full"
                   sizes="(max-width: 1024px) 100vw, 40vw"
                   priority
+                />
+                <div
+                  aria-hidden="true"
+                  className="pointer-events-none absolute inset-x-0 top-0 h-[12%]"
+                  style={{
+                    background:
+                      "linear-gradient(to bottom, #111111 0%, rgba(17, 17, 17, 0.85) 35%, rgba(17, 17, 17, 0) 100%)",
+                  }}
                 />
               </div>
             </ClipReveal>
