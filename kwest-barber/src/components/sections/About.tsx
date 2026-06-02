@@ -26,11 +26,10 @@ export function About() {
 
         {/* Content grid */}
         <div className="grid gap-12 lg:grid-cols-5 lg:gap-16">
-          {/* Duotoned portrait. The image file is untouched (1024x1536).
-              Rendered at the file's native ratio so there is no crop, no
-              letterbox, and no side bars. A bg-blade gradient overlay fades
-              the top of the image into the section background so the cap's
-              hard top boundary dissolves. */}
+          {/* Duotoned portrait. Image file is the byte-exact original
+              (1024x1536). Rendered at its native ratio, no aspect forcing,
+              no overlay, no crop, no letterbox, no side bars — what the
+              file contains is what is shown. */}
           <div className="relative lg:col-span-2">
             <ClipReveal type="diagonal" delay={0.1}>
               <div className="duotone-orange relative w-full">
@@ -42,15 +41,6 @@ export function About() {
                   className="block h-auto w-full"
                   sizes="(max-width: 1024px) 100vw, 40vw"
                   priority
-                />
-                <div
-                  aria-hidden="true"
-                  className="pointer-events-none absolute inset-x-0 top-0"
-                  style={{
-                    height: "18%",
-                    background:
-                      "linear-gradient(to bottom, #111111 0%, #111111 30%, rgba(17, 17, 17, 0.7) 60%, rgba(17, 17, 17, 0) 100%)",
-                  }}
                 />
               </div>
             </ClipReveal>
