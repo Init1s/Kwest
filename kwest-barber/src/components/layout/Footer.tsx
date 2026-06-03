@@ -6,10 +6,10 @@ export function Footer() {
   return (
     <footer className="bg-blade border-t border-chrome/50">
       <div className="mx-auto max-w-7xl px-6 py-10 md:py-12">
-        {/* Brand + info grid */}
-        <div className="grid gap-8 md:grid-cols-12">
+        {/* Brand + info grid — centered on mobile, left-aligned at md+ */}
+        <div className="grid gap-8 text-center md:grid-cols-12 md:text-left">
           {/* Brand */}
-          <div className="md:col-span-4">
+          <div className="flex flex-col items-center md:col-span-4 md:items-start">
             <Image
               src={`${process.env.NEXT_PUBLIC_BASE_PATH || ""}/images/kwest-logo.png`}
               alt="Kwest The Barber"
@@ -64,7 +64,7 @@ export function Footer() {
             <span className="font-mono text-[9px] uppercase tracking-ultra text-smoke">
               Connect
             </span>
-            <div className="mt-2 flex flex-col gap-1.5 font-mono text-xs uppercase tracking-widest">
+            <div className="mt-2 flex flex-col items-center gap-1.5 font-mono text-xs uppercase tracking-widest md:items-start">
               <a
                 href="#services"
                 className="text-ash transition-colors hover:text-bone"
