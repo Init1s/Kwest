@@ -1,4 +1,5 @@
 import { Reveal, RevealGroup, RevealItem } from "@/components/ui/Reveal";
+import { InstagramIconLink } from "@/components/ui/InstagramIconLink";
 
 export function Contact() {
   return (
@@ -52,14 +53,10 @@ export function Contact() {
             <span className="block font-mono text-[9px] uppercase tracking-ultra text-smoke">
               Reach Out
             </span>
-            <a
-              href="https://www.instagram.com/kwest_the_barber/"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="mt-3 inline-block font-display text-xl font-bold uppercase text-bone transition-colors hover:text-gold"
-            >
-              @kwest_the_barber
-            </a>
+            <InstagramIconLink
+              size={36}
+              className="mt-3 text-bone transition-colors hover:text-gold"
+            />
             <p className="mt-2 font-body text-sm leading-relaxed text-ash">
               Slide into the DMs for questions. For appointments, book on
               Squire.

@@ -1,6 +1,7 @@
 import Image from "next/image";
 import { Reveal } from "@/components/ui/Reveal";
 import { ClipReveal } from "@/components/ui/ClipReveal";
+import { InstagramIconLink } from "@/components/ui/InstagramIconLink";
 
 export function About() {
   return (
@@ -115,16 +116,12 @@ export function About() {
                 <span className="font-mono text-[9px] uppercase tracking-ultra text-smoke">
                   Instagram
                 </span>
-                <p className="mt-1 font-display text-sm uppercase">
-                  <a
-                    href="https://www.instagram.com/kwest_the_barber/"
-                    target="_blank"
-                    rel="noopener noreferrer"
+                <div className="mt-2">
+                  <InstagramIconLink
+                    size={24}
                     className="text-bone transition-colors hover:text-gold"
-                  >
-                    @kwest_the_barber &rarr;
-                  </a>
-                </p>
+                  />
+                </div>
               </div>
             </div>
           </Reveal>

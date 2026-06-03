@@ -1,6 +1,7 @@
 import { getInstagramPosts } from "@/lib/instagram";
 import { InstagramFeedClient } from "./InstagramFeedClient";
 import { Reveal } from "@/components/ui/Reveal";
+import { InstagramIconLink } from "@/components/ui/InstagramIconLink";
 
 export async function InstagramFeed() {
   const posts = await getInstagramPosts(16);
@@ -11,26 +12,17 @@ export async function InstagramFeed() {
       <div className="px-6 pt-24 pb-12 md:pt-32">
         <div className="mx-auto max-w-7xl">
           <Reveal>
-            <div className="flex flex-col justify-between gap-4 md:flex-row md:items-end">
-              <div>
-                <span className="font-mono text-[10px] uppercase tracking-ultra text-smoke">
-                  @kwest_the_barber
-                </span>
-                <h2 className="mt-2 font-display text-4xl font-extrabold uppercase tracking-tightest text-bone md:text-6xl">
-                  THE WORK
-                </h2>
-              </div>
-              <a
-                href="https://www.instagram.com/kwest_the_barber/"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="group inline-flex items-center gap-2 font-mono text-xs uppercase tracking-widest text-smoke transition-colors hover:text-gold"
+            <div className="flex flex-col justify-between gap-4 md:flex-row md:items-center">
+              <h2
+                className="font-display uppercase leading-[0.95] text-bone"
+                style={{ fontSize: "clamp(2.5rem, 7vw, 5.5rem)" }}
               >
-                Follow on Instagram
-                <span className="inline-block transition-transform group-hover:translate-x-1">
-                  &rarr;
-                </span>
-              </a>
+                Gallery
+              </h2>
+              <InstagramIconLink
+                size={32}
+                className="text-smoke transition-colors hover:text-gold"
+              />
             </div>
           </Reveal>
         </div>
