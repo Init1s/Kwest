@@ -93,9 +93,24 @@ export function Footer() {
                 href="https://www.instagram.com/kwest_the_barber/"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="text-ash transition-colors hover:text-gold"
+                aria-label="Instagram — @kwest_the_barber"
+                className="mt-1 inline-flex h-6 w-6 items-center justify-center text-ash transition-colors hover:text-gold"
               >
-                @kwest_the_barber
+                <svg
+                  width="22"
+                  height="22"
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  stroke="currentColor"
+                  strokeWidth="1.6"
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                  aria-hidden="true"
+                >
+                  <rect x="3" y="3" width="18" height="18" rx="5" />
+                  <circle cx="12" cy="12" r="4" />
+                  <circle cx="17.5" cy="6.5" r="0.9" fill="currentColor" />
+                </svg>
               </a>
             </div>
           </div>
