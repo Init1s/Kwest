@@ -1,14 +1,12 @@
-import { getInstagramPosts } from "@/lib/instagram";
-import { InstagramFeedClient } from "./InstagramFeedClient";
+import Script from "next/script";
 import { Reveal } from "@/components/ui/Reveal";
 import { InstagramIconLink } from "@/components/ui/InstagramIconLink";
 
-export async function InstagramFeed() {
-  const posts = await getInstagramPosts(16);
+const LIGHTWIDGET_ID = "a57db604428f59f18ee0c80735196a7a";
 
+export function InstagramFeed() {
   return (
     <section id="gallery" className="bg-ink">
-      {/* Header */}
       <div className="px-6 pt-24 pb-12 md:pt-32">
         <div className="mx-auto max-w-7xl">
           <Reveal>
@@ -28,20 +26,24 @@ export async function InstagramFeed() {
         </div>
       </div>
 
-      {/* Gallery */}
-      {posts.length > 0 ? (
-        <InstagramFeedClient posts={posts} />
-      ) : (
-        <div className="px-6 pb-24 md:pb-32">
-          <div className="mx-auto max-w-7xl">
-            <div className="flex items-center justify-center border border-chrome bg-blade p-16">
-              <p className="font-mono text-xs uppercase tracking-widest text-smoke">
-                Connect Instagram in .env.local
-              </p>
-            </div>
-          </div>
+      <div className="px-6 pb-24 md:pb-32">
+        <div className="mx-auto max-w-7xl">
+          <Reveal delay={0.1}>
+            <iframe
+              src={`https://lightwidget.com/widgets/${LIGHTWIDGET_ID}.html`}
+              scrolling="no"
+              loading="lazy"
+              className="lightwidget-widget w-full overflow-hidden border-0 bg-transparent"
+              title="Instagram feed by @kwest_the_barber"
+            />
+          </Reveal>
         </div>
-      )}
+      </div>
+
+      <Script
+        src="https://cdn.lightwidget.com/widgets/lightwidget.js"
+        strategy="afterInteractive"
+      />
     </section>
   );
 }

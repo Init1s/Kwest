@@ -68,12 +68,9 @@ test.describe("Homepage", () => {
     await expect(bookOnSquire).toHaveAttribute("rel", "noopener noreferrer");
   });
 
-  test("Instagram placeholder renders when no token is set in dev", async ({
-    page,
-  }) => {
+  test("Gallery embeds the LightWidget Instagram feed", async ({ page }) => {
     const gallery = page.locator("#gallery");
-    await expect(
-      gallery.getByText(/connect instagram in \.env\.local/i),
-    ).toBeVisible();
+    const feed = gallery.locator("iframe[title*='Instagram feed']");
+    await expect(feed).toHaveAttribute("src", /lightwidget\.com\/widgets\//);
   });
 });
