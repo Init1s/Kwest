@@ -19,14 +19,23 @@ export function About() {
         {/* Content grid */}
         <div className="grid gap-12 lg:grid-cols-5 lg:gap-16">
           {/* Duotoned portrait. Image renders at its native ratio (full
-              head, no crop). Framed with a thin chrome ring and a soft
-              ink-coloured shadow — no rounded corners so the cap's top
-              corners aren't masked. Decorative gold corner ticks lift it
-              from a bare bleed into a deliberately framed object. */}
+              head, no crop, no letterbox, no side bars). Framed by:
+                - a 2px gold outer offset frame (sharp corners — no
+                  rounding, so the cap edge isn't masked)
+                - a soft ink-coloured drop shadow
+                - large gold L-shape corner ticks sitting on top of the
+                  frame at each corner
+                - the duotone-orange treatment on the image itself */}
           <div className="relative lg:col-span-2">
             <ClipReveal type="diagonal" delay={0.1}>
-              <div className="relative">
-                <div className="duotone-orange relative w-full ring-1 ring-chrome/50 shadow-2xl shadow-ink/70">
+              <div className="relative p-3 md:p-4">
+                {/* The frame — sits behind the image, offset out by the
+                    container padding so it reads as a deliberate matte. */}
+                <span
+                  aria-hidden="true"
+                  className="pointer-events-none absolute inset-0 border-2 border-gold"
+                />
+                <div className="duotone-orange relative w-full shadow-2xl shadow-ink/80">
                   <Image
                     src={`${process.env.NEXT_PUBLIC_BASE_PATH || ""}/images/kwest-portrait.jpg`}
                     alt="Kwest The Barber"
@@ -37,22 +46,22 @@ export function About() {
                     priority
                   />
                 </div>
-                {/* Corner ticks — small gold L-shapes at each corner */}
+                {/* Corner ticks — bold gold L-shapes at each corner */}
                 <span
                   aria-hidden="true"
-                  className="pointer-events-none absolute -left-2 -top-2 h-5 w-5 border-l-2 border-t-2 border-gold"
+                  className="pointer-events-none absolute -left-1.5 -top-1.5 h-8 w-8 border-l-[3px] border-t-[3px] border-gold"
                 />
                 <span
                   aria-hidden="true"
-                  className="pointer-events-none absolute -right-2 -top-2 h-5 w-5 border-r-2 border-t-2 border-gold"
+                  className="pointer-events-none absolute -right-1.5 -top-1.5 h-8 w-8 border-r-[3px] border-t-[3px] border-gold"
                 />
                 <span
                   aria-hidden="true"
-                  className="pointer-events-none absolute -left-2 -bottom-2 h-5 w-5 border-b-2 border-l-2 border-gold"
+                  className="pointer-events-none absolute -left-1.5 -bottom-1.5 h-8 w-8 border-b-[3px] border-l-[3px] border-gold"
                 />
                 <span
                   aria-hidden="true"
-                  className="pointer-events-none absolute -right-2 -bottom-2 h-5 w-5 border-b-2 border-r-2 border-gold"
+                  className="pointer-events-none absolute -right-1.5 -bottom-1.5 h-8 w-8 border-b-[3px] border-r-[3px] border-gold"
                 />
               </div>
             </ClipReveal>

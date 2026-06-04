@@ -1,10 +1,11 @@
-import Script from "next/script";
-import { Reveal } from "@/components/ui/Reveal";
+import Image from "next/image";
+import { Reveal, RevealGroup, RevealItem } from "@/components/ui/Reveal";
 import { InstagramIconLink } from "@/components/ui/InstagramIconLink";
-
-const LIGHTWIDGET_ID = "a57db604428f59f18ee0c80735196a7a";
+import { gallery } from "@/data/gallery";
 
 export function InstagramFeed() {
+  const basePath = process.env.NEXT_PUBLIC_BASE_PATH || "";
+
   return (
     <section id="gallery" className="bg-ink">
       <div className="px-6 pt-24 pb-12 md:pt-32">
@@ -26,44 +27,71 @@ export function InstagramFeed() {
         </div>
       </div>
 
-      <div className="px-6 pb-24 md:pb-32">
+      <div className="px-6 pb-12 md:pb-16">
         <div className="mx-auto max-w-7xl">
-          <Reveal delay={0.1}>
-            {/* LightWidget renders the IG grid inside this iframe. Its
-                bootstrap script handles resize at runtime; we set a
-                generous min-height so the embed is visible even if the
-                script is blocked, slow, or fails. */}
-            <iframe
-              src={`https://lightwidget.com/widgets/${LIGHTWIDGET_ID}.html`}
-              scrolling="no"
-              loading="lazy"
-              referrerPolicy="no-referrer-when-downgrade"
-              sandbox="allow-scripts allow-popups allow-same-origin"
-              className="lightwidget-widget block w-full overflow-hidden border-0 bg-transparent"
-              style={{ minHeight: 720 }}
-              title="Instagram feed by @kwest_the_barber"
-            />
-            <noscript>
-              <p className="mt-4 text-center font-mono text-xs uppercase tracking-widest text-smoke">
-                JavaScript is required for the gallery.{" "}
-                <a
-                  href="https://www.instagram.com/kwest_the_barber/"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="text-bone hover:text-gold"
-                >
-                  View on Instagram instead.
-                </a>
-              </p>
-            </noscript>
-          </Reveal>
+          <RevealGroup
+            className="grid gap-4 sm:grid-cols-2 md:gap-6 lg:grid-cols-3"
+            stagger={0.08}
+          >
+            {gallery.map((photo) => (
+              <RevealItem
+                key={photo.src}
+                className="group relative overflow-hidden bg-blade ring-1 ring-chrome/40"
+              >
+                <Image
+                  src={`${basePath}${photo.src}`}
+                  alt={photo.alt}
+                  width={photo.width}
+                  height={photo.height}
+                  className="block h-auto w-full transition-transform duration-700 group-hover:scale-[1.03]"
+                  sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"
+                />
+                {photo.caption && (
+                  <div className="absolute inset-x-0 bottom-0 translate-y-full bg-ink/85 px-4 py-3 backdrop-blur-sm transition-transform duration-300 group-hover:translate-y-0">
+                    <p className="font-mono text-[10px] uppercase tracking-widest text-bone">
+                      {photo.caption}
+                    </p>
+                  </div>
+                )}
+              </RevealItem>
+            ))}
+          </RevealGroup>
         </div>
       </div>
 
-      <Script
-        src="https://cdn.lightwidget.com/widgets/lightwidget.js"
-        strategy="afterInteractive"
-      />
+      <div className="px-6 pb-24 md:pb-32">
+        <div className="mx-auto flex max-w-7xl flex-col items-center justify-between gap-4 border-t border-chrome/40 pt-8 md:flex-row">
+          <p className="font-mono text-[10px] uppercase tracking-ultra text-smoke">
+            More work on Instagram
+          </p>
+          <a
+            href="https://www.instagram.com/kwest_the_barber/"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="group inline-flex items-center gap-2 font-mono text-xs uppercase tracking-widest text-bone transition-colors hover:text-gold"
+          >
+            <svg
+              width="18"
+              height="18"
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              strokeWidth="1.6"
+              strokeLinecap="round"
+              strokeLinejoin="round"
+              aria-hidden="true"
+            >
+              <rect x="3" y="3" width="18" height="18" rx="5" />
+              <circle cx="12" cy="12" r="4" />
+              <circle cx="17.5" cy="6.5" r="0.9" fill="currentColor" />
+            </svg>
+            <span>Follow @kwest_the_barber</span>
+            <span className="inline-block transition-transform group-hover:translate-x-1">
+              &rarr;
+            </span>
+          </a>
+        </div>
+      </div>
     </section>
   );
 }
