@@ -68,9 +68,16 @@ test.describe("Homepage", () => {
     await expect(bookOnSquire).toHaveAttribute("rel", "noopener noreferrer");
   });
 
-  test("Gallery embeds the LightWidget Instagram feed", async ({ page }) => {
+  test("Gallery renders the Follow-on-Instagram CTA when no posts are listed", async ({
+    page,
+  }) => {
     const gallery = page.locator("#gallery");
-    const feed = gallery.locator("iframe[title*='Instagram feed']");
-    await expect(feed).toHaveAttribute("src", /lightwidget\.com\/widgets\//);
+    const followLink = gallery.getByRole("link", {
+      name: /follow @kwest_the_barber/i,
+    });
+    await expect(followLink).toHaveAttribute(
+      "href",
+      /instagram\.com\/kwest_the_barber/,
+    );
   });
 });

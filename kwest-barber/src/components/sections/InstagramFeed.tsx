@@ -1,16 +1,11 @@
 import Script from "next/script";
 import { Reveal } from "@/components/ui/Reveal";
 import { InstagramIconLink } from "@/components/ui/InstagramIconLink";
-
-// LightWidget widget ID. To enable / change the widget:
-//   1. Sign in at https://lightwidget.com → Widgets → pick this widget.
-//   2. In the widget settings, enable HTTPS. Without it the iframe is
-//      blocked as mixed content on https://kwestthebarber.com /
-//      https://init1s.github.io/Kwest/ and shows "HTTPS is disabled".
-//   3. Drop the new widget ID below if you regenerate it.
-const LIGHTWIDGET_ID = "a57db604428f59f18ee0c80735196a7a";
+import { instagramPosts } from "@/data/instagram-posts";
 
 export function InstagramFeed() {
+  const posts = instagramPosts;
+
   return (
     <section id="gallery" className="bg-ink">
       <div className="px-6 pt-24 pb-12 md:pt-32">
@@ -34,42 +29,76 @@ export function InstagramFeed() {
 
       <div className="px-6 pb-24 md:pb-32">
         <div className="mx-auto max-w-7xl">
-          <Reveal delay={0.1}>
-            {/* LightWidget renders the IG feed inside this iframe. Its
-                bootstrap script handles resize at runtime; min-height keeps
-                the embed visible even if the script is blocked, slow, or
-                fails. */}
-            <iframe
-              src={`https://lightwidget.com/widgets/${LIGHTWIDGET_ID}.html`}
-              scrolling="no"
-              loading="lazy"
-              referrerPolicy="no-referrer-when-downgrade"
-              sandbox="allow-scripts allow-popups allow-same-origin"
-              className="lightwidget-widget block w-full overflow-hidden border-0 bg-transparent"
-              style={{ minHeight: 720 }}
-              title="Instagram feed by @kwest_the_barber"
-            />
-            <noscript>
-              <p className="mt-4 text-center font-mono text-xs uppercase tracking-widest text-smoke">
-                JavaScript is required for the gallery.{" "}
-                <a
-                  href="https://www.instagram.com/kwest_the_barber/"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="text-bone hover:text-gold"
-                >
-                  View on Instagram instead.
-                </a>
-              </p>
-            </noscript>
-          </Reveal>
+          {posts.length === 0 ? (
+            <Reveal delay={0.1}>
+              <FollowCTA />
+            </Reveal>
+          ) : (
+            <Reveal delay={0.1}>
+              <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
+                {posts.map((url) => (
+                  <blockquote
+                    key={url}
+                    className="instagram-media bg-blade"
+                    data-instgrm-permalink={url}
+                    data-instgrm-version="14"
+                    style={{
+                      background: "#111111",
+                      border: 0,
+                      margin: 0,
+                      maxWidth: "100%",
+                      minWidth: 0,
+                      padding: 0,
+                      width: "100%",
+                    }}
+                  >
+                    <a
+                      href={url}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="block p-6 text-center font-mono text-xs uppercase tracking-widest text-smoke"
+                    >
+                      View on Instagram
+                    </a>
+                  </blockquote>
+                ))}
+              </div>
+              <Script
+                src="https://www.instagram.com/embed.js"
+                strategy="afterInteractive"
+              />
+            </Reveal>
+          )}
         </div>
       </div>
-
-      <Script
-        src="https://cdn.lightwidget.com/widgets/lightwidget.js"
-        strategy="afterInteractive"
-      />
     </section>
+  );
+}
+
+function FollowCTA() {
+  return (
+    <div className="flex flex-col items-center gap-6 border border-chrome/40 bg-blade px-6 py-16 text-center md:py-20">
+      <InstagramIconLink
+        size={56}
+        className="text-bone transition-colors hover:text-gold"
+      />
+      <div className="max-w-md">
+        <p className="font-display text-xl uppercase leading-[1.1] text-bone md:text-2xl">
+          See every cut on Instagram.
+        </p>
+        <p className="mt-3 font-body text-sm text-ash">
+          Fresh work posted from the chair — fades, beard sculpts, walk-out
+          shots. Follow for the latest.
+        </p>
+      </div>
+      <a
+        href="https://www.instagram.com/kwest_the_barber/"
+        target="_blank"
+        rel="noopener noreferrer"
+        className="inline-block bg-gold px-7 py-3.5 font-display text-sm uppercase tracking-widest text-ink transition-all hover:bg-gold-light"
+      >
+        Follow @kwest_the_barber
+      </a>
+    </div>
   );
 }
