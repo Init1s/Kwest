@@ -18,18 +18,41 @@ export function About() {
 
         {/* Content grid */}
         <div className="grid gap-12 lg:grid-cols-5 lg:gap-16">
-          {/* Duotoned portrait. Image file is the byte-exact original. */}
+          {/* Duotoned portrait. Image renders at its native ratio (full
+              head, no crop). Framed with a thin chrome ring and a soft
+              ink-coloured shadow — no rounded corners so the cap's top
+              corners aren't masked. Decorative gold corner ticks lift it
+              from a bare bleed into a deliberately framed object. */}
           <div className="relative lg:col-span-2">
             <ClipReveal type="diagonal" delay={0.1}>
-              <div className="duotone-orange relative w-full">
-                <Image
-                  src={`${process.env.NEXT_PUBLIC_BASE_PATH || ""}/images/kwest-portrait.jpg`}
-                  alt="Kwest The Barber"
-                  width={1127}
-                  height={1396}
-                  className="block h-auto w-full"
-                  sizes="(max-width: 1024px) 100vw, 40vw"
-                  priority
+              <div className="relative">
+                <div className="duotone-orange relative w-full ring-1 ring-chrome/50 shadow-2xl shadow-ink/70">
+                  <Image
+                    src={`${process.env.NEXT_PUBLIC_BASE_PATH || ""}/images/kwest-portrait.jpg`}
+                    alt="Kwest The Barber"
+                    width={1127}
+                    height={1396}
+                    className="block h-auto w-full"
+                    sizes="(max-width: 1024px) 100vw, 40vw"
+                    priority
+                  />
+                </div>
+                {/* Corner ticks — small gold L-shapes at each corner */}
+                <span
+                  aria-hidden="true"
+                  className="pointer-events-none absolute -left-2 -top-2 h-5 w-5 border-l-2 border-t-2 border-gold"
+                />
+                <span
+                  aria-hidden="true"
+                  className="pointer-events-none absolute -right-2 -top-2 h-5 w-5 border-r-2 border-t-2 border-gold"
+                />
+                <span
+                  aria-hidden="true"
+                  className="pointer-events-none absolute -left-2 -bottom-2 h-5 w-5 border-b-2 border-l-2 border-gold"
+                />
+                <span
+                  aria-hidden="true"
+                  className="pointer-events-none absolute -right-2 -bottom-2 h-5 w-5 border-b-2 border-r-2 border-gold"
                 />
               </div>
             </ClipReveal>
