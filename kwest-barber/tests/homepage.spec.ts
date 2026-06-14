@@ -68,10 +68,12 @@ test.describe("Homepage", () => {
     await expect(bookOnSquire).toHaveAttribute("rel", "noopener noreferrer");
   });
 
-  test("Gallery renders the Follow-on-Instagram CTA when no posts are listed", async ({
+  test("Gallery renders the curated photo carousel and Follow link", async ({
     page,
   }) => {
     const gallery = page.locator("#gallery");
+    const photos = gallery.locator("figure img");
+    await expect(photos.first()).toBeVisible();
     const followLink = gallery.getByRole("link", {
       name: /follow @kwest_the_barber/i,
     });
