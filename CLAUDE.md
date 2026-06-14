@@ -44,7 +44,7 @@ npm run test          # Playwright suite
 ### Sections (single-page, `src/app/page.tsx`)
 
 ```
-Hero → TickerBand → Services → Transformations → About → InstagramFeed
+Hero → TickerBand → Services → About → InstagramFeed
      → Testimonials → Contact → Booking
 ```
 
@@ -58,7 +58,6 @@ Each section is a self-contained component under `src/components/sections/`. Add
 - **`Reveal`** / **`RevealGroup`** / **`RevealItem`** — Framer-motion entrance animations. Wrap any new section content for consistent feel.
 - **`MagneticButton`** — wraps CTAs with a magnetic hover effect. Reach for this instead of inventing new button hover states.
 - **`TextScramble`**, **`ClipReveal`**, **`Intro`** — used by Hero/Intro splash. Don't duplicate; reuse.
-- **`BeforeAfter`** — slider for transformation tiles. Photos must share the same aspect ratio (currently the after JPEG is padded to 3:5 in `scripts/process-transformations.py`; the before sits at native 2:3 and uses `object-bottom` for vertical alignment parity).
 
 ### Styling
 
@@ -142,7 +141,7 @@ which one, ask before reverting — there are two distinct prior states.
 - **Section headers**: small mono "kicker" + `font-display` headline + lead paragraph. Mirrors the `About`/`Services`/`Contact` pattern.
 - **Container**: `mx-auto max-w-7xl` with `px-6` (already on the section).
 - **Animations**: prefer composing existing `Reveal*` / `Magnetic*` / `ClipReveal` over hand-rolling new motion. New motion utilities live in `src/components/ui/`.
-- **State**: client-only interactive bits (`Navbar`, `BeforeAfter`, etc.) carry `"use client"` at the top. Server-only bits stay default.
+- **State**: client-only interactive bits (`Navbar`, carousels, etc.) carry `"use client"` at the top. Server-only bits stay default.
 
 ## Commit hygiene
 

@@ -1,7 +1,6 @@
 import { Hero } from "@/components/sections/Hero";
 import { TickerBand } from "@/components/sections/TickerBand";
 import { Services } from "@/components/sections/Services";
-import { Transformations } from "@/components/sections/Transformations";
 import { About } from "@/components/sections/About";
 import { InstagramFeed } from "@/components/sections/InstagramFeed";
 import { Testimonials } from "@/components/sections/Testimonials";
@@ -14,7 +13,6 @@ export default function Home() {
       <Hero />
       <TickerBand />
       <Services />
-      <Transformations />
       <About />
       <InstagramFeed />
       <Testimonials />
