@@ -33,7 +33,7 @@ export function Hero() {
   const d = INTRO_DURATION;
 
   return (
-    <section className="relative min-h-screen overflow-hidden bg-ink pt-28 pb-10 md:pt-36">
+    <section className="relative overflow-hidden bg-ink pt-28 pb-10 md:min-h-screen md:pt-36">
       {/* Soft radial glow — depth without busy-ness */}
       <div
         className="pointer-events-none absolute inset-0"
