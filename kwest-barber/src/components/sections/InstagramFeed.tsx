@@ -94,15 +94,14 @@ export function InstagramFeed() {
               {gallery.map((photo) => (
                 <figure
                   key={photo.src}
-                  className="group relative flex-shrink-0 overflow-hidden bg-blade ring-1 ring-chrome/40"
+                  className="group relative aspect-[4/5] flex-shrink-0 overflow-hidden bg-blade ring-1 ring-chrome/40"
                   style={{ width: "clamp(260px, 30vw, 420px)" }}
                 >
                   <Image
                     src={`${basePath}${photo.src}`}
                     alt={photo.alt}
-                    width={photo.width}
-                    height={photo.height}
-                    className="block h-auto w-full transition-transform duration-700 group-hover:scale-[1.03]"
+                    fill
+                    className="object-cover object-center transition-transform duration-700 group-hover:scale-[1.03]"
                     sizes="(max-width: 640px) 260px, (max-width: 1024px) 30vw, 420px"
                   />
                 </figure>
