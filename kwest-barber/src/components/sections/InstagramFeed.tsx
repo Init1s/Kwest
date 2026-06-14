@@ -54,23 +54,20 @@ export function InstagramFeed() {
         </div>
       </div>
 
-      <div className="px-0 pb-24 md:px-6 md:pb-32">
+      <div className="px-0 pb-12 md:px-6 md:pb-20">
         <div className="mx-auto max-w-7xl">
           <Reveal delay={0.1}>
-            {/* LightWidget renders the live IG feed inside this iframe.
-                Its bootstrap script resizes the iframe to match the
-                grid's intrinsic height at runtime. min-height is the
-                fallback floor. The grid's column count and tile size
-                are controlled by the widget's settings in the
-                LightWidget dashboard — for a mobile-friendly display,
-                set the widget to 2 or 3 columns on small breakpoints. */}
+            {/* Height tuned to match LightWidget's actual rendered
+                content so there's no large dead space below. The grid's
+                column count is a dashboard setting on LightWidget; the
+                code can't change how many tiles it draws per row. */}
             <iframe
               src={`https://cdn.lightwidget.com/widgets/${LIGHTWIDGET_ID}.html`}
               scrolling="no"
               loading="lazy"
               referrerPolicy="no-referrer-when-downgrade"
               sandbox="allow-scripts allow-popups allow-same-origin"
-              className="lightwidget-widget mx-auto block w-full overflow-hidden border-0 bg-transparent min-h-[320px] md:min-h-[400px]"
+              className="lightwidget-widget mx-auto block w-full overflow-hidden border-0 bg-transparent h-[200px] md:h-[260px]"
               title="Instagram feed by @kwest_the_barber"
             />
             <noscript>
