@@ -6,11 +6,14 @@ export function Footer() {
 
   return (
     <footer className="bg-blade border-t border-chrome/50">
-      <div className="mx-auto max-w-7xl px-6 py-10 md:py-12">
-        {/* Brand + info grid — centered on mobile, left-aligned at md+ */}
-        <div className="grid gap-8 text-center md:grid-cols-12 md:text-left">
-          {/* Brand */}
-          <div className="flex flex-col items-center md:col-span-4 md:items-start">
+      <div className="mx-auto max-w-7xl px-6 py-8 md:py-12">
+        {/* Brand + info grid. Mobile uses a 2-column layout so Hours and
+            Visit sit side-by-side instead of stacking, and the Connect
+            links go horizontal — same data, roughly half the vertical
+            height. Desktop keeps the original 12-column layout. */}
+        <div className="grid grid-cols-2 gap-6 text-center md:grid-cols-12 md:gap-8 md:text-left">
+          {/* Brand — full row on mobile (col-span-2), 4 cols on desktop */}
+          <div className="col-span-2 flex flex-col items-center md:col-span-4 md:items-start">
             <Image
               src={`${process.env.NEXT_PUBLIC_BASE_PATH || ""}/images/kwest-logo.png`}
               alt="Kwest The Barber"
@@ -31,22 +34,22 @@ export function Footer() {
             </a>
           </div>
 
-          {/* Hours */}
+          {/* Hours — 1 col on mobile (left of Visit), 3 on desktop */}
           <div className="md:col-span-3">
-            <span className="font-mono text-[9px] uppercase tracking-ultra text-smoke">
+            <span className="block font-mono text-[9px] uppercase tracking-ultra text-smoke">
               Hours
             </span>
             <div className="mt-2 flex flex-col gap-1 font-body text-xs text-ash">
               <p>Tue &ndash; Fri: 10am &ndash; 7pm</p>
-              <p>Saturday: 9am &ndash; 5pm</p>
-              <p>Sunday: 11am &ndash; 4pm</p>
-              <p className="text-razor">Monday: Closed</p>
+              <p>Sat: 9am &ndash; 5pm</p>
+              <p>Sun: 11am &ndash; 4pm</p>
+              <p className="text-razor">Mon: Closed</p>
             </div>
           </div>
 
-          {/* Visit */}
+          {/* Visit — 1 col on mobile (right of Hours), 2 on desktop */}
           <div className="md:col-span-2">
-            <span className="font-mono text-[9px] uppercase tracking-ultra text-smoke">
+            <span className="block font-mono text-[9px] uppercase tracking-ultra text-smoke">
               Visit
             </span>
             <p className="mt-2 font-display text-sm font-semibold uppercase text-bone">
@@ -60,12 +63,14 @@ export function Footer() {
             </p>
           </div>
 
-          {/* Connect */}
-          <div className="md:col-span-3">
-            <span className="font-mono text-[9px] uppercase tracking-ultra text-smoke">
+          {/* Connect — full row on mobile (col-span-2), 3 cols on desktop.
+              Links flow horizontally on mobile (single line) and stack
+              vertically on md+. */}
+          <div className="col-span-2 md:col-span-3">
+            <span className="block font-mono text-[9px] uppercase tracking-ultra text-smoke">
               Connect
             </span>
-            <div className="mt-2 flex flex-col items-center gap-1.5 font-mono text-xs uppercase tracking-widest md:items-start">
+            <div className="mt-2 flex flex-row flex-wrap items-center justify-center gap-x-4 gap-y-2 font-mono text-xs uppercase tracking-widest md:flex-col md:items-start md:gap-1.5">
               <a
                 href="#services"
                 className="text-ash transition-colors hover:text-bone"
@@ -90,13 +95,13 @@ export function Footer() {
               >
                 Contact
               </a>
-              <InstagramIconLink className="mt-1 text-ash transition-colors hover:text-gold" />
+              <InstagramIconLink className="text-ash transition-colors hover:text-gold" />
             </div>
           </div>
         </div>
 
         {/* Bottom bar */}
-        <div className="mt-8 flex flex-col items-center justify-between gap-3 border-t border-chrome/30 pt-5 sm:flex-row">
+        <div className="mt-6 flex flex-col items-center justify-between gap-2 border-t border-chrome/30 pt-4 sm:flex-row md:mt-8 md:pt-5">
           <p className="font-mono text-[10px] tracking-widest text-ash">
             &copy; {year} Kwest The Barber
           </p>
