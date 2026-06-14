@@ -68,21 +68,27 @@ test.describe("Homepage", () => {
     await expect(bookOnSquire).toHaveAttribute("rel", "noopener noreferrer");
   });
 
-  test("Gallery shows the curated carousel AND the LightWidget IG feed", async ({
+  test("Gallery section renders the curated portfolio carousel", async ({
     page,
   }) => {
     const gallery = page.locator("#gallery");
     const photos = gallery.locator("figure img");
     await expect(photos.first()).toBeVisible();
-    const feed = gallery.locator("iframe[title*='Instagram feed']");
+  });
+
+  test("Instagram section renders the LightWidget feed and follow link", async ({
+    page,
+  }) => {
+    const instagram = page.locator("#instagram");
+    const feed = instagram.locator("iframe[title*='Instagram feed']");
     await expect(feed).toHaveAttribute(
       "src",
       /^https:\/\/cdn\.lightwidget\.com\/widgets\//,
     );
-    const followLink = gallery.getByRole("link", {
-      name: /follow @kwest_the_barber/i,
+    const handleLink = instagram.getByRole("link", {
+      name: /@kwest_the_barber/i,
     });
-    await expect(followLink).toHaveAttribute(
+    await expect(handleLink).toHaveAttribute(
       "href",
       /instagram\.com\/kwest_the_barber/,
     );
