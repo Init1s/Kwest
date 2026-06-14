@@ -102,11 +102,11 @@ export function Portfolio() {
               {/* Slides are sized via flex-basis so they snap to clean
                   breakpoints: 1 card on mobile, 2 on tablet, 3 on
                   desktop. No partial-card peek at any size. */}
-              <div className="-ml-4 flex md:-ml-6">
+              <div className="-ml-3 flex sm:-ml-4 md:-ml-6">
                 {gallery.map((photo) => (
                   <div
                     key={photo.src}
-                    className="min-w-0 flex-shrink-0 basis-full pl-4 md:basis-1/2 md:pl-6 lg:basis-1/3"
+                    className="min-w-0 flex-shrink-0 basis-1/2 pl-3 sm:basis-1/2 sm:pl-4 md:basis-1/3 md:pl-6 lg:basis-1/4"
                   >
                     <figure className="group relative aspect-[4/5] overflow-hidden bg-blade ring-1 ring-chrome/40">
                       <Image
