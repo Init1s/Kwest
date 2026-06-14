@@ -10,6 +10,7 @@ const SECTIONS = [
   { id: "about", selector: "#about" },
   { id: "gallery", selector: "#gallery" },
   { id: "testimonials", selector: "#about ~ section ~ section" },
+  { id: "instagram", selector: "#instagram" },
   { id: "contact", selector: "#contact" },
   { id: "booking", selector: "#booking" },
 ];
