@@ -2,10 +2,18 @@
 
 import { useCallback } from "react";
 import Image from "next/image";
+import Script from "next/script";
 import useEmblaCarousel from "embla-carousel-react";
 import Autoplay from "embla-carousel-autoplay";
 import { Reveal } from "@/components/ui/Reveal";
+import { InstagramIconLink } from "@/components/ui/InstagramIconLink";
 import { gallery } from "@/data/gallery";
+
+// LightWidget HTTPS widget — served from cdn.lightwidget.com so the
+// embed loads on the production HTTPS site without mixed-content
+// blocking. To swap the widget, regenerate it in your LightWidget
+// dashboard and drop the new ID here.
+const LIGHTWIDGET_ID = "a57db604428f59f18ee0c80735196a7a";
 
 export function InstagramFeed() {
   const basePath = process.env.NEXT_PUBLIC_BASE_PATH || "";
@@ -81,13 +89,18 @@ export function InstagramFeed() {
                     />
                   </svg>
                 </button>
+                <InstagramIconLink
+                  size={32}
+                  className="ml-2 text-smoke transition-colors hover:text-gold"
+                />
               </div>
             </div>
           </Reveal>
         </div>
       </div>
 
-      <div className="pb-12 md:pb-16">
+      {/* Curated portfolio carousel */}
+      <div className="pb-16 md:pb-20">
         <Reveal delay={0.1}>
           <div className="overflow-hidden" ref={emblaRef}>
             <div className="flex gap-4 pl-6 pr-[20vw] md:gap-6 md:pl-12">
@@ -111,39 +124,82 @@ export function InstagramFeed() {
         </Reveal>
       </div>
 
+      {/* Live Instagram feed via LightWidget */}
       <div className="px-6 pb-24 md:pb-32">
-        <div className="mx-auto flex max-w-7xl flex-col items-center justify-between gap-4 border-t border-chrome/40 pt-8 md:flex-row">
-          <p className="font-mono text-[10px] uppercase tracking-ultra text-smoke">
-            More work on Instagram
-          </p>
-          <a
-            href="https://www.instagram.com/kwest_the_barber/"
-            target="_blank"
-            rel="noopener noreferrer"
-            className="group inline-flex items-center gap-2 font-mono text-xs uppercase tracking-widest text-bone transition-colors hover:text-gold"
-          >
-            <svg
-              width="18"
-              height="18"
-              viewBox="0 0 24 24"
-              fill="none"
-              stroke="currentColor"
-              strokeWidth="1.6"
-              strokeLinecap="round"
-              strokeLinejoin="round"
-              aria-hidden="true"
+        <div className="mx-auto max-w-7xl">
+          <Reveal delay={0.15} className="mb-6 border-t border-chrome/40 pt-10">
+            <p className="font-mono text-[10px] uppercase tracking-ultra text-smoke">
+              Latest from Instagram
+            </p>
+          </Reveal>
+          <Reveal delay={0.2}>
+            {/* LightWidget renders the live IG feed inside this iframe.
+                Its bootstrap script resizes the iframe at runtime;
+                min-height keeps the embed visible if the script is
+                slow, blocked, or fails. */}
+            <iframe
+              src={`https://cdn.lightwidget.com/widgets/${LIGHTWIDGET_ID}.html`}
+              scrolling="no"
+              loading="lazy"
+              referrerPolicy="no-referrer-when-downgrade"
+              sandbox="allow-scripts allow-popups allow-same-origin"
+              className="lightwidget-widget block w-full overflow-hidden border-0 bg-transparent"
+              style={{ minHeight: 600 }}
+              title="Instagram feed by @kwest_the_barber"
+            />
+            <noscript>
+              <p className="mt-4 text-center font-mono text-xs uppercase tracking-widest text-smoke">
+                JavaScript is required for the Instagram feed.{" "}
+                <a
+                  href="https://www.instagram.com/kwest_the_barber/"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="text-bone hover:text-gold"
+                >
+                  View on Instagram instead.
+                </a>
+              </p>
+            </noscript>
+          </Reveal>
+
+          <div className="mt-8 flex flex-col items-center justify-between gap-4 border-t border-chrome/40 pt-8 md:flex-row">
+            <p className="font-mono text-[10px] uppercase tracking-ultra text-smoke">
+              More work on Instagram
+            </p>
+            <a
+              href="https://www.instagram.com/kwest_the_barber/"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="group inline-flex items-center gap-2 font-mono text-xs uppercase tracking-widest text-bone transition-colors hover:text-gold"
             >
-              <rect x="3" y="3" width="18" height="18" rx="5" />
-              <circle cx="12" cy="12" r="4" />
-              <circle cx="17.5" cy="6.5" r="0.9" fill="currentColor" />
-            </svg>
-            <span>Follow @kwest_the_barber</span>
-            <span className="inline-block transition-transform group-hover:translate-x-1">
-              &rarr;
-            </span>
-          </a>
+              <svg
+                width="18"
+                height="18"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                strokeWidth="1.6"
+                strokeLinecap="round"
+                strokeLinejoin="round"
+                aria-hidden="true"
+              >
+                <rect x="3" y="3" width="18" height="18" rx="5" />
+                <circle cx="12" cy="12" r="4" />
+                <circle cx="17.5" cy="6.5" r="0.9" fill="currentColor" />
+              </svg>
+              <span>Follow @kwest_the_barber</span>
+              <span className="inline-block transition-transform group-hover:translate-x-1">
+                &rarr;
+              </span>
+            </a>
+          </div>
         </div>
       </div>
+
+      <Script
+        src="https://cdn.lightwidget.com/widgets/lightwidget.js"
+        strategy="afterInteractive"
+      />
     </section>
   );
 }
