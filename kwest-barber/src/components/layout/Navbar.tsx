@@ -42,8 +42,8 @@ export function Navbar() {
             priority
             className={`transition-all duration-300 ${
               scrolled
-                ? "h-12 w-12 md:h-20 md:w-20"
-                : "h-14 w-14 md:h-28 md:w-28"
+                ? "h-16 w-16 md:h-20 md:w-20"
+                : "h-20 w-20 md:h-28 md:w-28"
             }`}
           />
         </a>

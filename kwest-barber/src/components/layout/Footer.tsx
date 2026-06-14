@@ -19,7 +19,7 @@ export function Footer() {
               alt="Kwest The Barber"
               width={128}
               height={128}
-              className="h-14 w-14 md:h-28 md:w-28"
+              className="h-24 w-24 md:h-28 md:w-28"
             />
             <p className="mt-3 max-w-xs font-body text-sm text-ash">
               Precision cuts and clean fades in Boca Raton, FL.
