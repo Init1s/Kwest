@@ -11,10 +11,18 @@ export function Portfolio() {
   const basePath = process.env.NEXT_PUBLIC_BASE_PATH || "";
 
   const [emblaRef, emblaApi] = useEmblaCarousel(
-    { loop: true, align: "start", dragFree: true, containScroll: "trimSnaps" },
+    {
+      loop: true,
+      align: "start",
+      // snap to slide boundaries (not free scroll) so the carousel
+      // always shows full cards — no partial-card peek
+      dragFree: false,
+      containScroll: "keepSnaps",
+      slidesToScroll: 1,
+    },
     [
       Autoplay({
-        delay: 3500,
+        delay: 4500,
         stopOnInteraction: false,
         stopOnMouseEnter: true,
       }),
@@ -87,25 +95,31 @@ export function Portfolio() {
         </div>
       </div>
 
-      <div className="pb-24 md:pb-32">
+      <div className="px-6 pb-24 md:px-12 md:pb-32">
         <Reveal delay={0.1}>
-          <div className="overflow-hidden" ref={emblaRef}>
-            <div className="flex gap-4 pl-6 pr-[20vw] md:gap-6 md:pl-12">
-              {gallery.map((photo) => (
-                <figure
-                  key={photo.src}
-                  className="group relative aspect-[4/5] flex-shrink-0 overflow-hidden bg-blade ring-1 ring-chrome/40"
-                  style={{ width: "clamp(260px, 30vw, 420px)" }}
-                >
-                  <Image
-                    src={`${basePath}${photo.src}`}
-                    alt={photo.alt}
-                    fill
-                    className="object-cover object-center transition-transform duration-700 group-hover:scale-[1.03]"
-                    sizes="(max-width: 640px) 260px, (max-width: 1024px) 30vw, 420px"
-                  />
-                </figure>
-              ))}
+          <div className="mx-auto max-w-7xl">
+            <div className="overflow-hidden" ref={emblaRef}>
+              {/* Slides are sized via flex-basis so they snap to clean
+                  breakpoints: 1 card on mobile, 2 on tablet, 3 on
+                  desktop. No partial-card peek at any size. */}
+              <div className="-ml-4 flex md:-ml-6">
+                {gallery.map((photo) => (
+                  <div
+                    key={photo.src}
+                    className="min-w-0 flex-shrink-0 basis-full pl-4 md:basis-1/2 md:pl-6 lg:basis-1/3"
+                  >
+                    <figure className="group relative aspect-[4/5] overflow-hidden bg-blade ring-1 ring-chrome/40">
+                      <Image
+                        src={`${basePath}${photo.src}`}
+                        alt={photo.alt}
+                        fill
+                        className="object-cover object-center transition-transform duration-700 group-hover:scale-[1.03]"
+                        sizes="(max-width: 768px) 100vw, (max-width: 1024px) 50vw, 33vw"
+                      />
+                    </figure>
+                  </div>
+                ))}
+              </div>
             </div>
           </div>
         </Reveal>
