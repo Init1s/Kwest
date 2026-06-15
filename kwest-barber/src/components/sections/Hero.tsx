@@ -66,7 +66,7 @@ export function Hero() {
         </div>
         <div>
           <span className="block font-display text-5xl leading-none text-bone lg:text-6xl">
-            10+
+            18+
           </span>
           <p className="mt-2 font-mono text-[9px] uppercase tracking-ultra text-smoke">
             Years In The Chair
@@ -178,7 +178,7 @@ export function Hero() {
             </p>
           </div>
           <div>
-            <span className="font-display text-2xl text-bone">10+</span>
+            <span className="font-display text-2xl text-bone">18+</span>
             <p className="font-mono text-[8px] uppercase tracking-ultra text-smoke">
               Years
             </p>
