@@ -13,9 +13,9 @@ export default function Home() {
       <Hero />
       <TickerBand />
       <Services />
-      <About />
       <InstagramFeed />
       <Testimonials />
+      <About />
       <Contact />
       <Booking />
     </main>
