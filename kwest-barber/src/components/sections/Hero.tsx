@@ -1,6 +1,5 @@
 "use client";
 
-import Image from "next/image";
 import { useEffect, useState } from "react";
 import { MagneticButton } from "@/components/ui/MagneticButton";
 import { INTRO_DURATION } from "@/components/ui/Intro";
@@ -35,45 +34,12 @@ export function Hero() {
 
   return (
     <section className="relative overflow-hidden bg-ink pt-28 pb-10 md:min-h-screen md:pt-36">
-      {/* Full-bleed B&W portrait — fills the left half on desktop, sits
-          behind everything on mobile. Heavy gradient overlays keep the
-          typography legible while the photo carries the visual weight. */}
-      <div className="pointer-events-none absolute inset-0 z-0 md:right-auto md:w-1/2 lg:w-[55%]">
-        <Image
-          src={`${process.env.NEXT_PUBLIC_BASE_PATH || ""}/images/kwest-portrait.jpg`}
-          alt=""
-          fill
-          priority
-          aria-hidden="true"
-          className="object-cover object-[35%_center] grayscale contrast-110"
-          sizes="(max-width: 768px) 100vw, 55vw"
-        />
-        {/* Mobile vignette — heavy darkening top + bottom so the typography
-            keeps full contrast over the centre of the photo */}
-        <div
-          className="absolute inset-0 md:hidden"
-          style={{
-            background:
-              "linear-gradient(180deg, rgba(10,10,10,0.85) 0%, rgba(10,10,10,0.35) 35%, rgba(10,10,10,0.55) 65%, rgba(10,10,10,0.95) 100%)",
-          }}
-        />
-        {/* Desktop right-edge fade — photo on left dissolves into the dark
-            field behind the headline column on the right */}
-        <div
-          className="absolute inset-0 hidden md:block"
-          style={{
-            background:
-              "linear-gradient(90deg, rgba(10,10,10,0.35) 0%, rgba(10,10,10,0.45) 55%, rgba(10,10,10,0.95) 95%, #0A0A0A 100%)",
-          }}
-        />
-      </div>
-
       {/* Soft radial glow — depth without busy-ness */}
       <div
-        className="pointer-events-none absolute inset-0 z-[1]"
+        className="pointer-events-none absolute inset-0"
         style={{
           background:
-            "radial-gradient(ellipse at 75% 40%, rgba(255, 77, 26, 0.10) 0%, transparent 55%)",
+            "radial-gradient(ellipse at 65% 40%, rgba(255, 77, 26, 0.08) 0%, transparent 55%)",
         }}
       />
 
