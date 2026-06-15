@@ -60,7 +60,7 @@ export function InstagramFeed() {
             className="grid grid-cols-3 gap-1 md:gap-1.5"
             stagger={0.04}
           >
-            {gallery.map((photo) => (
+            {gallery.slice(0, 6).map((photo) => (
               <RevealItem key={photo.src}>
                 <a
                   href={INSTAGRAM_URL}
