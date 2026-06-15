@@ -75,7 +75,7 @@ export function About() {
             {/* Floating badge */}
             <Reveal delay={0.4} className="absolute -bottom-4 right-6">
               <div className="flex items-center gap-3 rounded-lg border border-gold/30 bg-ink px-5 py-3 animate-glow-pulse">
-                <span className="font-display text-3xl text-gold">10</span>
+                <span className="font-display text-3xl text-gold">18+</span>
                 <div className="flex flex-col">
                   <span className="font-mono text-[8px] uppercase tracking-ultra text-smoke">
                     Years
@@ -116,7 +116,7 @@ export function About() {
                   Barber
                 </span>
                 <p className="mt-1 font-display text-sm uppercase text-bone">
-                  Kwest
+                  Kwest the Barber
                 </p>
               </div>
               <div>
@@ -124,7 +124,7 @@ export function About() {
                   Location
                 </span>
                 <p className="mt-1 font-display text-sm uppercase text-bone">
-                  Boca Raton, FL
+                  Boca Raton near FAU
                 </p>
               </div>
               <div>
@@ -132,7 +132,7 @@ export function About() {
                   Tools
                 </span>
                 <p className="mt-1 font-display text-sm uppercase text-bone">
-                  Wahl Seniors
+                  JRL
                 </p>
               </div>
               <div>
