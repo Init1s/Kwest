@@ -68,13 +68,14 @@ export function InstagramFeed() {
                   target="_blank"
                   rel="noopener noreferrer"
                   aria-label={`${photo.alt} — view on Instagram`}
-                  className="group relative block aspect-square overflow-hidden bg-ink ring-1 ring-chrome/30"
+                  className="group relative block aspect-square touch-pan-y select-none overflow-hidden bg-ink ring-1 ring-chrome/30"
                 >
                   <Image
                     src={`${basePath}${photo.src}`}
                     alt={photo.alt}
                     fill
-                    className="object-cover object-center transition-transform duration-700 group-hover:scale-[1.05]"
+                    draggable={false}
+                    className="pointer-events-none object-cover object-center transition-transform duration-700 group-hover:scale-[1.05]"
                     sizes="(max-width: 768px) 50vw, 33vw"
                   />
                   {/* Hover overlay — dark veil + IG icon centered */}
