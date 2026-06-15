@@ -7,10 +7,10 @@ export function Contact() {
       <div className="mx-auto max-w-7xl">
         <Reveal className="mb-16">
           <h2
-            className="font-display uppercase leading-[0.95] text-bone"
-            style={{ fontSize: "clamp(2.5rem, 7vw, 5.5rem)" }}
+            className="font-display uppercase leading-[0.9] text-bone"
+            style={{ fontSize: "clamp(2rem, 5vw, 4rem)" }}
           >
-            Contact
+            Find the chair.
           </h2>
           <p className="mt-4 max-w-md font-body text-sm text-ash">
             DM for questions, book through Squire for the chair.

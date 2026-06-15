@@ -7,10 +7,12 @@ export function Booking() {
       <div className="mx-auto max-w-5xl text-center">
         <Reveal>
           <h2
-            className="font-display uppercase leading-[0.9] text-bone"
-            style={{ fontSize: "clamp(3rem, 9vw, 8rem)" }}
+            className="font-display uppercase leading-[0.85] text-bone"
+            style={{ fontSize: "clamp(3.5rem, 14vw, 12rem)" }}
           >
-            Book Your Cut
+            Book
+            <br />
+            <span className="block text-gold">Your Cut.</span>
           </h2>
 
           <p className="mx-auto mt-8 max-w-md font-body text-sm leading-relaxed text-ash">

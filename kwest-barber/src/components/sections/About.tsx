@@ -5,28 +5,34 @@ import { InstagramIconLink } from "@/components/ui/InstagramIconLink";
 
 export function About() {
   return (
-    <section id="about" className="bg-blade py-24 md:py-32 overflow-hidden">
-      <div className="mx-auto max-w-7xl px-6">
-        <Reveal className="mb-16">
+    <section id="about" className="relative bg-blade py-24 md:py-32 overflow-hidden">
+      {/* Editorial vertical type accent down the left edge */}
+      <div
+        aria-hidden="true"
+        className="pointer-events-none absolute left-2 top-1/2 hidden -translate-y-1/2 -rotate-90 origin-center font-mono text-[10px] uppercase tracking-ultra text-smoke/40 md:block lg:left-6 lg:text-xs"
+      >
+        About — Kwest the Barber — Boca Raton, FL
+      </div>
+
+      <div className="relative mx-auto max-w-7xl px-6">
+        <Reveal className="mb-12 md:mb-20">
           <h2
-            className="font-display uppercase leading-[0.92] text-bone"
-            style={{ fontSize: "clamp(2.25rem, 6.2vw, 5.25rem)" }}
+            className="font-display uppercase leading-[0.85] text-bone"
+            style={{ fontSize: "clamp(3rem, 11vw, 9rem)" }}
           >
-            About Kwest
+            About
+            <br />
+            <span className="ml-[20%] block text-gold">Kwest.</span>
           </h2>
         </Reveal>
 
-        {/* Content grid */}
+        {/* Asymmetric content grid — portrait breaks out of the left
+            column on lg+ and extends down past the section's natural
+            bottom; body copy wraps unevenly on the right. */}
         <div className="grid gap-12 lg:grid-cols-5 lg:gap-16">
-          {/* Duotoned portrait. Image renders at its native ratio (full
-              head, no crop, no letterbox, no side bars). Framed by:
-                - a 2px gold outer offset frame (sharp corners — no
-                  rounding, so the cap edge isn't masked)
-                - a soft ink-coloured drop shadow
-                - large gold L-shape corner ticks sitting on top of the
-                  frame at each corner
-                - the duotone-orange treatment on the image itself */}
-          <div className="relative lg:col-span-2">
+          {/* Portrait column — extends visually with negative bottom
+              margin so the frame lives "past" the section grid */}
+          <div className="relative lg:col-span-2 lg:-mb-16 lg:translate-y-6">
             <ClipReveal type="diagonal" delay={0.1}>
               <div className="relative p-3 md:p-4">
                 {/* The frame — sits behind the image, offset out by the

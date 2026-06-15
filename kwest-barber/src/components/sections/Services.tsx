@@ -119,13 +119,16 @@ export function Services() {
       className="relative bg-ink px-6 py-24 md:py-32 overflow-hidden"
     >
       <div className="relative mx-auto max-w-7xl">
-        <Reveal className="mb-12">
+        <Reveal className="mb-12 flex items-end justify-between gap-6">
           <h2
-            className="font-display uppercase leading-[0.95] text-bone"
-            style={{ fontSize: "clamp(2.5rem, 7vw, 5.5rem)" }}
+            className="font-display uppercase leading-[0.9] text-bone"
+            style={{ fontSize: "clamp(3.5rem, 12vw, 10rem)" }}
           >
             Services
           </h2>
+          <span className="hidden -translate-y-3 font-mono text-[10px] uppercase tracking-ultra text-smoke md:block">
+            8 cuts · all by Kwest
+          </span>
         </Reveal>
 
         <RevealGroup stagger={0.06} className="border-t border-chrome/60">
