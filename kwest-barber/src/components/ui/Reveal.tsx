@@ -1,6 +1,6 @@
 "use client";
 
-import { motion } from "framer-motion";
+import { motion, useReducedMotion } from "framer-motion";
 import { ReactNode } from "react";
 
 const directionOffset = {
@@ -23,14 +23,19 @@ export function Reveal({
   direction = "up",
   className,
 }: RevealProps) {
-  const offset = directionOffset[direction];
+  const prefersReducedMotion = useReducedMotion();
+  const offset = prefersReducedMotion ? { x: 0, y: 0 } : directionOffset[direction];
 
   return (
     <motion.div
-      initial={{ opacity: 0, ...offset }}
+      initial={{ opacity: prefersReducedMotion ? 1 : 0, ...offset }}
       whileInView={{ opacity: 1, x: 0, y: 0 }}
       viewport={{ once: true, margin: "-80px" }}
-      transition={{ duration: 0.7, delay, ease: [0.22, 1, 0.36, 1] }}
+      transition={{
+        duration: prefersReducedMotion ? 0 : 0.7,
+        delay: prefersReducedMotion ? 0 : delay,
+        ease: [0.22, 1, 0.36, 1],
+      }}
       className={className}
     >
       {children}
@@ -49,6 +54,7 @@ export function RevealGroup({
   className,
   stagger = 0.08,
 }: RevealGroupProps) {
+  const prefersReducedMotion = useReducedMotion();
   return (
     <motion.div
       initial="hidden"
@@ -56,7 +62,9 @@ export function RevealGroup({
       viewport={{ once: true, margin: "-60px" }}
       variants={{
         hidden: {},
-        visible: { transition: { staggerChildren: stagger } },
+        visible: {
+          transition: { staggerChildren: prefersReducedMotion ? 0 : stagger },
+        },
       }}
       className={className}
     >
@@ -71,14 +79,18 @@ interface RevealItemProps {
 }
 
 export function RevealItem({ children, className }: RevealItemProps) {
+  const prefersReducedMotion = useReducedMotion();
   return (
     <motion.div
       variants={{
-        hidden: { opacity: 0, y: 20 },
+        hidden: { opacity: prefersReducedMotion ? 1 : 0, y: prefersReducedMotion ? 0 : 20 },
         visible: {
           opacity: 1,
           y: 0,
-          transition: { duration: 0.5, ease: [0.22, 1, 0.36, 1] },
+          transition: {
+            duration: prefersReducedMotion ? 0 : 0.5,
+            ease: [0.22, 1, 0.36, 1],
+          },
         },
       }}
       className={className}

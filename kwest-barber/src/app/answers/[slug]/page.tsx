@@ -8,6 +8,7 @@ import {
   canonical,
   faqSchema,
   jsonLdScript,
+  speakableSpec,
 } from "@/lib/seo";
 
 export const dynamic = "force-static";
@@ -56,6 +57,24 @@ export default async function AnswerPage({
       <script
         type="application/ld+json"
         dangerouslySetInnerHTML={jsonLdScript([
+          {
+            "@context": "https://schema.org",
+            "@type": "QAPage",
+            "@id": canonical(`/answers/${slug}#qa`),
+            mainEntity: {
+              "@type": "Question",
+              name: answer.question,
+              text: answer.question,
+              answerCount: 1,
+              acceptedAnswer: {
+                "@type": "Answer",
+                text: answer.summary,
+                author: { "@id": `${canonical("")}#kwest` },
+              },
+            },
+            speakable: speakableSpec(["h1", ".aeo-answer"]),
+            inLanguage: "en-US",
+          },
           faqSchema([{ q: answer.question, a: answer.summary }]),
           breadcrumbSchema([
             { name: "Home", href: "/" },
@@ -65,7 +84,7 @@ export default async function AnswerPage({
         ])}
       />
 
-      <main className="bg-ink pt-32 pb-24 md:pt-40 md:pb-32">
+      <main id="main-content" className="bg-ink pt-32 pb-24 md:pt-40 md:pb-32">
         <div className="mx-auto max-w-3xl px-6">
           <nav
             aria-label="Breadcrumb"
@@ -88,9 +107,11 @@ export default async function AnswerPage({
               </h1>
             </header>
 
-            {/* Direct answer — the AEO-quotable block */}
+            {/* Direct answer — the AEO-quotable block. The `.aeo-answer`
+                class is targeted by Speakable schema so voice assistants
+                read this paragraph aloud. */}
             <section className="mb-10 border-l-2 border-gold pl-5">
-              <p className="font-body text-base leading-relaxed text-bone md:text-lg">
+              <p className="aeo-answer font-body text-base leading-relaxed text-bone md:text-lg">
                 {answer.summary}
               </p>
             </section>

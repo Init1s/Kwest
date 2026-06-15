@@ -5,7 +5,10 @@
   --color-blade: #111111;
   --color-steel: #1C1C1C;
   --color-chrome: #2A2A2A;
-  --color-ash: #6B6B6B;
+  /* #8C8C8C lands at >= 4.5:1 on ink/blade for WCAG AA normal-text contrast.
+     Previous value #6B6B6B was 4.06:1 — failed AA at the small body sizes
+     used here. */
+  --color-ash: #8C8C8C;
   --color-smoke: #9A9A9A;
   --color-bone: #E8E2D9;
   /* Brand orange (from logo) — was gold, kept variable name to preserve usages */
@@ -69,7 +72,7 @@
   --color-blade: #111111;
   --color-steel: #1C1C1C;
   --color-chrome: #2A2A2A;
-  --color-ash: #6B6B6B;
+  --color-ash: #8C8C8C;
   --color-smoke: #9A9A9A;
   --color-bone: #E8E2D9;
   --color-gold: #FF4D1A;
@@ -128,6 +131,56 @@ body::before {
 ::-webkit-scrollbar-thumb {
   background: #FF4D1A;
   border-radius: 2px;
+}
+
+/* === Focus-visible — WCAG 2.4.7 ===========================================
+   Every interactive element gets a clear gold ring on keyboard focus.
+   Default :focus is suppressed for pointer-only triggers. */
+:focus {
+  outline: none;
+}
+:focus-visible {
+  outline: 2px solid #FF4D1A;
+  outline-offset: 3px;
+  border-radius: 2px;
+}
+
+/* === Skip-to-content link =================================================
+   Hidden until focused, then slides in at the top-left so keyboard users
+   can jump past the navbar. */
+.skip-link {
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 100;
+  background: #FF4D1A;
+  color: #0A0A0A;
+  font-family: "Azeret Mono", monospace;
+  font-size: 12px;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.18em;
+  padding: 0.75rem 1.25rem;
+  transform: translateY(-150%);
+  transition: transform 180ms ease;
+}
+.skip-link:focus-visible {
+  transform: translateY(0);
+  outline: none;
+}
+
+/* === Reduced motion — WCAG 2.3.3 ==========================================
+   Honor the OS-level "reduce motion" preference. Kills CSS animations and
+   smooth scroll. Framer Motion components opt out via useReducedMotion(). */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.001ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.001ms !important;
+    scroll-behavior: auto !important;
+  }
 }
 
 /* === Hand-painted CMYK-misregistration headline effect =====================

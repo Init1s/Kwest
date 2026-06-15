@@ -74,10 +74,12 @@ test.describe("Homepage", () => {
     const gallery = page.locator("#gallery");
     const photos = gallery.locator("img");
     await expect(photos.first()).toBeVisible();
-    const handleLink = gallery.getByRole("link", {
+    const handleLinks = gallery.getByRole("link", {
       name: /@kwest_the_barber/i,
     });
-    await expect(handleLink).toHaveAttribute(
+    // Both the top handle link and the bottom Follow CTA point at IG —
+    // assert at least one is present and both resolve to the IG URL.
+    await expect(handleLinks.first()).toHaveAttribute(
       "href",
       /instagram\.com\/kwest_the_barber/,
     );

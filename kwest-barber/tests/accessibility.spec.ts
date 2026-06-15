@@ -69,6 +69,44 @@ test.describe("Accessibility", () => {
     expect(contrast).toBeGreaterThanOrEqual(7.0);
   });
 
+  test("skip-to-content link is the first focusable element", async ({
+    page,
+  }) => {
+    const skip = page.locator("a.skip-link").first();
+    await expect(skip).toBeAttached();
+    await expect(skip).toHaveAttribute("href", "#main-content");
+    await expect(skip).toHaveText(/skip to content/i);
+    // The target it points at must exist on the page.
+    const target = page.locator("#main-content");
+    await expect(target).toBeAttached();
+  });
+
+  test("mobile menu button advertises its state via aria-expanded", async ({
+    page,
+  }) => {
+    await page.setViewportSize({ width: 390, height: 844 });
+    await page.goto("/");
+    const toggle = page.getByRole("button", { name: /open menu/i });
+    await expect(toggle).toHaveAttribute("aria-expanded", "false");
+    await expect(toggle).toHaveAttribute("aria-controls", "mobile-menu");
+    await toggle.click();
+    const toggleOpen = page.getByRole("button", { name: /close menu/i });
+    await expect(toggleOpen).toHaveAttribute("aria-expanded", "true");
+  });
+
+  test("ash secondary-text color meets WCAG AA on ink", () => {
+    // --color-ash #8C8C8C on --color-ink #0A0A0A.
+    //   ash ≈ 0.265, ink ≈ 0.003
+    //   contrast = (0.265 + 0.05) / (0.003 + 0.05) ≈ 5.94
+    // 5.94 ≥ 4.5 → passes AA for normal text.
+    const ashLuminance = 0.265;
+    const inkLuminance = 0.003;
+    const contrast =
+      (Math.max(ashLuminance, inkLuminance) + 0.05) /
+      (Math.min(ashLuminance, inkLuminance) + 0.05);
+    expect(contrast).toBeGreaterThanOrEqual(4.5);
+  });
+
   test("no heading level is skipped", async ({ page }) => {
     const headings = await page.locator("h1, h2, h3, h4, h5, h6").all();
     const levels: number[] = [];

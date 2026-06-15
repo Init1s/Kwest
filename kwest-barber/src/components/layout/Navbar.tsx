@@ -25,6 +25,7 @@ export function Navbar() {
 
   return (
     <nav
+      aria-label="Primary"
       className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
         scrolled
           ? "bg-ink/95 backdrop-blur-md border-b border-gold/10 py-3"
@@ -73,9 +74,12 @@ export function Navbar() {
 
         {/* Mobile Hamburger */}
         <button
+          type="button"
           className="relative z-50 flex h-8 w-8 flex-col items-center justify-center gap-1.5 md:hidden"
           onClick={() => setMenuOpen(!menuOpen)}
-          aria-label="Toggle menu"
+          aria-label={menuOpen ? "Close menu" : "Open menu"}
+          aria-expanded={menuOpen}
+          aria-controls="mobile-menu"
         >
           <span
             className={`block h-[2px] w-5 bg-bone transition-all duration-300 ${
@@ -97,6 +101,9 @@ export function Navbar() {
 
       {/* Mobile Menu */}
       <div
+        id="mobile-menu"
+        inert={!menuOpen}
+        aria-hidden={!menuOpen}
         className={`absolute left-0 right-0 top-full bg-ink/98 backdrop-blur-lg border-b border-gold/10 transition-all duration-300 md:hidden ${
           menuOpen
             ? "translate-y-0 opacity-100"

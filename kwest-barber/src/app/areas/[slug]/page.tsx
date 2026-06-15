@@ -63,7 +63,7 @@ export default async function AreaPage({
         ])}
       />
 
-      <main className="bg-ink pt-32 pb-24 md:pt-40 md:pb-32">
+      <main id="main-content" className="bg-ink pt-32 pb-24 md:pt-40 md:pb-32">
         <div className="mx-auto max-w-4xl px-6">
           <nav
             aria-label="Breadcrumb"

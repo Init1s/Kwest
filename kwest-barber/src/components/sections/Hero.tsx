@@ -4,12 +4,18 @@ import { useEffect, useState } from "react";
 import { MagneticButton } from "@/components/ui/MagneticButton";
 import { INTRO_DURATION } from "@/components/ui/Intro";
 
+const COUNT_TARGET = 2400;
+
 export function Hero() {
-  const [count, setCount] = useState(0);
+  // Initial state matches the final value so SSR/SSG output reads
+  // "2,400+" in the HTML — search crawlers and previewers see the real
+  // claim, not zero. On client mount we reset to 0 and animate up,
+  // hidden behind the Intro splash for the first INTRO_DURATION seconds.
+  const [count, setCount] = useState(COUNT_TARGET);
 
   useEffect(() => {
     const timeout = setTimeout(() => {
-      const target = 2400;
+      const target = COUNT_TARGET;
       const duration = 2000;
       const startTime = performance.now();
 

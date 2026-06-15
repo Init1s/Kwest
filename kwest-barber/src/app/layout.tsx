@@ -37,17 +37,66 @@ const azeretMono = Azeret_Mono({
   weight: ["400", "500"],
 });
 
+const SITE_URL =
+  process.env.NEXT_PUBLIC_SITE_URL ?? "https://kwestthebarber.com";
+const BASE = process.env.NEXT_PUBLIC_BASE_PATH ?? "";
+
 export const metadata: Metadata = {
-  title: "Kwest The Barber | Boca Raton",
+  metadataBase: new URL(SITE_URL),
+  title: {
+    default: "Kwest The Barber | Barber in Boca Raton near FAU",
+    template: "%s · Kwest The Barber",
+  },
   description:
-    "Sharp. Clean. Precise. Premium cuts and fades in Boca Raton, FL. Book your appointment with Kwest The Barber.",
+    "Precision cuts, clean fades, and hot-towel shaves in Boca Raton, FL — near FAU. 18+ years in the chair, 2,400+ regulars. Book through Squire.",
+  applicationName: "Kwest The Barber",
+  authors: [{ name: "Kwest The Barber" }],
+  creator: "Kwest The Barber",
+  publisher: "Kwest The Barber",
+  keywords: [
+    "barber",
+    "Boca Raton barber",
+    "barber near FAU",
+    "haircut",
+    "fade",
+    "hot towel shave",
+    "Kwest the Barber",
+  ],
+  alternates: { canonical: "/" },
   openGraph: {
-    title: "Kwest The Barber | Boca Raton",
+    title: "Kwest The Barber | Barber in Boca Raton near FAU",
     description:
-      "Sharp. Clean. Precise. Premium cuts and fades in Boca Raton, FL.",
-    url: "https://kwestthebarber.com",
+      "Sharp. Clean. Precise. 18+ years cutting in Boca Raton, FL — near FAU.",
+    url: SITE_URL,
     siteName: "Kwest The Barber",
     type: "website",
+    locale: "en_US",
+    images: [
+      {
+        url: `${BASE}/images/og-kwest.jpg`,
+        width: 1200,
+        height: 630,
+        alt: "Kwest The Barber — Boca Raton",
+      },
+    ],
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "Kwest The Barber | Barber in Boca Raton near FAU",
+    description:
+      "Sharp. Clean. Precise. 18+ years cutting in Boca Raton, FL — near FAU.",
+    images: [`${BASE}/images/og-kwest.jpg`],
+  },
+  robots: {
+    index: true,
+    follow: true,
+    googleBot: {
+      index: true,
+      follow: true,
+      "max-snippet": -1,
+      "max-image-preview": "large",
+      "max-video-preview": -1,
+    },
   },
 };
 
@@ -61,6 +110,9 @@ export default function RootLayout({
       <body
         className={`${knewave.variable} ${permanentMarker.variable} ${outfit.variable} ${azeretMono.variable} antialiased`}
       >
+        <a href="#main-content" className="skip-link">
+          Skip to content
+        </a>
         <Intro />
         <Navbar />
         {children}

@@ -11,6 +11,10 @@ export const SITE = {
   city: "Boca Raton",
   region: "FL",
   country: "US",
+  neighborhood: "near FAU",
+  // Approximate centroid of Boca Raton / FAU area. Used in BarberShop
+  // schema for local discovery when the exact address is shared at booking.
+  geo: { lat: 26.371, lng: -80.103 },
   telephone: undefined as string | undefined,
 };
 
@@ -30,16 +34,42 @@ export function localBusinessSchema() {
     "@type": "BarberShop",
     "@id": `${SITE.url}/#barbershop`,
     name: SITE.name,
+    description:
+      "Precision cuts, clean fades, and hot-towel shaves in Boca Raton, FL — near FAU. 18+ years in the chair.",
     url: SITE.url,
     image: `${SITE.url}/icon.png`,
+    logo: `${SITE.url}/icon.png`,
     address: {
       "@type": "PostalAddress",
       addressLocality: SITE.city,
       addressRegion: SITE.region,
       addressCountry: SITE.country,
     },
+    geo: {
+      "@type": "GeoCoordinates",
+      latitude: SITE.geo.lat,
+      longitude: SITE.geo.lng,
+    },
+    areaServed: [
+      { "@type": "City", name: "Boca Raton, FL" },
+      { "@type": "City", name: "Delray Beach, FL" },
+      { "@type": "City", name: "Highland Beach, FL" },
+      { "@type": "City", name: "Deerfield Beach, FL" },
+    ],
+    employee: { "@id": `${SITE.url}/#kwest` },
+    founder: { "@id": `${SITE.url}/#kwest` },
     sameAs: ["https://www.instagram.com/kwest_the_barber/"],
     priceRange: "$$",
+    paymentAccepted: "Cash, Credit Card",
+    currenciesAccepted: "USD",
+    knowsAbout: [
+      "Men's haircut",
+      "Fade haircut",
+      "Beard sculpt",
+      "Hot towel shave",
+      "Lineup",
+      "Scissor cut",
+    ],
     openingHoursSpecification: [
       {
         "@type": "OpeningHoursSpecification",
@@ -60,6 +90,76 @@ export function localBusinessSchema() {
         closes: "16:00",
       },
     ],
+  };
+}
+
+export function personSchema() {
+  return {
+    "@context": "https://schema.org",
+    "@type": "Person",
+    "@id": `${SITE.url}/#kwest`,
+    name: "Kwest the Barber",
+    alternateName: "Kwest",
+    jobTitle: "Barber",
+    description:
+      "Boca Raton barber with 18+ years in the chair. Started with a pair of Wahl Seniors, now runs a one-chair shop near FAU with 2,400+ regulars.",
+    image: `${SITE.url}/images/kwest-portrait.jpg`,
+    url: SITE.url,
+    worksFor: { "@id": `${SITE.url}/#barbershop` },
+    knowsAbout: [
+      "Men's haircut",
+      "Fade haircut",
+      "Beard sculpt",
+      "Hot towel shave",
+      "Lineup",
+      "Scissor cut",
+    ],
+    sameAs: ["https://www.instagram.com/kwest_the_barber/"],
+  };
+}
+
+export function websiteSchema() {
+  return {
+    "@context": "https://schema.org",
+    "@type": "WebSite",
+    "@id": `${SITE.url}/#website`,
+    name: SITE.name,
+    url: SITE.url,
+    publisher: { "@id": `${SITE.url}/#barbershop` },
+    inLanguage: "en-US",
+  };
+}
+
+// Hero claims, formed as quotable Q/A for AI answer extraction.
+export function homepageFaqSchema() {
+  return faqSchema([
+    {
+      q: "Where is Kwest the Barber located?",
+      a: "Kwest the Barber is in Boca Raton, FL, near FAU. The exact address is shared at booking. Appointments are handled through Squire.",
+    },
+    {
+      q: "How long has Kwest been cutting hair?",
+      a: "Kwest has been a barber for 18+ years and has cut over 2,400 regulars.",
+    },
+    {
+      q: "What services does Kwest the Barber offer?",
+      a: "Precision haircuts, skin and skin-fade work, scissor cuts, beard sculpts, hot-towel straight-razor shaves, kids' cuts (14 and under), and house-call VIP service. Booking is through Squire.",
+    },
+    {
+      q: "How do I book an appointment with Kwest the Barber?",
+      a: "Booking is handled through Squire. Use the Book on Squire button on kwestthebarber.com or message @kwest_the_barber on Instagram for questions.",
+    },
+  ]);
+}
+
+// schema.org/SpeakableSpecification — flags content blocks that voice
+// assistants (Google Assistant, etc.) should prefer when reading the page
+// aloud. Apply on /answers/[slug] where the lede paragraph is a clean,
+// quotable answer.
+export function speakableSpec(cssSelectors: string[]) {
+  return {
+    "@type": "SpeakableSpecification",
+    cssSelector: cssSelectors,
   };
 }
 
