@@ -130,15 +130,6 @@ body::before {
   border-radius: 2px;
 }
 
-/* Horizontal gallery scroller — hide native scrollbar so the row reads
-   as a swipe-able carousel, not a div-with-a-scrollbar. */
-.gallery-scroll {
-  scrollbar-width: none;
-}
-.gallery-scroll::-webkit-scrollbar {
-  display: none;
-}
-
 /* === Hand-painted CMYK-misregistration headline effect =====================
    Apply with `class="painted-mis"` on a font-display headline. Renders the
    text twice with a faint orange + lime offset like a misregistered print. */

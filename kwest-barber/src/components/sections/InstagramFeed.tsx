@@ -1,5 +1,5 @@
 import Image from "next/image";
-import { Reveal } from "@/components/ui/Reveal";
+import { Reveal, RevealGroup, RevealItem } from "@/components/ui/Reveal";
 import { gallery } from "@/data/gallery";
 
 const HANDLE = "@kwest_the_barber";
@@ -51,62 +51,55 @@ export function InstagramFeed() {
         </div>
       </div>
 
-      {/* Horizontal scroll-snap row. Bleeds full-width on mobile so the
-          first/last tiles align flush; left/right padding via spacer items
-          keeps snap targets clean. */}
-      <div className="pb-10 md:pb-14">
-        <Reveal>
-          <div
-            className="gallery-scroll flex snap-x snap-mandatory gap-3 overflow-x-auto overscroll-x-contain scroll-smooth px-6 md:gap-4 md:px-10"
-            role="region"
-            aria-label="Photo gallery — swipe to view more"
+      {/* IG-profile-style tight 3-col grid. All 10 photos, square tiles,
+          minimal gap. Reads as an Instagram feed grid, not a styled
+          carousel. */}
+      <div className="px-6 pb-12 md:pb-16">
+        <div className="mx-auto max-w-7xl">
+          <RevealGroup
+            className="grid grid-cols-3 gap-1 md:gap-1.5"
+            stagger={0.04}
           >
             {gallery.map((photo) => (
-              <a
-                key={photo.src}
-                href={INSTAGRAM_URL}
-                target="_blank"
-                rel="noopener noreferrer"
-                aria-label={`${photo.alt} — view on Instagram`}
-                className="group relative block aspect-square w-[78vw] flex-shrink-0 snap-start touch-pan-x select-none overflow-hidden bg-ink ring-1 ring-chrome/30 sm:w-[60vw] md:w-[40vw] lg:w-[28vw] xl:w-[22vw]"
-              >
-                <Image
-                  src={`${basePath}${photo.src}`}
-                  alt={photo.alt}
-                  fill
-                  draggable={false}
-                  className="pointer-events-none object-cover object-center transition-transform duration-700 group-hover:scale-[1.05]"
-                  sizes="(max-width: 640px) 78vw, (max-width: 768px) 60vw, (max-width: 1024px) 40vw, (max-width: 1280px) 28vw, 22vw"
-                />
-                {/* Hover overlay — dark veil + IG icon centered */}
-                <div className="pointer-events-none absolute inset-0 flex items-center justify-center bg-ink/0 opacity-0 transition-all duration-300 group-hover:bg-ink/60 group-hover:opacity-100">
-                  <svg
-                    width="32"
-                    height="32"
-                    viewBox="0 0 24 24"
-                    fill="none"
-                    stroke="currentColor"
-                    strokeWidth="1.6"
-                    strokeLinecap="round"
-                    strokeLinejoin="round"
-                    className="text-bone"
-                    aria-hidden="true"
-                  >
-                    <rect x="3" y="3" width="18" height="18" rx="5" />
-                    <circle cx="12" cy="12" r="4" />
-                    <circle cx="17.5" cy="6.5" r="0.9" fill="currentColor" />
-                  </svg>
-                </div>
-              </a>
+              <RevealItem key={photo.src}>
+                <a
+                  href={INSTAGRAM_URL}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  aria-label={`${photo.alt} — view on Instagram`}
+                  className="group relative block aspect-square select-none overflow-hidden bg-ink"
+                >
+                  <Image
+                    src={`${basePath}${photo.src}`}
+                    alt={photo.alt}
+                    fill
+                    draggable={false}
+                    className="pointer-events-none object-cover object-center transition-transform duration-700 group-hover:scale-[1.05]"
+                    sizes="(max-width: 768px) 33vw, 22vw"
+                  />
+                  {/* Hover overlay — dark veil + IG icon centered */}
+                  <div className="pointer-events-none absolute inset-0 flex items-center justify-center bg-ink/0 opacity-0 transition-all duration-300 group-hover:bg-ink/60 group-hover:opacity-100">
+                    <svg
+                      width="28"
+                      height="28"
+                      viewBox="0 0 24 24"
+                      fill="none"
+                      stroke="currentColor"
+                      strokeWidth="1.6"
+                      strokeLinecap="round"
+                      strokeLinejoin="round"
+                      className="text-bone"
+                      aria-hidden="true"
+                    >
+                      <rect x="3" y="3" width="18" height="18" rx="5" />
+                      <circle cx="12" cy="12" r="4" />
+                      <circle cx="17.5" cy="6.5" r="0.9" fill="currentColor" />
+                    </svg>
+                  </div>
+                </a>
+              </RevealItem>
             ))}
-          </div>
-        </Reveal>
-
-        {/* Swipe hint — visible on touch, fades on desktop */}
-        <div className="mx-auto mt-4 max-w-7xl px-6">
-          <p className="font-mono text-[10px] uppercase tracking-ultra text-smoke">
-            Swipe &rarr;
-          </p>
+          </RevealGroup>
         </div>
       </div>
 

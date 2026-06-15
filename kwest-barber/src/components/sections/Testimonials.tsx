@@ -157,30 +157,23 @@ export function Testimonials() {
 
         <Reveal delay={0.1}>
           <div className="overflow-hidden" ref={emblaRef}>
-            <div className="flex items-start gap-6 py-6">
-              {testimonials.map((t, i) => {
-                // Stagger vertical offset across cards so the row reads as
-                // editorial pinboard, not a uniform 3-card grid. Pattern
-                // repeats every 4 cards.
-                const offsets = ["mt-0", "mt-10", "mt-4", "mt-14"];
-                const offset = offsets[i % offsets.length];
-                return (
-                  <article
-                    key={`${t.name}-${t.since}`}
-                    className={`flex w-[85%] flex-shrink-0 flex-col justify-between border border-chrome/60 bg-blade p-6 md:w-[44%] md:p-8 lg:w-[31%] ${offset}`}
-                  >
-                    <blockquote className="font-body text-base leading-relaxed text-bone md:text-lg">
-                      &ldquo;{t.quote}&rdquo;
-                    </blockquote>
-                    <div className="mt-8 flex items-center gap-3">
-                      <span className="h-px w-8 bg-gold" />
-                      <p className="font-mono text-[10px] uppercase tracking-widest text-smoke">
-                        {t.name} &middot; Since {t.since}
-                      </p>
-                    </div>
-                  </article>
-                );
-              })}
+            <div className="flex items-stretch gap-6 py-6">
+              {testimonials.map((t) => (
+                <article
+                  key={`${t.name}-${t.since}`}
+                  className="flex w-[85%] flex-shrink-0 flex-col justify-between border border-chrome/60 bg-blade p-6 md:w-[44%] md:p-8 lg:w-[31%]"
+                >
+                  <blockquote className="font-body text-base leading-relaxed text-bone md:text-lg">
+                    &ldquo;{t.quote}&rdquo;
+                  </blockquote>
+                  <div className="mt-8 flex items-center gap-3">
+                    <span className="h-px w-8 bg-gold" />
+                    <p className="font-mono text-[10px] uppercase tracking-widest text-smoke">
+                      {t.name} &middot; Since {t.since}
+                    </p>
+                  </div>
+                </article>
+              ))}
             </div>
           </div>
         </Reveal>
