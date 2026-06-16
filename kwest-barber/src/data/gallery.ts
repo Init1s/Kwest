@@ -23,7 +23,7 @@ export const gallery: GalleryPhoto[] = [
   { src: "/images/gallery/gallery-06.jpeg", alt: "Client cut by Kwest", width: 1050, height: 1400 },
   { src: "/images/gallery/gallery-11.jpeg", alt: "Client cut by Kwest", width: 788, height: 1051 },
   { src: "/images/gallery/gallery-01.jpeg", alt: "Client cut by Kwest", width: 1152, height: 1391 },
-  { src: "/images/gallery/gallery-02.jpeg", alt: "Client cut by Kwest", width: 787, height: 1400 },
+  { src: "/images/gallery/gallery-02.jpeg", alt: "Client cut by Kwest", width: 787, height: 1400, objectPosition: "50% 70%" },
   { src: "/images/gallery/gallery-04.jpeg", alt: "Client cut by Kwest", width: 1120, height: 1400 },
   { src: "/images/gallery/gallery-05.jpeg", alt: "Client cut by Kwest", width: 787, height: 1400 },
   { src: "/images/gallery/gallery-07.jpeg", alt: "Client cut by Kwest", width: 933, height: 1400 },

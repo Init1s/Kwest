@@ -67,7 +67,7 @@ export function InstagramFeed() {
                   target="_blank"
                   rel="noopener noreferrer"
                   aria-label={`${photo.alt} — view on Instagram`}
-                  className="group relative block aspect-square select-none overflow-hidden bg-ink"
+                  className="group relative block aspect-[4/5] select-none overflow-hidden bg-ink"
                 >
                   <Image
                     src={`${basePath}${photo.src}`}
