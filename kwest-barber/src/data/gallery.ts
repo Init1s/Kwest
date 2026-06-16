@@ -7,16 +7,21 @@ export type GalleryPhoto = {
   alt: string;
   width: number;
   height: number;
+  // Optional CSS object-position override for the homepage gallery's
+  // aspect-square crop. Defaults to "50% 50%" (center). Use "50% 25%"
+  // or similar when the head sits high in the frame and centering
+  // would chop hair; "50% 35%" when face is mid-upper, etc.
+  objectPosition?: string;
 };
 
 export const gallery: GalleryPhoto[] = [
   // First six are what the homepage gallery surfaces (slice(0, 6)).
   // Shuffled order — alternates the two newest portraits with the
   // existing set so the grid doesn't read top-to-bottom chronological.
-  { src: "/images/gallery/gallery-12.jpeg", alt: "Client cut by Kwest", width: 1400, height: 1400 },
+  { src: "/images/gallery/gallery-12.jpeg", alt: "Client cut by Kwest", width: 932, height: 1400, objectPosition: "50% 20%" },
   { src: "/images/gallery/gallery-03.jpeg", alt: "Client cut by Kwest", width: 1120, height: 1400 },
   { src: "/images/gallery/gallery-06.jpeg", alt: "Client cut by Kwest", width: 1050, height: 1400 },
-  { src: "/images/gallery/gallery-11.jpeg", alt: "Client cut by Kwest", width: 1400, height: 1400 },
+  { src: "/images/gallery/gallery-11.jpeg", alt: "Client cut by Kwest", width: 788, height: 1051 },
   { src: "/images/gallery/gallery-01.jpeg", alt: "Client cut by Kwest", width: 1152, height: 1391 },
   { src: "/images/gallery/gallery-02.jpeg", alt: "Client cut by Kwest", width: 787, height: 1400 },
   { src: "/images/gallery/gallery-04.jpeg", alt: "Client cut by Kwest", width: 1120, height: 1400 },

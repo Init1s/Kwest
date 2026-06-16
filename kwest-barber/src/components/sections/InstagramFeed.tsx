@@ -74,7 +74,8 @@ export function InstagramFeed() {
                     alt={photo.alt}
                     fill
                     draggable={false}
-                    className="pointer-events-none object-cover object-center transition-transform duration-700 group-hover:scale-[1.05]"
+                    style={{ objectPosition: photo.objectPosition ?? "50% 50%" }}
+                    className="pointer-events-none object-cover transition-transform duration-700 group-hover:scale-[1.05]"
                     sizes="(max-width: 768px) 33vw, 22vw"
                   />
                   {/* Hover overlay — dark veil + IG icon centered */}
