@@ -59,7 +59,7 @@ export function Contact() {
             <div className="mt-3 flex flex-col gap-1 font-body text-sm text-ash">
               <p>Tue &ndash; Fri &mdash; 10am to 7pm</p>
               <p>Saturday &mdash; 9am to 5pm</p>
-              <p>Sunday &mdash; 11am to 4pm</p>
+              <p className="text-razor">Sunday &mdash; Closed</p>
               <p className="text-razor">Monday &mdash; Closed</p>
             </div>
           </RevealItem>

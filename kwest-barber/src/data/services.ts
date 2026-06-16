@@ -92,7 +92,7 @@ export const services: Service[] = [
     duration: "1 hr 30 min",
     durationMinutes: 90,
     description:
-      "Private appointment outside of standard shop hours. Built for clients with schedules that don't fit a Tuesday-to-Sunday slot — overnight workers, traveling clients, anyone who wants the chair to themselves with no waiting room around them.",
+      "Private appointment outside of standard shop hours. Built for clients with schedules that don't fit a Tuesday-to-Saturday slot — overnight workers, traveling clients, anyone who wants the chair to themselves with no waiting room around them.",
     process: [
       "Schedule confirmed by direct message.",
       "Shop opened only for the booked client.",
@@ -106,7 +106,7 @@ export const services: Service[] = [
     faqs: [
       {
         q: "What counts as after-hours?",
-        a: "Any appointment outside Tuesday–Sunday business hours. Late-night, very early morning, or Monday (the shop's normal closed day) all qualify.",
+        a: "Any appointment outside Tuesday–Saturday business hours. Late-night, very early morning, or Sunday / Monday (the shop's closed days) all qualify.",
       },
     ],
   },

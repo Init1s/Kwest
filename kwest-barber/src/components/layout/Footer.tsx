@@ -42,7 +42,7 @@ export function Footer() {
             <div className="mt-2 flex flex-col gap-1 font-body text-xs text-ash">
               <p>Tue &ndash; Fri: 10am &ndash; 7pm</p>
               <p>Sat: 9am &ndash; 5pm</p>
-              <p>Sun: 11am &ndash; 4pm</p>
+              <p className="text-razor">Sun: Closed</p>
               <p className="text-razor">Mon: Closed</p>
             </div>
           </div>
