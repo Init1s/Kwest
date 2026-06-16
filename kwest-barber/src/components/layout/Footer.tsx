@@ -52,12 +52,14 @@ export function Footer() {
             <span className="block font-mono text-[9px] uppercase tracking-ultra text-smoke">
               Visit
             </span>
-            <p className="mt-2 font-display text-sm font-semibold uppercase text-bone">
-              Boca Raton, FL
-            </p>
-            <p className="mt-1 font-body text-xs text-ash">
-              Address upon booking
-            </p>
+            <address className="not-italic">
+              <p className="mt-2 font-display text-sm font-semibold uppercase text-bone">
+                2100 N Federal Hwy #24
+              </p>
+              <p className="mt-1 font-body text-xs text-ash">
+                Boca Raton, FL 33431
+              </p>
+            </address>
             <p className="mt-2 font-body text-xs leading-relaxed text-ash">
               Walk-ins when the chair is open.
             </p>

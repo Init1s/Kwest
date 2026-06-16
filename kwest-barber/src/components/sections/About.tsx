@@ -124,7 +124,10 @@ export function About() {
                   Location
                 </span>
                 <p className="mt-1 font-display text-sm uppercase text-bone">
-                  Boca Raton near FAU
+                  2100 N Federal Hwy #24
+                </p>
+                <p className="font-display text-sm uppercase text-bone">
+                  Boca Raton, FL 33431
                 </p>
               </div>
               <div>

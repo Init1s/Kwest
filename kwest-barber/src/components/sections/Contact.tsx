@@ -26,12 +26,28 @@ export function Contact() {
             <span className="font-mono text-[9px] uppercase tracking-ultra text-smoke">
               Find Us
             </span>
-            <p className="mt-3 font-display text-xl font-bold uppercase text-bone">
-              Boca Raton, FL
-            </p>
-            <p className="mt-2 font-body text-sm leading-relaxed text-ash">
-              Exact address shared at booking. Walk-ins welcome when the chair
-              is open.
+            <address className="not-italic">
+              <p className="mt-3 font-display text-xl font-bold uppercase text-bone">
+                2100 N Federal Hwy #24
+              </p>
+              <p className="mt-1 font-display text-base font-semibold uppercase text-bone">
+                Boca Raton, FL 33431
+              </p>
+            </address>
+            <a
+              href={`https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(
+                "2100 N Federal Hwy #24, Boca Raton, FL 33431",
+              )}`}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="mt-3 inline-block font-mono text-[10px] uppercase tracking-ultra text-gold transition-colors hover:text-gold-light"
+              aria-label="Open Kwest The Barber location in Google Maps (opens in a new tab)"
+            >
+              Get directions &rarr;
+            </a>
+            <p className="mt-3 font-body text-sm leading-relaxed text-ash">
+              On the N Federal Hwy corridor, about three minutes from FAU.
+              Walk-ins welcome when the chair is open.
             </p>
           </RevealItem>
 

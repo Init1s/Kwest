@@ -7,14 +7,17 @@ const BASE = process.env.NEXT_PUBLIC_BASE_PATH ?? "";
 export const SITE = {
   url: SITE_URL,
   name: "Kwest The Barber",
-  legalName: "Kwest The Barber",
+  legalName: "Kwest Barbershop",
+  streetAddress: "2100 N Federal Hwy #24",
   city: "Boca Raton",
   region: "FL",
+  postalCode: "33431",
   country: "US",
   neighborhood: "near FAU",
-  // Approximate centroid of Boca Raton / FAU area. Used in BarberShop
-  // schema for local discovery when the exact address is shared at booking.
-  geo: { lat: 26.371, lng: -80.103 },
+  // 2100 N Federal Hwy #24 — N Federal Hwy corridor in Boca Raton,
+  // just north of Glades Rd, ~3 min from FAU. Matches the Google
+  // Business Profile location.
+  geo: { lat: 26.3679, lng: -80.0921 },
   telephone: undefined as string | undefined,
 };
 
@@ -41,10 +44,15 @@ export function localBusinessSchema() {
     logo: `${SITE.url}/icon.png`,
     address: {
       "@type": "PostalAddress",
+      streetAddress: SITE.streetAddress,
       addressLocality: SITE.city,
       addressRegion: SITE.region,
+      postalCode: SITE.postalCode,
       addressCountry: SITE.country,
     },
+    hasMap: `https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(
+      `${SITE.streetAddress}, ${SITE.city}, ${SITE.region} ${SITE.postalCode}`,
+    )}`,
     geo: {
       "@type": "GeoCoordinates",
       latitude: SITE.geo.lat,
@@ -135,7 +143,7 @@ export function homepageFaqSchema() {
   return faqSchema([
     {
       q: "Where is Kwest the Barber located?",
-      a: "Kwest the Barber is in Boca Raton, FL, near FAU. The exact address is shared at booking. Appointments are handled through Squire.",
+      a: `Kwest the Barber is at ${SITE.streetAddress}, ${SITE.city}, ${SITE.region} ${SITE.postalCode} — on the N Federal Hwy corridor, about three minutes from FAU. Appointments are handled through Squire.`,
     },
     {
       q: "How long has Kwest been cutting hair?",
