@@ -13,10 +13,10 @@ export const gallery: GalleryPhoto[] = [
   // First six are what the homepage gallery surfaces (slice(0, 6)).
   // Shuffled order — alternates the two newest portraits with the
   // existing set so the grid doesn't read top-to-bottom chronological.
-  { src: "/images/gallery/gallery-12.jpeg", alt: "Client cut by Kwest", width: 932, height: 1400 },
+  { src: "/images/gallery/gallery-12.jpeg", alt: "Client cut by Kwest", width: 1400, height: 1400 },
   { src: "/images/gallery/gallery-03.jpeg", alt: "Client cut by Kwest", width: 1120, height: 1400 },
   { src: "/images/gallery/gallery-06.jpeg", alt: "Client cut by Kwest", width: 1050, height: 1400 },
-  { src: "/images/gallery/gallery-11.jpeg", alt: "Client cut by Kwest", width: 788, height: 1400 },
+  { src: "/images/gallery/gallery-11.jpeg", alt: "Client cut by Kwest", width: 1400, height: 1400 },
   { src: "/images/gallery/gallery-01.jpeg", alt: "Client cut by Kwest", width: 1152, height: 1391 },
   { src: "/images/gallery/gallery-02.jpeg", alt: "Client cut by Kwest", width: 787, height: 1400 },
   { src: "/images/gallery/gallery-04.jpeg", alt: "Client cut by Kwest", width: 1120, height: 1400 },
