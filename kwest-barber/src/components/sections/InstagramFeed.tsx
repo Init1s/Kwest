@@ -106,9 +106,14 @@ export function InstagramFeed() {
 
       <div className="px-6 pb-24 md:pb-32">
         <div className="mx-auto flex max-w-7xl flex-col items-center justify-between gap-4 border-t border-chrome/40 pt-8 md:flex-row">
-          <p className="font-mono text-[10px] uppercase tracking-ultra text-smoke">
-            More on Instagram
-          </p>
+          <a
+            href={INSTAGRAM_URL}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="font-mono text-[10px] uppercase tracking-ultra text-smoke transition-colors hover:text-bone"
+          >
+            More on Instagram &rarr;
+          </a>
           <a
             href={INSTAGRAM_URL}
             target="_blank"
