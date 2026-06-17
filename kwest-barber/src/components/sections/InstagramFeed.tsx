@@ -120,7 +120,7 @@ export function InstagramFeed() {
             rel="noopener noreferrer"
             className="inline-block bg-gold px-7 py-3.5 font-display text-sm uppercase tracking-widest text-ink transition-all hover:bg-gold-light"
           >
-            Follow {HANDLE}
+            Follow on Instagram
           </a>
         </div>
       </div>
